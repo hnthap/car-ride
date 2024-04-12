@@ -184,7 +184,7 @@ body:has(.card[data-color="green"]:hover) {
 
 .control-keys {
     position: absolute;
-    width: 11rem;
+    width: 6rem;
     left: 5%;
     bottom: 5%;
     user-select: none;
