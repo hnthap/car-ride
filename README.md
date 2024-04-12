@@ -12,4 +12,6 @@ The image at `public/controls.png` is from [Ecctrl + Fisheye](https://codesandbo
 
 3D models:
 
-* [Car Scene by `toivo` (CC-BY)](https://skfb.ly/6uSoM)
+* [*Car Scene*](https://skfb.ly/6uSoM) by **toivo** (CC-BY)
+* [*SkyBox Basic Sky*](https://skfb.ly/oIHQL) by **Paul** (CC-BY)
+* [*sport car racing paris*](https://skfb.ly/oIME6) by **amogusstrikesback2** (CC-BY)
