@@ -7,7 +7,7 @@ export default function Navbar() {
         to="/"
         className="w-32 h-10 rounded-lg bg-white items-center justify-center flex font-bold shadow-md"
       >
-        <p className="blue-gradient_text">Car Ride</p>
+        <p className="green-gradient_text">Car Ride</p>
       </NavLink>
       <nav className="flex text-lg gap-7 font-medium">
         <NavLink
