@@ -13,7 +13,7 @@ import { useGLTF } from "@react-three/drei";
 export default function VintageLantern(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF(carScene) as ObjectMap;
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} scale={0.02}>
       <group
         position={[54.766, -2.068, -284.313]}
         rotation={[-Math.PI / 2, 0, 0]}
