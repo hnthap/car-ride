@@ -197,3 +197,19 @@ body:has(.card[data-color="green"]:hover) {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
+.measurement-chart {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    background-color: rgb(0, 0, 0, 0.33);
+    color: lightyellow;
+    padding-left: 5pt;
+    padding-right: 5pt;
+    font-family: monospace;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
