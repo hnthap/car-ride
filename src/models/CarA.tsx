@@ -23,6 +23,7 @@ export default function CarA(
       {...props}
       ref={props.innerRef}
       dispose={null}
+      position={[-12, 0, 15]}
       rotation={[0, (-130 * Math.PI) / 180, 0]}
       scale={0.02}
     >

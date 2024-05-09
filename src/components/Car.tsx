@@ -11,15 +11,17 @@ export default function Car(
     skyRef: React.RefObject<THREE.Group<THREE.Object3DEventMap>>;
   }
 ) {
-  const { config, skyRef } = props;
-
   const {
-    maxTranslateSpeed,
-    minTranslateSpeed,
-    rotationSpeedDeg,
-    translateAcceleration,
-    translateDeceleration,
-  } = config;
+    config: {
+      maxTranslateSpeed,
+      minTranslateSpeed,
+      rotationSpeedDeg,
+      translateAcceleration,
+      translateDeceleration,
+    },
+    skyRef,
+  } = props;
+
   const rotationSpeed = (rotationSpeedDeg * Math.PI) / 180;
   const CAMERA_ROTATION_AXIS = new THREE.Vector3(0, 1, 0);
 
@@ -27,6 +29,7 @@ export default function Car(
   const translateSpeedRef = useRef(0);
   const carRef = useRef<THREE.Group>(null);
   const translateDirection = new THREE.Vector3();
+  const pressedKeys = new Set<string>();
 
   useFrame(({ camera }) => {
     if (!carRef.current) {
@@ -51,20 +54,18 @@ export default function Car(
       camera.rotateOnWorldAxis(CAMERA_ROTATION_AXIS, turnSpeedRef.current);
     }
   });
+
   useEffect(() => {
-    const pressedKeys = new Set<string>();
-    function handleKeyDown(ev: KeyboardEvent) {
+    function handleKeyPress(ev: KeyboardEvent) {
       ev.stopPropagation();
       ev.preventDefault();
       pressedKeys.add(ev.key.toUpperCase());
       console.log(
-        "keydown",
+        "keypress",
         Array.from(pressedKeys)
           .map((key) => `'${key}'`)
           .join(", "),
-        "translate",
         translateSpeedRef.current.toFixed(2),
-        "turn",
         turnSpeedRef.current.toFixed(2)
       );
       for (const pressed of pressedKeys) {
@@ -107,6 +108,14 @@ export default function Car(
       ev.preventDefault();
       const key = ev.key.toUpperCase();
       pressedKeys.delete(key);
+      console.log(
+        "keyup",
+        key,
+        "so",
+        Array.from(pressedKeys)
+          .map((key) => `'${key}'`)
+          .join(", ")
+      );
       switch (getMovesFromUppercaseKey(key)) {
         case "left":
         case "right":
@@ -118,18 +127,14 @@ export default function Car(
           translateSpeedRef.current = 0;
           break;
 
-        case "brake":
-          // Do nothing
-          break;
-
         default:
           break;
       }
     }
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keypress", handleKeyPress);
     document.addEventListener("keyup", handleKeyUp);
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keypress", handleKeyPress);
       document.removeEventListener("keyup", handleKeyUp);
     };
   });
