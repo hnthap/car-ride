@@ -28,8 +28,9 @@ export default function Car(
   const turnSpeedRef = useRef(0);
   const translateSpeedRef = useRef(0);
   const carRef = useRef<THREE.Group>(null);
-  const translateDirection = new THREE.Vector3();
+  const translateDirection = new THREE.Vector3(); //transDir
   const pressedKeys = new Set<string>();
+  let isSpeedingUp = false;
 
   useFrame(({ camera }) => {
     if (!carRef.current) {
@@ -80,17 +81,33 @@ export default function Car(
 
           case "speed up":
             {
-              const temp = translateSpeedRef.current + translateAcceleration;
-              translateSpeedRef.current =
-                temp > maxTranslateSpeed ? maxTranslateSpeed : temp;
+              //bộ đếm thời gian tăng tốc mỗi x giây
+              if(!isSpeedingUp) {
+                isSpeedingUp = true;
+                setTimeout(()=>{
+                  const temp = translateSpeedRef.current + translateAcceleration;
+                    translateSpeedRef.current =
+                    temp > maxTranslateSpeed ? maxTranslateSpeed : temp;
+                    isSpeedingUp = false; 
+                }, 500)
+              }
             }
             break;
 
           case "slow down":
             {
-              const temp = translateSpeedRef.current + translateDeceleration;
-              translateSpeedRef.current =
-                temp < minTranslateSpeed ? minTranslateSpeed : temp;
+
+              //bộ đếm thời gian tăng tốc mỗi x giây
+              if(!isSpeedingUp) {
+                isSpeedingUp = true;
+                setTimeout(()=>{
+                  const temp = translateSpeedRef.current + translateDeceleration;
+                  translateSpeedRef.current =
+                    temp < minTranslateSpeed ? minTranslateSpeed : temp;
+                    isSpeedingUp = false; 
+                }, 200)
+              }
+              
             }
             break;
 
