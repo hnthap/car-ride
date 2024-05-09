@@ -6,25 +6,20 @@ Source: https://sketchfab.com/3d-models/car-scene-b7b32eaca80d460c9338197e2c9d14
 Title: Car Scene
 */
 
+import { useGLTF } from "@react-three/drei";
 import carScene from "../assets/3d/car_scene.glb";
 import { GroupProps, ObjectMap } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
-import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import React from "react";
 
 export default function CarA(
-  props: GroupProps
+  props: GroupProps & {
+    innerRef: React.RefObject<THREE.Group>;
+  }
 ) {
-  const carRef = useRef<THREE.Group>(null);
-  useEffect(() => {
-    if (carRef.current) {
-      carRef.current.position.x = -10;
-      carRef.current.position.z = 10;
-    }
-  }, [carRef]);
   const { nodes, materials } = useGLTF(carScene) as ObjectMap;
   return (
-    <group {...props} ref={carRef} dispose={null}>
+    <group {...props} ref={props.innerRef} dispose={null}>
       <group position={[40.507, 74.477, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <mesh
           castShadow

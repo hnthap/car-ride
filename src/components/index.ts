@@ -1,4 +1,5 @@
+import Car from "./Car";
 import Loader from "./Loader";
 import Navbar from "./Navbar";
 
-export { Loader, Navbar };
+export { Car, Loader, Navbar };
