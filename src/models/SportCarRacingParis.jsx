@@ -7,11 +7,10 @@ Title: sports car racing paris
 */
 
 import sportCarRacingParis from "/sports_car_racing_paris.glb";
-import { GroupProps, ObjectMap } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 
-export default function SportCarRacingParis(props: GroupProps) {
-  const { nodes, materials } = useGLTF(sportCarRacingParis) as ObjectMap;
+export default function SportCarRacingParis(props) {
+  const { nodes, materials } = useGLTF(sportCarRacingParis);
   return (
     <group {...props} dispose={null} scale={40}>
       <group scale={0.01}>
