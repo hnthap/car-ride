@@ -9,10 +9,10 @@ Title: Bugatti chiron
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
-import Bugatti from '/Bugatti.glb'
+import Scene from '/Bugatti.glb'
 
 export default function Bugatti(props) {
-  const { nodes, materials } = useGLTF(Bugatti)
+  const { nodes, materials } = useGLTF(Scene)
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={1.12}>
