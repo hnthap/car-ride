@@ -14,7 +14,7 @@ export default function Home() {
         className="w-full h-screen bg-transparent"
       >
         <Suspense fallback={<Loader />}>
-          <directionalLight position={[1, 1, 1]} intensity={2} castShadow />
+          <directionalLight position={[1, 1, 1]} intensity={10} castShadow />
           <ambientLight intensity={0.5} />
           <Sky innerRef={skyRef} />
           <SportCarRacingParis receiveShadow />

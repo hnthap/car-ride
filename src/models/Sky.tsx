@@ -11,17 +11,19 @@ import { GroupProps, ObjectMap } from "@react-three/fiber";
 import * as THREE from "three";
 import sky from "../assets/3d/free_-_skybox_basic_sky.glb";
 
-export default function Sky(props: GroupProps) {
+export default function Sky(
+  props: GroupProps & {
+    innerRef: React.RefObject<THREE.Group<THREE.Object3DEventMap>>;
+  }
+) {
   const { nodes, materials } = useGLTF(sky) as ObjectMap;
   return (
-    <group {...props} dispose={null}>
+    <group {...props} ref={props.innerRef} dispose={null} scale={20}>
       <group scale={0.01}>
         <mesh
           castShadow
           receiveShadow
-          geometry={
-            (nodes.Sphere__0 as THREE.Mesh).geometry
-          }
+          geometry={(nodes.Sphere__0 as THREE.Mesh).geometry}
           material={materials["Scene_-_Root"]}
           rotation={[-Math.PI / 2, 0, 0]}
           scale={2000}
