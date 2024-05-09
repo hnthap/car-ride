@@ -3,8 +3,10 @@ import { Suspense, useRef } from "react";
 import * as THREE from "three";
 import { Car, Loader } from "../components";
 import { Sky, SportCarRacingParis, VintageLantern } from "../models";
+import { AppConfig } from "../utils/config";
 
-export default function Home() {
+export default function Home(props: { config: AppConfig }) {
+  const { config } = props;
   const skyRef = useRef<THREE.Group>(null);
   return (
     <section className="w-full h-screen relative">
@@ -18,7 +20,7 @@ export default function Home() {
           <ambientLight intensity={0.5} />
           <Sky innerRef={skyRef} />
           <SportCarRacingParis receiveShadow />
-          <Car skyRef={skyRef} receiveShadow castShadow />
+          <Car config={config} skyRef={skyRef} receiveShadow castShadow />
           <VintageLantern />
         </Suspense>
       </Canvas>
