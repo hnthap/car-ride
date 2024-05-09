@@ -1,8 +1,9 @@
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
+import { loadAppConfig } from "./utils/config";
 
-(() => {
+(async () => {
   if ("hot" in import.meta) {
     // @ts-expect-error Reason: import.meta has hot
     if (import.meta.hot) {
@@ -17,5 +18,5 @@ import "./index.css";
   if (!(root instanceof HTMLDivElement)) {
     throw new Error("root is not a div");
   }
-  createRoot(root).render(<App />);
+  createRoot(root).render(<App config={await loadAppConfig()} />);
 })();
