@@ -6,7 +6,7 @@ Source: https://sketchfab.com/3d-models/car-scene-b7b32eaca80d460c9338197e2c9d14
 Title: Car Scene
 */
 
-import carScene from "../assets/3d/car_scene.glb";
+import carScene from "/car_scene.glb";
 import { ObjectMap } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 

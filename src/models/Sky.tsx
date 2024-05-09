@@ -9,7 +9,7 @@ Title: FREE - SkyBox Basic Sky
 import { useGLTF } from "@react-three/drei";
 import { GroupProps, ObjectMap } from "@react-three/fiber";
 import * as THREE from "three";
-import sky from "../assets/3d/free_-_skybox_basic_sky.glb";
+import sky from "/free_-_skybox_basic_sky.glb";
 
 export default function Sky(
   props: GroupProps & {

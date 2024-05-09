@@ -6,7 +6,7 @@ Source: https://sketchfab.com/3d-models/sports-car-racing-paris-1a2b3ec183c44870
 Title: sports car racing paris
 */
 
-import sportCarRacingParis from "../assets/3d/sports_car_racing_paris.glb";
+import sportCarRacingParis from "/sports_car_racing_paris.glb";
 import { GroupProps, ObjectMap } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 

@@ -7,7 +7,7 @@ Title: Car Scene
 */
 
 import { useGLTF } from "@react-three/drei";
-import carScene from "../assets/3d/car_scene.glb";
+import carScene from "/car_scene.glb";
 import { GroupProps, ObjectMap } from "@react-three/fiber";
 import * as THREE from "three";
 import React from "react";
