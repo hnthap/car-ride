@@ -19,6 +19,9 @@ export function getMovesFromUppercaseKey(key: string) {
     case " ":
       return "brake";
 
+    case "ENTER":
+      return "move inside/outside";
+
     default:
       return null;
   }

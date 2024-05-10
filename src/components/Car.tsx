@@ -25,11 +25,16 @@ export default function Car(
 
   const rotationSpeed = (rotationSpeedDeg * Math.PI) / 180;
   const CAMERA_ROTATION_AXIS = new THREE.Vector3(0, 1, 0);
+  const CAMERA_Y_INSIDE_CAR = 2.25;
+  const CAMERA_Y_OUTSIDE_CAR = 5;
 
   const turnSpeedRef = useRef(0);
   const translateSpeedRef = useRef(0);
+  const isInsideCarRef = useRef(true);
+
   const carRef = useRef<THREE.Group>(null);
   const translateDirection = new THREE.Vector3();
+  const translateDirection2 = new THREE.Vector3();
   const pressedKeys = new Set<string>();
 
   useFrame(({ camera }) => {
@@ -37,14 +42,20 @@ export default function Car(
       return;
     }
     if (translateSpeedRef.current !== 0) {
-      const y = camera.position.y;
       carRef.current.position.add(
         translateDirection.multiplyScalar(translateSpeedRef.current)
       );
       camera.position.copy(carRef.current.position);
       camera.getWorldDirection(translateDirection);
       translateDirection.setY(0);
-      camera.position.y = y;
+      if (isInsideCarRef.current) {
+        camera.position.y = CAMERA_Y_INSIDE_CAR;
+      } else {
+        camera.position.add(
+          translateDirection2.copy(translateDirection).multiplyScalar(-10)
+        );
+        camera.position.y = CAMERA_Y_OUTSIDE_CAR;
+      }
       skyRef.current?.position.copy(camera.position);
     }
     if (turnSpeedRef.current !== 0) {
@@ -99,6 +110,11 @@ export default function Car(
             translateSpeedRef.current = 0;
             break;
 
+          case "move inside/outside":
+            isInsideCarRef.current = !isInsideCarRef.current;
+            console.log("inside car?", isInsideCarRef.current);
+            break;
+
           default:
             break;
         }
@@ -139,18 +155,14 @@ export default function Car(
       document.removeEventListener("keyup", handleKeyUp);
     };
   });
-  switch (car) {
-    case "Bugatti":
-      return <Bugatti {...props} innerRef={carRef} />;
-
-    case "CarA":
-      return <CarA {...props} innerRef={carRef} />;
-
-    case "Lamborghini":
-      return <Lamborghini {...props} innerRef={carRef} />;
-  
-    default:
-      break;
+  if (car === "Bugatti") {
+    return <Bugatti {...props} innerRef={carRef} />;
   }
-  throw new Error(`invalid car: ${car}`);
+  if (car === "CarA") {
+    return <CarA {...props} innerRef={carRef} />;
+  }
+  if (car === "Lamborghini") {
+    return <Lamborghini {...props} innerRef={carRef} />;
+  }
+  throw new Error(`invalid car: "${car}"`);
 }
