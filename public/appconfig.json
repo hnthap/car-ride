@@ -1,4 +1,6 @@
 {
+  "car": "CarA",
+  "landscape": "Moscow",
   "maxTranslateSpeed": 10,
   "minTranslateSpeed": -10,
   "rotationSpeedDeg": 2,

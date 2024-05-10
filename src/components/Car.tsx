@@ -13,6 +13,7 @@ export default function Car(
 ) {
   const {
     config: {
+      car,
       maxTranslateSpeed,
       minTranslateSpeed,
       rotationSpeedDeg,
@@ -138,5 +139,18 @@ export default function Car(
       document.removeEventListener("keyup", handleKeyUp);
     };
   });
-  return <Lamborghini {...props} innerRef={carRef} />;
+  switch (car) {
+    case "Bugatti":
+      return <Bugatti {...props} innerRef={carRef} />;
+
+    case "CarA":
+      return <CarA {...props} innerRef={carRef} />;
+
+    case "Lamborghini":
+      return <Lamborghini {...props} innerRef={carRef} />;
+  
+    default:
+      break;
+  }
+  throw new Error(`invalid car: ${car}`);
 }
