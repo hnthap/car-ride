@@ -30,7 +30,10 @@ export default function Car(
   const carRef = useRef<THREE.Group>(null);
   const translateDirection = new THREE.Vector3(); //transDir
   const pressedKeys = new Set<string>();
-  let isSpeedingUp = false;
+  let interval:NodeJS.Timeout;
+  let W_Toggle = false;
+  let S_Toggle = false;
+  let isMoving = false;
 
   useFrame(({ camera }) => {
     if (!carRef.current) {
@@ -61,34 +64,38 @@ export default function Car(
       ev.stopPropagation();
       ev.preventDefault();
       pressedKeys.add(ev.key.toUpperCase());
-      console.log(
-        "keypress",
-        Array.from(pressedKeys)
-          .map((key) => `'${key}'`)
-          .join(", "),
-        translateSpeedRef.current.toFixed(2),
-        turnSpeedRef.current.toFixed(2)
-      );
+      //console.log(
+      //   "keypress",
+      //   Array.from(pressedKeys)
+      //     .map((key) => `'${key}'`)
+      //     .join(", "),
+      //   translateSpeedRef.current.toFixed(2),
+      //   turnSpeedRef.current.toFixed(2)
+      // );
       for (const pressed of pressedKeys) {
         switch (getMovesFromUppercaseKey(pressed)) {
           case "left":
-            turnSpeedRef.current = rotationSpeed;
+            if(isMoving) turnSpeedRef.current = rotationSpeed;
             break;
 
           case "right":
-            turnSpeedRef.current = -rotationSpeed;
+            if(isMoving) turnSpeedRef.current = -rotationSpeed;
             break;
 
           case "speed up":
             {
+              isMoving = true;
+              console.log("W pressed")
+              clearInterval(interval)
               //bộ đếm thời gian tăng tốc mỗi x giây
-              if(!isSpeedingUp) {
-                isSpeedingUp = true;
+              if(!W_Toggle) {
+                W_Toggle = true;
                 setTimeout(()=>{
+                  console.log("MoveSpeed is now: " + translateSpeedRef.current)
                   const temp = translateSpeedRef.current + translateAcceleration;
                     translateSpeedRef.current =
                     temp > maxTranslateSpeed ? maxTranslateSpeed : temp;
-                    isSpeedingUp = false; 
+                    W_Toggle = false; 
                 }, 500)
               }
             }
@@ -98,16 +105,15 @@ export default function Car(
             {
 
               //bộ đếm thời gian tăng tốc mỗi x giây
-              if(!isSpeedingUp) {
-                isSpeedingUp = true;
+              if(!S_Toggle) {
+                S_Toggle = true;
                 setTimeout(()=>{
                   const temp = translateSpeedRef.current + translateDeceleration;
                   translateSpeedRef.current =
                     temp < minTranslateSpeed ? minTranslateSpeed : temp;
-                    isSpeedingUp = false; 
+                    S_Toggle = false; 
                 }, 200)
               }
-              
             }
             break;
 
@@ -140,6 +146,17 @@ export default function Car(
           break;
 
         case "speed up":
+           interval = setInterval(() => {
+            console.log("MoveSpeed is now: " + translateSpeedRef.current)
+            if(translateSpeedRef.current > 0)
+              {
+                const temp = translateSpeedRef.current + translateDeceleration;
+                translateSpeedRef.current =
+                temp < 0 ? 0 : temp;
+              }
+            else{clearInterval(interval)}
+          }, 500)
+          break;
         case "slow down":
           translateSpeedRef.current = 0;
           break;
