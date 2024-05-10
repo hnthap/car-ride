@@ -20,9 +20,9 @@ export default function Lamborghini(props) {
       ref={props.innerRef}
       position={[-12, 0, 15]}
       rotation={[0, (140 * Math.PI) / 180, 0]}
-      scale={1}
+      scale={1.2}
     >
-      <group position={[2.218, 1.2, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      <group position={[2.218, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <mesh
           geometry={nodes.Object_2.geometry}
           material={materials["Material.001"]}

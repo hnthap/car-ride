@@ -22,7 +22,7 @@ export default function Bugatti(props) {
       rotation={[0, (140 * Math.PI) / 180, 0]}
       scale={1.9}
     >
-      <group rotation={[-Math.PI / 2, 0, 0]} scale={1.12}>
+      <group position={[0, 0.1, -0.1]} rotation={[-Math.PI / 2, 0, 0]} scale={1.12}>
         <mesh
           geometry={nodes.Object_2.geometry}
           material={materials.Base_Material}

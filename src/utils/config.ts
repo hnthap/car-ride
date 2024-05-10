@@ -1,8 +1,13 @@
 const APP_CONFIG_PATH = "/appconfig.json";
 
+type CarName = "Bugatti" | "CarA";
+// | "Lamborghini"
+
+type LandscapeName = "Moscow" | "Paris" | "DCU";
+
 export type AppConfig = {
-  car: "Bugatti" | "CarA" | "Lamborghini";
-  landscape: "Moscow" | "Paris" | "DCU";
+  car: CarName;
+  landscape: LandscapeName;
   maxTranslateSpeed: number;
   minTranslateSpeed: number;
   rotationSpeedDeg: number;

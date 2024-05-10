@@ -14,18 +14,15 @@ export default function Landscape(
   const {
     config: { landscape },
   } = props;
-  switch (landscape) {
-    case "DCU":
-      return <DriftClashUluru {...props} />;
-
-    case "Moscow":
-      return <SportsCarRacingMoscow {...props} />;
-
-    case "Paris":
-      return <SportCarRacingParis {...props} />;
-
-    default:
-      break;
+  
+  if (landscape === "DCU") {
+    return <DriftClashUluru {...props} />;
+  }
+  if (landscape === "Moscow") {
+    return <SportsCarRacingMoscow {...props} />;
+  }
+  if (landscape === "Paris") {
+    return <SportCarRacingParis {...props} />;
   }
   throw new Error(`invalid landscape: ${landscape}`);
 }
