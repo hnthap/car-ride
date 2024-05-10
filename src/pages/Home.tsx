@@ -16,7 +16,7 @@ export default function Home(props: { config: AppConfig }) {
         className="w-full h-screen bg-transparent"
       >
         <Suspense fallback={<Loader />}>
-          <directionalLight position={[1, 1, 1]} intensity={10} castShadow />
+          <directionalLight position={[10, 10, 10]} intensity={10} castShadow />
           <ambientLight intensity={0.5} />
           <Sky innerRef={skyRef} />
           <SportCarRacingParis receiveShadow />

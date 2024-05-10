@@ -1,7 +1,7 @@
 import { GroupProps, useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { CarA } from "../models";
+import { Bugatti, CarA, Lamborghini } from "../models";
 import { AppConfig } from "../utils/config";
 import { getMovesFromUppercaseKey } from "../utils/moves";
 
@@ -138,5 +138,5 @@ export default function Car(
       document.removeEventListener("keyup", handleKeyUp);
     };
   });
-  return <CarA {...props} innerRef={carRef} />;
+  return <Lamborghini {...props} innerRef={carRef} />;
 }
