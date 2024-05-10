@@ -1,8 +1,8 @@
 {
   "car": "CarA",
-  "landscape": "Moscow",
-  "maxTranslateSpeed": 10,
-  "minTranslateSpeed": -10,
+  "landscape": "Paris",
+  "maxTranslateSpeed": 2,
+  "minTranslateSpeed": -2,
   "rotationSpeedDeg": 2,
   "translateAcceleration": 0.02,
   "translateDeceleration": -0.02
