@@ -7,11 +7,10 @@ Title: Car Scene
 */
 
 import carScene from "/car_scene.glb";
-import { ObjectMap } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 
-export default function VintageLantern(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF(carScene) as ObjectMap;
+export default function VintageLantern(props) {
+  const { nodes, materials } = useGLTF(carScene);
   return (
     <group {...props} dispose={null} scale={0.02}>
       <group
@@ -21,9 +20,7 @@ export default function VintageLantern(props: JSX.IntrinsicElements["group"]) {
         <mesh
           castShadow
           receiveShadow
-          geometry={
-            (nodes.vintage_lantern_7_base_lantern_wall_base_2_0 as any).geometry
-          }
+          geometry={nodes.vintage_lantern_7_base_lantern_wall_base_2_0.geometry}
           material={materials.lantern_wall_base_2}
         />
         <group position={[0.007, 0.078, 199.335]}>
@@ -31,8 +28,7 @@ export default function VintageLantern(props: JSX.IntrinsicElements["group"]) {
             castShadow
             receiveShadow
             geometry={
-              (nodes.vintage_lantern_glass_7_lantern_wall_glass_1_0 as any)
-                .geometry
+              nodes.vintage_lantern_glass_7_lantern_wall_glass_1_0.geometry
             }
             material={materials.lantern_wall_glass_1}
             position={[0.238, -7.28, 149.232]}
@@ -40,9 +36,7 @@ export default function VintageLantern(props: JSX.IntrinsicElements["group"]) {
           <mesh
             castShadow
             receiveShadow
-            geometry={
-              (nodes.vintage_lantern_7_lantern_wall_base_1_0 as any).geometry
-            }
+            geometry={nodes.vintage_lantern_7_lantern_wall_base_1_0.geometry}
             material={materials.lantern_wall_base_1}
           />
         </group>

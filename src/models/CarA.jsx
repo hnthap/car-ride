@@ -8,16 +8,10 @@ Title: Car Scene
 
 import { useGLTF } from "@react-three/drei";
 import carScene from "/car_scene.glb";
-import { GroupProps, ObjectMap } from "@react-three/fiber";
-import * as THREE from "three";
 import React from "react";
 
-export default function CarA(
-  props: GroupProps & {
-    innerRef: React.RefObject<THREE.Group>;
-  }
-) {
-  const { nodes, materials } = useGLTF(carScene) as ObjectMap;
+export default function CarA(props) {
+  const { nodes, materials } = useGLTF(carScene);
   return (
     <group
       {...props}
@@ -31,19 +25,19 @@ export default function CarA(
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.car_body_body_0 as any).geometry}
+          geometry={nodes.car_body_body_0.geometry}
           material={materials.body}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.car_body_rubber_0 as any).geometry}
+          geometry={nodes.car_body_rubber_0.geometry}
           material={materials.rubber}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.car_body_glass_0 as any).geometry}
+          geometry={nodes.car_body_glass_0.geometry}
           material={materials.glass}
         />
       </group>
@@ -54,19 +48,19 @@ export default function CarA(
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.door_left_body_0 as any).geometry}
+          geometry={nodes.door_left_body_0.geometry}
           material={materials.body}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.door_left_rubber_0 as any).geometry}
+          geometry={nodes.door_left_rubber_0.geometry}
           material={materials.rubber}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.door_left_interior_0 as any).geometry}
+          geometry={nodes.door_left_interior_0.geometry}
           material={materials.interior}
         />
       </group>
@@ -74,13 +68,13 @@ export default function CarA(
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.interior_01_interior_0 as any).geometry}
+          geometry={nodes.interior_01_interior_0.geometry}
           material={materials.interior}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.interior_01_chrome_0 as any).geometry}
+          geometry={nodes.interior_01_chrome_0.geometry}
           material={materials.chrome}
         />
       </group>
@@ -91,13 +85,13 @@ export default function CarA(
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.interior_00_interior_0 as any).geometry}
+          geometry={nodes.interior_00_interior_0.geometry}
           material={materials.interior}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.interior_00_chrome_0 as any).geometry}
+          geometry={nodes.interior_00_chrome_0.geometry}
           material={materials.chrome}
         />
       </group>
@@ -108,19 +102,19 @@ export default function CarA(
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.door_right_body_0 as any).geometry}
+          geometry={nodes.door_right_body_0.geometry}
           material={materials.body}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.door_right_rubber_0 as any).geometry}
+          geometry={nodes.door_right_rubber_0.geometry}
           material={materials.rubber}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.door_right_interior_0 as any).geometry}
+          geometry={nodes.door_right_interior_0.geometry}
           material={materials.interior}
         />
       </group>
@@ -131,13 +125,13 @@ export default function CarA(
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.glass_02_body_0 as any).geometry}
+          geometry={nodes.glass_02_body_0.geometry}
           material={materials.body}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.glass_02_glass_0 as any).geometry}
+          geometry={nodes.glass_02_glass_0.geometry}
           material={materials.glass}
         />
       </group>
@@ -148,13 +142,13 @@ export default function CarA(
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.glass_03_glass_0 as any).geometry}
+          geometry={nodes.glass_03_glass_0.geometry}
           material={materials.glass}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.glass_03_body_0 as any).geometry}
+          geometry={nodes.glass_03_body_0.geometry}
           material={materials.body}
         />
       </group>
@@ -165,14 +159,14 @@ export default function CarA(
         <mesh
           castShadow
           receiveShadow
-          geometry={(nodes.chest_base_chest_0 as any).geometry}
+          geometry={nodes.chest_base_chest_0.geometry}
           material={materials.chest}
         />
         <group position={[0.042, -0.071, 16.302]} rotation={[0, 0, -1.92]}>
           <mesh
             castShadow
             receiveShadow
-            geometry={(nodes.chest_top_chest_0 as any).geometry}
+            geometry={nodes.chest_top_chest_0.geometry}
             material={materials.chest}
             position={[21.348, -41.938, -2.121]}
           />
@@ -186,7 +180,7 @@ export default function CarA(
           castShadow
           receiveShadow
           geometry={
-            (nodes.vintage_lantern_7_base_lantern_wall_base_2_0 as any).geometry
+            (nodes.vintage_lantern_7_base_lantern_wall_base_2_0 ).geometry
           }
           material={materials.lantern_wall_base_2}
         />
@@ -195,7 +189,7 @@ export default function CarA(
             castShadow
             receiveShadow
             geometry={
-              (nodes.vintage_lantern_glass_7_lantern_wall_glass_1_0 as any)
+              (nodes.vintage_lantern_glass_7_lantern_wall_glass_1_0 )
                 .geometry
             }
             material={materials.lantern_wall_glass_1}
@@ -205,7 +199,7 @@ export default function CarA(
             castShadow
             receiveShadow
             geometry={
-              (nodes.vintage_lantern_7_lantern_wall_base_1_0 as any).geometry
+              (nodes.vintage_lantern_7_lantern_wall_base_1_0 ).geometry
             }
             material={materials.lantern_wall_base_1}
           />
@@ -214,7 +208,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.hood_body_0 as any).geometry}
+        geometry={nodes.hood_body_0.geometry}
         material={materials.body}
         position={[-82.966, 75.292, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -222,7 +216,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.rear_bumper_body_0 as any).geometry}
+        geometry={nodes.rear_bumper_body_0.geometry}
         material={materials.body}
         position={[196.328, 31.597, -0.163]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -230,7 +224,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.viper_01_body_0 as any).geometry}
+        geometry={nodes.viper_01_body_0.geometry}
         material={materials.body}
         position={[-35.738, 93.998, 7.389]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -238,7 +232,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.viper_02_body_0 as any).geometry}
+        geometry={nodes.viper_02_body_0.geometry}
         material={materials.body}
         position={[-34.358, 93.066, -32.945]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -246,7 +240,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.front_bumper_body_0 as any).geometry}
+        geometry={nodes.front_bumper_body_0.geometry}
         material={materials.body}
         position={[-114.745, 31.894, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -254,7 +248,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.number_plate_number_0 as any).geometry}
+        geometry={nodes.number_plate_number_0.geometry}
         material={materials.number}
         position={[-122.792, 32.206, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -262,7 +256,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.bottom_body_0 as any).geometry}
+        geometry={nodes.bottom_body_0.geometry}
         material={materials.body}
         position={[42.377, 36.238, 0.003]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -270,7 +264,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.wheel_00_wheels_0 as any).geometry}
+        geometry={nodes.wheel_00_wheels_0.geometry}
         material={materials.wheels}
         position={[-71.898, 25.337, 62.764]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -278,7 +272,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.wheel_01_wheels_0 as any).geometry}
+        geometry={nodes.wheel_01_wheels_0.geometry}
         material={materials.wheels}
         position={[130.144, 25.337, 62.555]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -286,7 +280,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.wheel_02_wheels_0 as any).geometry}
+        geometry={nodes.wheel_02_wheels_0.geometry}
         material={materials.wheels}
         position={[130.144, 25.337, -59.22]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -294,7 +288,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.wheel_03_wheels_0 as any).geometry}
+        geometry={nodes.wheel_03_wheels_0.geometry}
         material={materials.wheels}
         position={[-71.26, 25.337, -59.22]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -302,7 +296,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.back_door_body_0 as any).geometry}
+        geometry={nodes.back_door_body_0.geometry}
         material={materials.body}
         position={[178.277, 63.436, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -310,7 +304,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.lights_00_lights_0 as any).geometry}
+        geometry={nodes.lights_00_lights_0.geometry}
         material={materials.lights}
         position={[-113.307, 58.243, -52.905]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -318,7 +312,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.railings_body_0 as any).geometry}
+        geometry={nodes.railings_body_0.geometry}
         material={materials.body}
         position={[61.596, 132.744, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -326,7 +320,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.logo_01_body_0 as any).geometry}
+        geometry={nodes.logo_01_body_0.geometry}
         material={materials.body}
         position={[-118.585, 66.188, 0.491]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -334,7 +328,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.lights_01_lights_0 as any).geometry}
+        geometry={nodes.lights_01_lights_0.geometry}
         material={materials.lights}
         position={[-111.181, 42.634, 56.291]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -342,7 +336,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.lights_02_lights_0 as any).geometry}
+        geometry={nodes.lights_02_lights_0.geometry}
         material={materials.lights}
         position={[-111.181, 42.634, -56.291]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -350,7 +344,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.lights_03_lights_0 as any).geometry}
+        geometry={nodes.lights_03_lights_0.geometry}
         material={materials.lights}
         position={[-95.614, 63.404, 66.673]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -358,7 +352,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.lights_04_lights_0 as any).geometry}
+        geometry={nodes.lights_04_lights_0.geometry}
         material={materials.lights}
         position={[-95.614, 63.404, -66.673]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -366,7 +360,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.lights_05_lights_0 as any).geometry}
+        geometry={nodes.lights_05_lights_0.geometry}
         material={materials.lights}
         position={[193.917, 54.699, 54.226]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -374,7 +368,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.glass_01_glass_0 as any).geometry}
+        geometry={nodes.glass_01_glass_0.geometry}
         material={materials.glass}
         position={[32.163, 101.386, -57.626]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -382,7 +376,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.glass_00_glass_0 as any).geometry}
+        geometry={nodes.glass_00_glass_0.geometry}
         material={materials.glass}
         position={[32.163, 101.386, 57.626]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -390,7 +384,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.wheel_004_wheels_0 as any).geometry}
+        geometry={nodes.wheel_004_wheels_0.geometry}
         material={materials.wheels}
         position={[82.193, 145.057, 16.24]}
         rotation={[Math.PI, 0, 0]}
@@ -398,7 +392,7 @@ export default function CarA(
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.wheel_005_wheels_0 as any).geometry}
+        geometry={nodes.wheel_005_wheels_0.geometry}
         material={materials.wheels}
         position={[82.193, 151.168, -18.517]}
         rotation={[2.618, 0, 0]}
@@ -406,7 +400,7 @@ export default function CarA(
       {/* <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.shadowplane_shadow_0 as any).geometry}
+        geometry={(nodes.shadowplane_shadow_0 ).geometry}
         material={materials.shadow}
         position={[38.854, 0, 0.611]}
         rotation={[-Math.PI / 2, 0, 0]}
