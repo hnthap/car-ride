@@ -34,6 +34,7 @@ export default function Car(
   let W_Toggle = false;
   let S_Toggle = false;
   let isMoving = false;
+  let Brake_Toggle = false;
 
   useFrame(({ camera }) => {
     if (!carRef.current) {
@@ -105,7 +106,7 @@ export default function Car(
             {
 
               //bộ đếm thời gian tăng tốc mỗi x giây
-              if(!S_Toggle) {
+              if(!S_Toggle && translateSpeedRef.current > 0) {
                 S_Toggle = true;
                 setTimeout(()=>{
                   const temp = translateSpeedRef.current + translateDeceleration;
@@ -118,7 +119,18 @@ export default function Car(
             break;
 
           case "brake":
-            translateSpeedRef.current = 0;
+            if(translateSpeedRef.current > 0.02 && !Brake_Toggle)
+              {
+                Brake_Toggle = true;
+                console.log("MoveSpeed is now:" + translateSpeedRef.current)
+                setTimeout(()=>{
+                  const temp = translateSpeedRef.current + 2*translateDeceleration;
+                  translateSpeedRef.current =
+                    temp < minTranslateSpeed ? minTranslateSpeed : temp;
+                    S_Toggle = false; 
+                    Brake_Toggle = false;
+                }, 400)
+              }
             break;
 
           default:
@@ -153,6 +165,7 @@ export default function Car(
                 const temp = translateSpeedRef.current + translateDeceleration;
                 translateSpeedRef.current =
                 temp < 0 ? 0 : temp;
+                if(isMoving) isMoving = false;
               }
             else{clearInterval(interval)}
           }, 500)
