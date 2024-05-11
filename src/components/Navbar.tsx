@@ -5,9 +5,9 @@ export default function Navbar() {
     <header className="header">
       <NavLink
         to="/"
-        className="w-32 h-10 rounded-lg bg-white items-center justify-center flex font-bold shadow-md"
+        className="w-32 h-10 bg-white rounded-lg items-center justify-center flex font-bold shadow-xl"
       >
-        <p className="green-gradient_text">Car Ride</p>
+        <p className="green-gradient_text font-serif text-sm">Car Ride</p>
       </NavLink>
       <nav className="flex text-lg gap-7 font-medium">
         <NavLink
