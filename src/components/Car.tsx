@@ -31,10 +31,10 @@ export default function Car(
   const translateDirection = new THREE.Vector3(); //transDir
   const pressedKeys = new Set<string>();
   let interval:NodeJS.Timeout;
-  let W_Toggle = false;
-  let S_Toggle = false;
-  let isMoving = false;
-  let Brake_Toggle = false;
+  let wToggle = false;
+  let sToggle = false;
+  let brakeToggle = false;
+  const isMovingRef = useRef(false);
 
   useFrame(({ camera }) => {
     if (!carRef.current) {
@@ -76,27 +76,24 @@ export default function Car(
       for (const pressed of pressedKeys) {
         switch (getMovesFromUppercaseKey(pressed)) {
           case "left":
-            if(isMoving) turnSpeedRef.current = rotationSpeed;
+            turnSpeedRef.current = isMovingRef.current ? rotationSpeed : 0;
             break;
 
           case "right":
-            if(isMoving) turnSpeedRef.current = -rotationSpeed;
+            turnSpeedRef.current = isMovingRef.current ? -rotationSpeed : 0;
             break;
 
           case "speed up":
             {
-              isMoving = true;
-              console.log("W pressed")
+              isMovingRef.current = true;
               clearInterval(interval)
-              //bộ đếm thời gian tăng tốc mỗi x giây
-              if(!W_Toggle) {
-                W_Toggle = true;
+              if(!wToggle) {
+                wToggle = true;
                 setTimeout(()=>{
-                  console.log("MoveSpeed is now: " + translateSpeedRef.current)
                   const temp = translateSpeedRef.current + translateAcceleration;
                     translateSpeedRef.current =
                     temp > maxTranslateSpeed ? maxTranslateSpeed : temp;
-                    W_Toggle = false; 
+                    wToggle = false; 
                 }, 500)
               }
             }
@@ -104,31 +101,31 @@ export default function Car(
 
           case "slow down":
             {
-
-              //bộ đếm thời gian tăng tốc mỗi x giây
-              if(!S_Toggle && translateSpeedRef.current > 0) {
-                S_Toggle = true;
+              isMovingRef.current = true;
+              clearInterval(interval)
+              if(!sToggle && translateSpeedRef.current <= 0) {
+                sToggle = true;
                 setTimeout(()=>{
                   const temp = translateSpeedRef.current + translateDeceleration;
                   translateSpeedRef.current =
                     temp < minTranslateSpeed ? minTranslateSpeed : temp;
-                    S_Toggle = false; 
+                    sToggle = false; 
                 }, 200)
               }
             }
             break;
 
           case "brake":
-            if(translateSpeedRef.current > 0.02 && !Brake_Toggle)
+            if(translateSpeedRef.current > 0.02 && !brakeToggle)
               {
-                Brake_Toggle = true;
+                brakeToggle = true;
                 console.log("MoveSpeed is now:" + translateSpeedRef.current)
                 setTimeout(()=>{
                   const temp = translateSpeedRef.current + 2*translateDeceleration;
                   translateSpeedRef.current =
                     temp < minTranslateSpeed ? minTranslateSpeed : temp;
-                    S_Toggle = false; 
-                    Brake_Toggle = false;
+                    sToggle = false; 
+                    brakeToggle = false;
                 }, 400)
               }
             break;
@@ -165,13 +162,21 @@ export default function Car(
                 const temp = translateSpeedRef.current + translateDeceleration;
                 translateSpeedRef.current =
                 temp < 0 ? 0 : temp;
-                if(isMoving) isMoving = false;
+                console.log("slowing down")
               }
-            else{clearInterval(interval)}
+            else{clearInterval(interval); isMovingRef.current = false;}
           }, 500)
           break;
         case "slow down":
-          translateSpeedRef.current = 0;
+          interval = setInterval(() => {
+           if(translateSpeedRef.current < 0)
+             {
+               const temp = translateSpeedRef.current + translateAcceleration;
+               translateSpeedRef.current =
+               temp > 0 ? 0 : temp;
+             }
+           else{clearInterval(interval); isMovingRef.current = false;}
+         }, 500)
           break;
 
         default:
