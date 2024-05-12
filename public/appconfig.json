@@ -4,6 +4,6 @@
   "maxTranslateSpeed": 2,
   "minTranslateSpeed": -2,
   "rotationSpeedDeg": 2,
-  "translateAcceleration": 0.02,
-  "translateDeceleration": -0.02
+  "translateAcceleration": 0.05,
+  "translateDeceleration": -0.05
 }
