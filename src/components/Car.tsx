@@ -8,6 +8,8 @@ export default function Car(
   props: GroupProps & {
     config: AppConfig;
     skyRef: React.RefObject<THREE.Group<THREE.Object3DEventMap>>;
+    turnSpeedRef: React.MutableRefObject<number>;
+    translateSpeedRef: React.MutableRefObject<number>;
   }
 ) {
   const {
@@ -20,6 +22,8 @@ export default function Car(
       translateDeceleration,
     },
     skyRef,
+    turnSpeedRef,
+    translateSpeedRef,
   } = props;
 
   const rotationSpeed = (rotationSpeedDeg * Math.PI) / 180;
@@ -27,8 +31,6 @@ export default function Car(
   const CAMERA_Y_INSIDE_CAR = 2.25;
   const CAMERA_Y_OUTSIDE_CAR = 5;
 
-  const turnSpeedRef = useRef(0);
-  const translateSpeedRef = useRef(0);
   const isInsideCarRef = useRef(true);
 
   const carRef = useRef<THREE.Group>(null);
@@ -37,6 +39,7 @@ export default function Car(
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const wToggleRef = useRef(false);
   const sToggleRef = useRef(false);
+  const isMovingRef = useRef(false);
 
   const keysRef = useRef({
     w: false,
@@ -45,24 +48,42 @@ export default function Car(
     d: false,
     space: false,
   });
-
-  function isMoving() {
-    return keysRef.current.w || keysRef.current.s;
-  }
+  let isPrint = true;
+  let lastTranslateSpeed = NaN;
+  let lastTurnSpeed = NaN;
 
   useFrame(({ camera }) => {
-    console.log(
-      translateSpeedRef.current.toFixed(2),
-      turnSpeedRef.current.toFixed(2)
-    );
+    isPrint = false;
+    if (lastTranslateSpeed !== translateSpeedRef.current) {
+      isPrint = true;
+      lastTranslateSpeed = translateSpeedRef.current;
+    }
+    if (lastTurnSpeed !== turnSpeedRef.current) {
+      isPrint = true;
+      lastTurnSpeed = turnSpeedRef.current;
+    }
+    if (isPrint) {
+      console.log(
+        `⚡ ${translateSpeedRef.current.toFixed(2)} ↪️  ${
+          turnSpeedRef.current > 0
+            ? "right"
+            : turnSpeedRef.current === 0
+            ? "straight"
+            : "left"
+        }`
+      );
+    }
+    if (turnSpeedRef.current === null || translateSpeedRef.current === null) {
+      return;
+    }
     if (!carRef.current) {
       return;
     }
     if (keysRef.current.a) {
-      turnSpeedRef.current = isMoving() ? rotationSpeed : 0;
+      turnSpeedRef.current = isMovingRef.current ? rotationSpeed : 0;
     }
     if (keysRef.current.d) {
-      turnSpeedRef.current = isMoving() ? -rotationSpeed : 0;
+      turnSpeedRef.current = isMovingRef.current ? -rotationSpeed : 0;
     }
     if (keysRef.current.w) {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -72,7 +93,7 @@ export default function Car(
           const temp = translateSpeedRef.current + translateAcceleration;
           translateSpeedRef.current =
             temp > maxTranslateSpeed ? maxTranslateSpeed : temp;
-            wToggleRef.current = false;
+          wToggleRef.current = false;
         }, 500);
       }
     }
@@ -132,17 +153,44 @@ export default function Car(
       ev.stopPropagation();
       ev.preventDefault();
       const key = ev.key.toLowerCase();
-      if (Object.prototype.hasOwnProperty.call(keysRef.current, key)) {
-        // @ts-expect-error It must be valid
-        keysRef.current[key] = true;
-        console.log("keypress", key);
-      } else if (key === "enter") {
-        isInsideCarRef.current = !isInsideCarRef.current;
+      console.log(`keypress "${key}"`);
+      switch (key) {
+        case "a":
+          keysRef.current.a = true;
+          break;
+
+        case "d":
+          keysRef.current.d = true;
+          break;
+
+        case "w":
+          keysRef.current.w = true;
+          isMovingRef.current = true;
+          break;
+
+        case "s":
+          keysRef.current.s = true;
+          isMovingRef.current = true;
+          break;
+
+        case " ":
+          keysRef.current.space = true;
+          isMovingRef.current = false;
+          break;
+
+        case "enter":
+          isInsideCarRef.current = !isInsideCarRef.current;
+          break;
+
+        default:
+          break;
       }
     }
     function handleKeyUp(ev: KeyboardEvent) {
       ev.stopPropagation();
       ev.preventDefault();
+      const key = ev.key.toLowerCase();
+      console.log(`keyup    "${key}"`);
       switch (ev.key.toLowerCase()) {
         case "a":
           keysRef.current.a = false;
@@ -161,6 +209,7 @@ export default function Car(
               const temp = translateSpeedRef.current + translateDeceleration;
               translateSpeedRef.current = temp < 0 ? 0 : temp;
             } else {
+              isMovingRef.current = false;
               if (intervalRef.current) clearInterval(intervalRef.current);
             }
           }, 500);
@@ -173,12 +222,13 @@ export default function Car(
               const temp = translateSpeedRef.current + translateAcceleration;
               translateSpeedRef.current = temp > 0 ? 0 : temp;
             } else {
+              isMovingRef.current = false;
               if (intervalRef.current) clearInterval(intervalRef.current);
             }
           }, 500);
           break;
 
-        case "space":
+        case " ":
           keysRef.current.space = false;
           break;
 
