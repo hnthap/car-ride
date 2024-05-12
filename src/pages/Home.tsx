@@ -8,6 +8,9 @@ import { AppConfig } from "../utils/config";
 export default function Home(props: { config: AppConfig }) {
   const { config } = props;
   const skyRef = useRef<THREE.Group>(null);
+  const turnSpeedRef = useRef(0);
+  const translateSpeedRef = useRef(0);
+
   return (
     <section className="w-full h-screen relative">
       <Canvas
@@ -20,14 +23,22 @@ export default function Home(props: { config: AppConfig }) {
           <ambientLight intensity={0.5} />
           <Sky innerRef={skyRef} />
           <Landscape config={config} receiveShadow castShadow />
-          <Car config={config} skyRef={skyRef} receiveShadow castShadow />
+          <Car
+            config={config}
+            skyRef={skyRef}
+            turnSpeedRef={turnSpeedRef}
+            translateSpeedRef={translateSpeedRef}
+            receiveShadow
+            castShadow
+          />
         </Suspense>
       </Canvas>
       <p className="measurement-chart">
         {[
-          "(press SPACE to stop)",
-          "(press ENTER to move",
-          " outside/inside the car)",
+          "",
+          "(SPACE to stop)",
+          "(ENTER to move outside/",
+          "inside the car)",
         ]
           .map((value) => <>{value}</>)
           .reduce((prev, curr) => (
