@@ -1,8 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useRef } from "react";
 import * as THREE from "three";
-import { Car, Loader } from "../components";
-import { Sky, SportCarRacingParis, VintageLantern, DriftClashUluru, SportsCarRacingMoscow } from "../models";
+import { Car, Landscape, Loader } from "../components";
+import { Sky } from "../models";
 import { AppConfig } from "../utils/config";
 
 export default function Home(props: { config: AppConfig }) {
@@ -16,14 +16,11 @@ export default function Home(props: { config: AppConfig }) {
         className="w-full h-screen bg-transparent"
       >
         <Suspense fallback={<Loader />}>
-          <directionalLight position={[1, 1, 1]} intensity={10} castShadow />
+          <directionalLight position={[10, 10, 10]} intensity={10} castShadow />
           <ambientLight intensity={0.5} />
           <Sky innerRef={skyRef} />
-          {/* <SportCarRacingParis receiveShadow /> */}
-          {/* <DriftClashUluru receiveShadow /> */}
-          <SportsCarRacingMoscow receiveShadow />
+          <Landscape config={config} receiveShadow castShadow />
           <Car config={config} skyRef={skyRef} receiveShadow castShadow />
-          <VintageLantern />
         </Suspense>
       </Canvas>
       <p className="measurement-chart">

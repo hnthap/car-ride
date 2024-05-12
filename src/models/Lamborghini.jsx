@@ -7,57 +7,187 @@ Source: https://sketchfab.com/3d-models/2021-lamborghini-countach-lpi-800-4-d76b
 Title: 2021 Lamborghini Countach LPI 800-4
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
-import Lambo from '/lambo.glb'
+import React from "react";
+import { useGLTF } from "@react-three/drei";
+import scene from "/lambo.glb";
 
 export default function Lamborghini(props) {
-  const { nodes, materials } = useGLTF(Lambo)
+  const { nodes, materials } = useGLTF(scene);
   return (
-    <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.Object_2.geometry} material={materials['Material.001']} />
-        <lineSegments geometry={nodes.Object_3.geometry} material={materials['Material.004']} />
-        <mesh geometry={nodes.Object_4.geometry} material={materials['Material.008']} />
-        <mesh geometry={nodes.Object_5.geometry} material={materials['Material.010']} />
-        <mesh geometry={nodes.Object_6.geometry} material={materials['Material.018']} />
-        <lineSegments geometry={nodes.Object_7.geometry} material={materials['Material.016']} />
-        <mesh geometry={nodes.Object_8.geometry} material={materials['Material.016']} />
-        <lineSegments geometry={nodes.Object_9.geometry} material={materials['Material.013']} />
-        <lineSegments geometry={nodes.Object_10.geometry} material={materials['Material.025']} />
-        <mesh geometry={nodes.Object_11.geometry} material={materials['Lamborghini-text-logo-1440x900']} />
-        <mesh geometry={nodes.Object_12.geometry} material={materials['Material.002']} />
-        <mesh geometry={nodes.Object_13.geometry} material={materials['Material.002']} />
-        <mesh geometry={nodes.Object_14.geometry} material={materials['Material.002']} />
-        <lineSegments geometry={nodes.Object_15.geometry} material={materials['Material.003']} />
-        <mesh geometry={nodes.Object_16.geometry} material={materials['Material.003']} />
-        <mesh geometry={nodes.Object_17.geometry} material={materials['Material.003']} />
-        <mesh geometry={nodes.Object_18.geometry} material={materials['Material.004']} />
-        <mesh geometry={nodes.Object_19.geometry} material={materials['Material.005']} />
-        <mesh geometry={nodes.Object_20.geometry} material={materials['Material.007']} />
-        <mesh geometry={nodes.Object_21.geometry} material={materials['Material.009']} />
-        <mesh geometry={nodes.Object_22.geometry} material={materials['Material.011']} />
-        <mesh geometry={nodes.Object_23.geometry} material={materials['Material.011']} />
-        <mesh geometry={nodes.Object_24.geometry} material={materials['Material.011']} />
-        <mesh geometry={nodes.Object_25.geometry} material={materials['Material.011']} />
-        <mesh geometry={nodes.Object_26.geometry} material={materials['Material.012']} />
-        <mesh geometry={nodes.Object_27.geometry} material={materials['Material.012']} />
-        <mesh geometry={nodes.Object_28.geometry} material={materials['Material.012']} />
-        <mesh geometry={nodes.Object_29.geometry} material={materials['Material.012']} />
-        <mesh geometry={nodes.Object_30.geometry} material={materials['Material.012']} />
-        <mesh geometry={nodes.Object_31.geometry} material={materials['Material.020']} />
-        <mesh geometry={nodes.Object_32.geometry} material={materials['Material.020']} />
-        <mesh geometry={nodes.Object_33.geometry} material={materials['Material.017']} />
-        <mesh geometry={nodes.Object_34.geometry} material={materials['Material.013']} />
-        <mesh geometry={nodes.Object_35.geometry} material={materials['Material.025']} />
-        <mesh geometry={nodes.Object_36.geometry} material={materials['Material.025']} />
-        <mesh geometry={nodes.Object_37.geometry} material={materials['Material.025']} />
-        <mesh geometry={nodes.Object_38.geometry} material={materials['Material.025']} />
-        <mesh geometry={nodes.Object_39.geometry} material={materials['Material.025']} />
-        <mesh geometry={nodes.Object_40.geometry} material={materials['Material.025']} />
-        <mesh geometry={nodes.Object_41.geometry} material={materials['Material.042']} />
-        <mesh geometry={nodes.Object_42.geometry} material={materials['Material.029']} />
+    <group
+      {...props}
+      dispose={null}
+      ref={props.innerRef}
+      position={[-12, 0, 15]}
+      rotation={[0, (140 * Math.PI) / 180, 0]}
+      scale={1.2}
+    >
+      <group position={[2.218, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <mesh
+          geometry={nodes.Object_2.geometry}
+          material={materials["Material.001"]}
+        />
+        <lineSegments
+          geometry={nodes.Object_3.geometry}
+          material={materials["Material.004"]}
+        />
+        <mesh
+          geometry={nodes.Object_4.geometry}
+          material={materials["Material.008"]}
+        />
+        <mesh
+          geometry={nodes.Object_5.geometry}
+          material={materials["Material.010"]}
+        />
+        <mesh
+          geometry={nodes.Object_6.geometry}
+          material={materials["Material.018"]}
+        />
+        <lineSegments
+          geometry={nodes.Object_7.geometry}
+          material={materials["Material.016"]}
+        />
+        <mesh
+          geometry={nodes.Object_8.geometry}
+          material={materials["Material.016"]}
+        />
+        <lineSegments
+          geometry={nodes.Object_9.geometry}
+          material={materials["Material.013"]}
+        />
+        <lineSegments
+          geometry={nodes.Object_10.geometry}
+          material={materials["Material.025"]}
+        />
+        <mesh
+          geometry={nodes.Object_11.geometry}
+          material={materials["Lamborghini-text-logo-1440x900"]}
+        />
+        <mesh
+          geometry={nodes.Object_12.geometry}
+          material={materials["Material.002"]}
+        />
+        <mesh
+          geometry={nodes.Object_13.geometry}
+          material={materials["Material.002"]}
+        />
+        <mesh
+          geometry={nodes.Object_14.geometry}
+          material={materials["Material.002"]}
+        />
+        <lineSegments
+          geometry={nodes.Object_15.geometry}
+          material={materials["Material.003"]}
+        />
+        <mesh
+          geometry={nodes.Object_16.geometry}
+          material={materials["Material.003"]}
+        />
+        <mesh
+          geometry={nodes.Object_17.geometry}
+          material={materials["Material.003"]}
+        />
+        <mesh
+          geometry={nodes.Object_18.geometry}
+          material={materials["Material.004"]}
+        />
+        <mesh
+          geometry={nodes.Object_19.geometry}
+          material={materials["Material.005"]}
+        />
+        <mesh
+          geometry={nodes.Object_20.geometry}
+          material={materials["Material.007"]}
+        />
+        <mesh
+          geometry={nodes.Object_21.geometry}
+          material={materials["Material.009"]}
+        />
+        <mesh
+          geometry={nodes.Object_22.geometry}
+          material={materials["Material.011"]}
+        />
+        <mesh
+          geometry={nodes.Object_23.geometry}
+          material={materials["Material.011"]}
+        />
+        <mesh
+          geometry={nodes.Object_24.geometry}
+          material={materials["Material.011"]}
+        />
+        <mesh
+          geometry={nodes.Object_25.geometry}
+          material={materials["Material.011"]}
+        />
+        <mesh
+          geometry={nodes.Object_26.geometry}
+          material={materials["Material.012"]}
+        />
+        <mesh
+          geometry={nodes.Object_27.geometry}
+          material={materials["Material.012"]}
+        />
+        <mesh
+          geometry={nodes.Object_28.geometry}
+          material={materials["Material.012"]}
+        />
+        <mesh
+          geometry={nodes.Object_29.geometry}
+          material={materials["Material.012"]}
+        />
+        <mesh
+          geometry={nodes.Object_30.geometry}
+          material={materials["Material.012"]}
+        />
+        <mesh
+          geometry={nodes.Object_31.geometry}
+          material={materials["Material.020"]}
+        />
+        <mesh
+          geometry={nodes.Object_32.geometry}
+          material={materials["Material.020"]}
+        />
+        <mesh
+          geometry={nodes.Object_33.geometry}
+          material={materials["Material.017"]}
+        />
+        <mesh
+          geometry={nodes.Object_34.geometry}
+          material={materials["Material.013"]}
+        />
+        <mesh
+          geometry={nodes.Object_35.geometry}
+          material={materials["Material.025"]}
+        />
+        <mesh
+          geometry={nodes.Object_36.geometry}
+          material={materials["Material.025"]}
+        />
+        <mesh
+          geometry={nodes.Object_37.geometry}
+          material={materials["Material.025"]}
+        />
+        <mesh
+          geometry={nodes.Object_38.geometry}
+          material={materials["Material.025"]}
+        />
+        <mesh
+          geometry={nodes.Object_39.geometry}
+          material={materials["Material.025"]}
+        />
+        <mesh
+          geometry={nodes.Object_40.geometry}
+          material={materials["Material.025"]}
+        />
+        <mesh
+          geometry={nodes.Object_41.geometry}
+          material={materials["Material.042"]}
+        />
+        <mesh
+          geometry={nodes.Object_42.geometry}
+          material={materials["Material.029"]}
+        />
       </group>
     </group>
-  )
+  );
 }
