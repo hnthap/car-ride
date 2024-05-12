@@ -37,8 +37,6 @@ export default function Car(
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const wToggleRef = useRef(false);
   const sToggleRef = useRef(false);
-  const brakeToggleRef = useRef(false);
-  const isMovingRef = useRef(false);
 
   const keysRef = useRef({
     w: false,
@@ -47,6 +45,10 @@ export default function Car(
     d: false,
     space: false,
   });
+
+  function isMoving() {
+    return keysRef.current.w || keysRef.current.s;
+  }
 
   useFrame(({ camera }) => {
     console.log(
@@ -57,13 +59,12 @@ export default function Car(
       return;
     }
     if (keysRef.current.a) {
-      turnSpeedRef.current = isMovingRef.current ? rotationSpeed : 0;
+      turnSpeedRef.current = isMoving() ? rotationSpeed : 0;
     }
     if (keysRef.current.d) {
-      turnSpeedRef.current = isMovingRef.current ? -rotationSpeed : 0;
+      turnSpeedRef.current = isMoving() ? -rotationSpeed : 0;
     }
     if (keysRef.current.w) {
-      isMovingRef.current = true;
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (!wToggleRef.current) {
         wToggleRef.current = true;
@@ -76,7 +77,6 @@ export default function Car(
       }
     }
     if (keysRef.current.s) {
-      isMovingRef.current = true;
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (!sToggleRef.current) {
         sToggleRef.current = true;
@@ -89,14 +89,15 @@ export default function Car(
       }
     }
     if (keysRef.current.space) {
-      if (translateSpeedRef.current > 0.02 && !brakeToggleRef.current) {
-        brakeToggleRef.current = true;
+      if (translateSpeedRef.current !== 0) {
         setTimeout(() => {
-          const temp = translateSpeedRef.current + 2 * translateDeceleration;
-          translateSpeedRef.current =
-            temp < minTranslateSpeed ? minTranslateSpeed : temp;
-          sToggleRef.current = false;
-          brakeToggleRef.current = false;
+          if (translateSpeedRef.current > 0) {
+            const temp = translateSpeedRef.current - 2 * translateAcceleration;
+            translateSpeedRef.current = temp < 0 ? 0 : temp;
+          } else {
+            const temp = translateSpeedRef.current - 2 * translateDeceleration;
+            translateSpeedRef.current = temp > 0 ? 0 : temp;
+          }
         }, 400);
       }
     }
@@ -161,7 +162,6 @@ export default function Car(
               translateSpeedRef.current = temp < 0 ? 0 : temp;
             } else {
               if (intervalRef.current) clearInterval(intervalRef.current);
-              isMovingRef.current = false;
             }
           }, 500);
           break;
@@ -174,7 +174,6 @@ export default function Car(
               translateSpeedRef.current = temp > 0 ? 0 : temp;
             } else {
               if (intervalRef.current) clearInterval(intervalRef.current);
-              isMovingRef.current = false;
             }
           }, 500);
           break;
