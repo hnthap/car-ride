@@ -16,8 +16,7 @@ export default function CarA(props) {
       {...props}
       ref={props.innerRef}
       dispose={null}
-      position={[-12, 0, 15]}
-      rotation={[0, (-130 * Math.PI) / 180, 0]}
+      rotation={[0, (-90 * Math.PI) / 180, 0]}
     >
       <group position={[-0.3, 0, 0]} scale={0.02}>
         <group position={[40.507, 74.477, 0]} rotation={[-Math.PI / 2, 0, 0]}>

@@ -30,3 +30,5 @@ The image at `public/controls.png` is from [*Ecctrl + Fisheye*](https://codesand
 * [*Car Scene* by toivo (CC-BY)](https://skfb.ly/6uSoM)
 * [*SkyBox Basic Sky* by Paul (CC-BY)](https://skfb.ly/oIHQL)
 * [*sport car racing paris* by amogusstrikesback2 (CC-BY)](https://skfb.ly/oIME6)
+
+<a href="https://www.freepik.com/free-photo/white-cloud-blue-sky-sea_3962982.htm#fromView=search&page=1&position=1&uuid=1cd46f5e-037f-4af0-a8ee-3596d38fdf2f">Image by lifeforstock on Freepik</a>
