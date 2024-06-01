@@ -6,9 +6,8 @@ Source: https://sketchfab.com/3d-models/drift-clash-uluru-aa618de0d366497f89f8ee
 Title: drift clash uluru
 */
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { useGLTF } from '@react-three/drei'
-import * as THREE from "three";
 import scene from '/drift_clash_uluru.glb';
 
 export default function DriftClashUluru(props) {
