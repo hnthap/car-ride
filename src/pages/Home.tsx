@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/cannon";
-import MainScene from "../MainScene";
+import MainScene from "../MainScene.tsx";
 
 export default function Home() {
   return (
