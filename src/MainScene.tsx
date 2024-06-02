@@ -16,7 +16,7 @@ export default function MainScene() {
       <Environment files={"/sky.jpg"} background={true} />
       <OrbitControls makeDefault rotateSpeed={0.5} />
       <PerspectiveCamera makeDefault position={cameraPosition} fov={40} />
-      {/* <Landscape /> */}
+      <Landscape />
       <Car setCameraPosition={setCameraPosition} />
       <Ground />
     </Suspense>
