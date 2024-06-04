@@ -11,6 +11,8 @@ import EiffelTower from "./EiffelTower.jsx";
 import AdT from "./ArcdeTriumphe.jsx";
 import Oggy from "./OggyHouse.jsx";
 import { Pedestrian } from "./Kindred.jsx";
+import CarBody from "./CarBody.jsx";
+import Tire from "./Wheel.jsx";
 
-export { Bugatti, CarA, Lamborghini, Sky, SportCarRacingParis, VintageLantern, DriftClashUluru, SportsCarRacingMoscow, Ground, EiffelTower, AdT, Oggy, Pedestrian };
+export { Bugatti, CarA, Lamborghini, Sky, SportCarRacingParis, VintageLantern, DriftClashUluru, SportsCarRacingMoscow, Ground, EiffelTower, AdT, Oggy, Pedestrian, CarBody, Tire };
 
