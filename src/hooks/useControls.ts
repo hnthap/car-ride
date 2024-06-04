@@ -16,9 +16,9 @@ type KeyControls = {
   [key: string]: boolean;
 }
 
-export default function useControls(
+ export default function UseControls(
   vehicleApi: RaycastVehiclePublicApi,
-  chassicApi: PublicApi
+  chassisApi: PublicApi
 ): KeyControls {
   const [controls, setControls] = useState<KeyControls>({
     a: false,
@@ -58,7 +58,7 @@ export default function useControls(
   }, []);
 
   useEffect(() => {
-    if (!vehicleApi || !chassicApi) return;
+    if (!vehicleApi || !chassisApi) return;
 
     if (controls.w) {
       vehicleApi.applyEngineForce(150, 2);
@@ -81,37 +81,37 @@ export default function useControls(
       console.log("LEFT");
     } else if (controls.d) {
       vehicleApi.setSteeringValue(-0.35, 2);
-      vehicleApi.setSteeringValue(-0.35, 2);
+      vehicleApi.setSteeringValue(-0.35, 3);
       vehicleApi.setSteeringValue(0.1, 0);
       vehicleApi.setSteeringValue(0.1, 1);
       console.log("RIGHT");
     } else {
-      for (let i = 0; i < 4; i += 1) {
+      for (let i = 0; i < 4; i++) {
         vehicleApi.setSteeringValue(0, i);
       }
     }
 
     if (controls.arrowdown) {
-      chassicApi.applyLocalImpulse([0, -5, 0], [0, 0, 1]);
+      chassisApi.applyLocalImpulse([0, -5, 0], [0, 0, 1]);
     }
     if (controls.arrowup) {
-      chassicApi.applyLocalImpulse([0, -5, 0], [0, 0, -1]);
+      chassisApi.applyLocalImpulse([0, -5, 0], [0, 0, -1]);
     }
     if (controls.arrowleft) {
-      chassicApi.applyLocalImpulse([0, -5, 0], [-0.5, 0, 0]);
+      chassisApi.applyLocalImpulse([0, -5, 0], [-0.5, 0, 0]);
     }
     if (controls.arrowright) {
-      chassicApi.applyLocalImpulse([0, -5, 0], [0.5, 0, 0]);
+      chassisApi.applyLocalImpulse([0, -5, 0], [0.5, 0, 0]);
     }
 
     if (controls.r) {
-      chassicApi.position.set(-1.5, 0.5, 3);
-      chassicApi.velocity.set(0, 0, 0);
-      chassicApi.angularVelocity.set(0, 0, 0);
-      chassicApi.rotation.set(0, 0, 0);
+      chassisApi.position.set(-1.5, 0.5, 3);
+      chassisApi.velocity.set(0, 0, 0);
+      chassisApi.angularVelocity.set(0, 0, 0);
+      chassisApi.rotation.set(0, 0, 0);
       console.log("RESET");
     }
-  }, [chassicApi, controls, vehicleApi]);
+  }, [controls, chassisApi, vehicleApi]);
 
   return controls;
 }

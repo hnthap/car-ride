@@ -21,12 +21,12 @@ export default function useWheels(
     suspensionStiffness: 60,
     suspensionRestLength: 0.1,
     frictionSlip: 5,
-    dampingRelaxation: 2.3,
-    dampingCompression: 4.4,
-    maxSuspensionForce: 100_000,
+    dampingRelaxation: 2.5,
+    dampingCompression: 4.5,
+    maxSuspensionForce: 100000,
     rollInfluence: 0.01,
     maxSuspensionTravel: 0.1,
-    customSlidingRotationalSpeed: -30,
+    customSlidingRotationalSpeed: -10,
     useCustomSlidingRotationalSpeed: true,
   };
   const scaledWidth = width * 0.65;

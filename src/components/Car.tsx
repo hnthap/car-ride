@@ -20,7 +20,7 @@ export default function Car({ setCameraPosition }: CarProps) {
     () => ({
       allowSleep: false,
       args: [width, height, 2 * front],
-      mass: 150,
+      mass: 200,
       position,
     }),
     useRef(null)
@@ -38,7 +38,7 @@ export default function Car({ setCameraPosition }: CarProps) {
   return (
     <group ref={vehicle}>
       <group ref={chassisBody}>
-        <CarA position={position} />
+        <CarA position={position} args={[width, height, 2*front]}/>
       </group>
     </group>
   );
