@@ -1,5 +1,5 @@
 import { useBox, useRaycastVehicle } from "@react-three/cannon";
-import { CarA } from "../models";
+import { CarA, WheellessCar } from "../models";
 import { useRef } from "react";
 import * as THREE from "three";
 import { Vector3Array } from "../util";
@@ -13,7 +13,7 @@ export default function Car() {
   const width = 0.15;
   const height = 0.07;
   const front = 0.15;
-  const wheelRadius = 0.04;
+  const wheelRadius = 0.05;
 
   const [chassisBody, chassisApi] = useBox<THREE.Group>(
     () => ({
@@ -56,7 +56,7 @@ export default function Car() {
   return (
     <group ref={vehicle}>
       <group ref={chassisBody}>
-        <CarA transparent opacity={0.3} position={position} />
+        <WheellessCar transparent opacity={0.3} position={position} />
       </group>
       <DemoWheel wheelRef={wheels[0]} radius={wheelRadius} />
       <DemoWheel wheelRef={wheels[1]} radius={wheelRadius} />

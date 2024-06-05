@@ -10,9 +10,9 @@ export default function Ground() {
   return (
     <>
       <mesh
-        position={[0, -0.01, 0]}
+        position={[0, 0, 0]}
         rotation-x={-0.5 * Math.PI}
-        visible={false}
+        visible={true}
       >
         <planeGeometry args={[50, 50]} />
         <meshBasicMaterial
