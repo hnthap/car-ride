@@ -1,5 +1,5 @@
 import { GroupProps } from "@react-three/fiber";
-import { DriftClashUluru, Ground } from "../models";
+import { DriftClashUluru, GroundMap } from "../models";
 import { useBox } from "@react-three/cannon";
 import * as THREE from "three";
 import { useRef } from "react";
@@ -16,7 +16,7 @@ export default function Landscape(props: GroupProps) {
     useRef(null)
   );
 
-  return <Ground {...props} />;
+  return <GroundMap {...props} />;
   // return <SportsCarRacingMoscow {...props} />;
   // return <SportCarRacingParis {...props} />;
 }

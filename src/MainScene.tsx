@@ -17,8 +17,8 @@ export default function MainScene() {
       <OrbitControls makeDefault rotateSpeed={0.5} />
       <PerspectiveCamera makeDefault position={cameraPosition} fov={40} />
       <Landscape />
-      <Car setCameraPosition={setCameraPosition} />
       <Ground />
+      <Car setCameraPosition={setCameraPosition} />
     </Suspense>
   );
 }
