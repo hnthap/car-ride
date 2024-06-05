@@ -1,12 +1,12 @@
 import { GroupProps } from "@react-three/fiber";
-import { DriftClashUluru, GroundMap } from "../models";
+import { Ground } from "../models";
 import { useBox } from "@react-three/cannon";
 import * as THREE from "three";
 import { useRef } from "react";
 
 export default function Landscape(props: GroupProps) {
 
-  const [box] = useBox<THREE.Group>(
+  useBox<THREE.Group>(
     () => ({
       allowSleep: true,
       args: [100, 100, 0.3],
@@ -16,7 +16,7 @@ export default function Landscape(props: GroupProps) {
     useRef(null)
   );
 
-  return <GroundMap {...props} />;
+  return <Ground {...props} />;
   // return <SportsCarRacingMoscow {...props} />;
   // return <SportCarRacingParis {...props} />;
 }

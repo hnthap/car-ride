@@ -4,23 +4,22 @@ import { useRef } from "react";
 import * as THREE from "three";
 import { Vector3Array } from "../util";
 import { useControls, useWheels } from "../hooks";
+import { useFrame } from "@react-three/fiber";
+import DemoWheel from "./DemoWheel";
 
-type CarProps = {
-  setCameraPosition: React.Dispatch<React.SetStateAction<Vector3Array>>;
-};
-
-export default function Car({ setCameraPosition }: CarProps) {
+export default function Car() {
+  const thirdPersonRef = useRef(false);
   const position: Vector3Array = [-6, 0, 7];
   const width = 0.15;
   const height = 0.07;
   const front = 0.15;
-  const wheelRadius = 0.05;
+  const wheelRadius = 0.04;
 
   const [chassisBody, chassisApi] = useBox<THREE.Group>(
     () => ({
       allowSleep: false,
       args: [width, height, 2 * front],
-      mass: 200,
+      mass: 100,
       position,
     }),
     useRef(null)
@@ -33,13 +32,43 @@ export default function Car({ setCameraPosition }: CarProps) {
     useRef(null)
   );
 
-  useControls(vehicleApi, chassisApi);
+  useControls(vehicleApi, chassisApi, thirdPersonRef);
+
+  useFrame(({ camera }) => {
+    if (!chassisBody.current || !thirdPersonRef || thirdPersonRef.current)
+      return;
+
+    const position = new THREE.Vector3().setFromMatrixPosition(
+      chassisBody.current.matrixWorld
+    );
+    const quaternion = new THREE.Quaternion().setFromRotationMatrix(
+      chassisBody.current.matrixWorld
+    );
+    const worldDirection = new THREE.Vector3(0, 0, 1)
+      .applyQuaternion(quaternion)
+      .normalize()
+      .add(new THREE.Vector3(0, 0.2, 0));
+
+    camera.position.copy(position.clone().add(worldDirection));
+    camera.lookAt(position);
+  })
 
   return (
     <group ref={vehicle}>
       <group ref={chassisBody}>
-        <CarA position={position} args={[width, height, 2*front]}/>
+        <CarA transparent opacity={0.3} position={position} />
       </group>
+      <DemoWheel wheelRef={wheels[0]} radius={wheelRadius} />
+      <DemoWheel wheelRef={wheels[1]} radius={wheelRadius} />
+      <DemoWheel wheelRef={wheels[2]} radius={wheelRadius} />
+      <DemoWheel wheelRef={wheels[3]} radius={wheelRadius} />
     </group>
   );
 }
+
+
+
+      // <WheelDebug wheelRef={wheels[0]} radius={wheelRadius} />
+      // <WheelDebug wheelRef={wheels[1]} radius={wheelRadius} />
+      // <WheelDebug wheelRef={wheels[2]} radius={wheelRadius} />
+      // <WheelDebug wheelRef={wheels[3]} radius={wheelRadius} />

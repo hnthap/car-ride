@@ -9,7 +9,11 @@ export default function Ground() {
   }), useRef(null));
   return (
     <>
-      <mesh position={[0, -0.01, 0]} rotation-x={-0.5 * Math.PI}>
+      <mesh
+        position={[0, -0.01, 0]}
+        rotation-x={-0.5 * Math.PI}
+        visible={false}
+      >
         <planeGeometry args={[50, 50]} />
         <meshBasicMaterial
           opacity={0.325}
