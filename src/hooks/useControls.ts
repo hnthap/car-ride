@@ -16,9 +16,10 @@ type KeyControls = {
   [key: string]: boolean;
 }
 
- export default function UseControls(
+export default function useControls(
   vehicleApi: RaycastVehiclePublicApi,
-  chassisApi: PublicApi
+  chassisApi: PublicApi,
+  thirdPersonRef: React.MutableRefObject<boolean>
 ): KeyControls {
   const [controls, setControls] = useState<KeyControls>({
     a: false,
@@ -63,31 +64,39 @@ type KeyControls = {
     if (controls.w) {
       vehicleApi.applyEngineForce(150, 2);
       vehicleApi.applyEngineForce(150, 3);
-      console.log("forward");
     } else if (controls.s) {
       vehicleApi.applyEngineForce(-150, 2);
       vehicleApi.applyEngineForce(-150, 3);
-      console.log("backward");
     } else {
-      vehicleApi.applyEngineForce(0, 2);
-      vehicleApi.applyEngineForce(0, 3);
+      for (let i = 0; i < 4; i++) {
+        vehicleApi.applyEngineForce(0, i);
+      }
+      // vehicleApi.applyEngineForce(0, 2);
+      // vehicleApi.applyEngineForce(0, 3);
     }
 
     if (controls.a) {
-      vehicleApi.setSteeringValue(0.35, 2);
-      vehicleApi.setSteeringValue(0.35, 3);
+      vehicleApi.setSteeringValue(0.3, 2);
+      vehicleApi.setSteeringValue(0.3, 3);
       vehicleApi.setSteeringValue(-0.1, 0);
       vehicleApi.setSteeringValue(-0.1, 1);
-      console.log("LEFT");
     } else if (controls.d) {
-      vehicleApi.setSteeringValue(-0.35, 2);
-      vehicleApi.setSteeringValue(-0.35, 3);
+      vehicleApi.setSteeringValue(-0.3, 2);
+      vehicleApi.setSteeringValue(-0.3, 3);
       vehicleApi.setSteeringValue(0.1, 0);
       vehicleApi.setSteeringValue(0.1, 1);
-      console.log("RIGHT");
     } else {
       for (let i = 0; i < 4; i++) {
         vehicleApi.setSteeringValue(0, i);
+      }
+    }
+
+    if (controls[" "]) {
+      vehicleApi.setBrake(1, 2);
+      vehicleApi.setBrake(1, 3);
+    } else {
+      for (let i = 0; i < 4; i++) {
+        vehicleApi.setBrake(0, i);
       }
     }
 
@@ -109,9 +118,16 @@ type KeyControls = {
       chassisApi.velocity.set(0, 0, 0);
       chassisApi.angularVelocity.set(0, 0, 0);
       chassisApi.rotation.set(0, 0, 0);
-      console.log("RESET");
     }
-  }, [controls, chassisApi, vehicleApi]);
+
+    if (controls.enter) {
+      thirdPersonRef.current = !thirdPersonRef.current;
+    }
+
+    const { a, w, s, d, enter } = controls;
+    console.log(w, a, s, d, enter);
+
+  }, [controls, chassisApi, vehicleApi, thirdPersonRef]);
 
   return controls;
 }

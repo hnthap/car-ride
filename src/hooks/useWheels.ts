@@ -11,7 +11,7 @@ export default function useWheels(
   height: number,
   front: number,
   radius: number
-): [React.Ref<THREE.Object3D<THREE.Object3DEventMap>>[], WheelInfoOptions[]] {
+): [React.Ref<THREE.Group>[], WheelInfoOptions[]] {
   const wheels = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
   const info: WheelInfoOptions = {
