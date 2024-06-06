@@ -8,14 +8,13 @@ import { Car, Ground } from "./components";
 import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
 
 export default function MainScene() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const orbitControlsRef = useRef<VanillaOrbitControls>(null);
   return (
     <Suspense fallback={null}>
       <Environment files={"/sky.jpg"} background={true} />
       <OrbitControls makeDefault rotateSpeed={0.5} ref={orbitControlsRef} />
       <PerspectiveCamera makeDefault position={[6, 6, -6.21]} fov={40} />
-      <Car orbitControlsRef={orbitControlsRef} />
+      <Car />
       <Ground />
     </Suspense>
   );

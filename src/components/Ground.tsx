@@ -1,6 +1,5 @@
 import { usePlane } from "@react-three/cannon";
 import { useRef } from "react";
-import * as THREE from "three";
 import { ObstacleProps } from "../util";
 import { OggyHouse } from "../components";
 
@@ -11,7 +10,7 @@ export default function Ground() {
       rotation: [-0.5 * Math.PI, 0, 0],
     }),
     useRef(null)
-  ); 
+  );
   const houseInfos: ObstacleProps[] = [
     {
       position: [0, 0, 0],
@@ -36,22 +35,24 @@ export default function Ground() {
   ];
   return (
     <>
-      <mesh
-        position={[0, 0, 0]}
-        rotation-x={-0.5 * Math.PI}
-        visible={true}
-      >
-        <planeGeometry args={[50, 50]} />
-        <meshBasicMaterial
-          opacity={0.325}
-          transparent={true}
-          color={"green"}
-          side={THREE.DoubleSide}
-        />
-      </mesh>
       {houseInfos.map((props, i) => {
-        return <OggyHouse {...props} key={i}/>
+        return <OggyHouse {...props} key={i} />;
       })}
     </>
   );
+}
+
+{
+  /* <mesh
+  rotation-x={-0.5 * Math.PI}
+  visible={true}
+>
+  <planeGeometry args={[50, 50]} />
+  <meshBasicMaterial
+    opacity={0.325}
+    transparent={true}
+    color={"green"}
+    side={THREE.DoubleSide}
+  />
+</mesh> */
 }
