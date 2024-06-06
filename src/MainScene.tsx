@@ -8,7 +8,6 @@ import { Car, Ground } from "./components";
 import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
 
 export default function MainScene() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const orbitControlsRef = useRef<VanillaOrbitControls>(null);
   return (
     <Suspense fallback={null}>

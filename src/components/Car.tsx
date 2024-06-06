@@ -1,14 +1,14 @@
-import { useBox, useRaycastVehicle } from "@react-three/cannon";
-import { WheellessCar } from "../models";
+import { Triplet, useBox, useRaycastVehicle } from "@react-three/cannon";
+import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 import { useControls, useWheels } from "../hooks";
-import { useFrame } from "@react-three/fiber";
-import DemoWheel from "./DemoWheel";
+import { WheellessCar } from "../models";
+import CarWheel from "./DemoWheel";
 
 export default function Car() {
   const thirdPersonRef = useRef(false);
-  const position: [number, number, number] = [-6, 0, 7];
+  const position: Triplet = [-6, 0, 7];
   const width = 0.15;
   const height = 0.07;
   const front = 0.15;
@@ -61,10 +61,10 @@ export default function Car() {
       <group ref={chassisBody}>
         <WheellessCar transparent opacity={0.3} position={position} />
       </group>
-      <DemoWheel wheelRef={wheels[0]} radius={wheelRadius} />
-      <DemoWheel wheelRef={wheels[1]} radius={wheelRadius} />
-      <DemoWheel wheelRef={wheels[2]} radius={wheelRadius} />
-      <DemoWheel wheelRef={wheels[3]} radius={wheelRadius} />
+      <CarWheel wheelRef={wheels[0]} radius={wheelRadius} />
+      <CarWheel wheelRef={wheels[1]} radius={wheelRadius} />
+      <CarWheel wheelRef={wheels[2]} radius={wheelRadius} />
+      <CarWheel wheelRef={wheels[3]} radius={wheelRadius} />
     </group>
   );
 }

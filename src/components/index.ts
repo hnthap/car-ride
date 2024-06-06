@@ -1,10 +1,10 @@
 import Car from "./Car";
-import DemoWheel from "./DemoWheel";
+import CarWheel from "./DemoWheel";
 import Ground from "./Ground";
+import House from "./House.tsx";
 import Landscape from "./Landscape";
 import Obstacle from "./Obstacle.tsx";
-import OggyHouse from "./OggyHouse.tsx";
-import BirchTree from "./BirchTree.tsx";
+import Tree from "./Tree.tsx";
 
-export { Car, DemoWheel, Ground, Landscape, Obstacle, OggyHouse, BirchTree };
+export { Car, CarWheel, Ground, House, Landscape, Obstacle, Tree };
 
