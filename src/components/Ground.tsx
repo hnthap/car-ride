@@ -1,14 +1,39 @@
 import { usePlane } from "@react-three/cannon";
 import { useRef } from "react";
 import * as THREE from "three";
-import Obstacle from "./Obstacle";
+import { ObstacleProps } from "../util";
+import { OggyHouse } from "../components";
 
 export default function Ground() {
-  usePlane(() => ({
-    type: "Static",
-    rotation: [-0.5 * Math.PI, 0, 0],
-  }), useRef(null));
-  const housePositions: [number, number, number][] = [[0, 0, 0], [5, 0, 5], [3, 0, -3], [-4, 0, 4]];
+  usePlane(
+    () => ({
+      type: "Static",
+      rotation: [-0.5 * Math.PI, 0, 0],
+    }),
+    useRef(null)
+  ); 
+  const houseInfos: ObstacleProps[] = [
+    {
+      position: [0, 0, 0],
+      rotation: 0,
+    },
+    {
+      position: [5, 0, 5],
+      rotation: -Math.PI / 2,
+    },
+    {
+      position: [3, 0, -3],
+      rotation: 0,
+    },
+    {
+      position: [-4, 0, 4],
+      rotation: 0,
+    },
+    {
+      position: [-6.1, 0, -9],
+      rotation: 0,
+    },
+  ];
   return (
     <>
       <mesh
@@ -24,8 +49,8 @@ export default function Ground() {
           side={THREE.DoubleSide}
         />
       </mesh>
-      {housePositions.map((position, i) => {
-        return <Obstacle position={position} key={i}/>
+      {houseInfos.map((props, i) => {
+        return <OggyHouse {...props} key={i}/>
       })}
     </>
   );
