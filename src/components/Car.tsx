@@ -1,5 +1,5 @@
 import { useBox, useRaycastVehicle } from "@react-three/cannon";
-import { CarA, WheellessCar } from "../models";
+import { WheellessCar } from "../models";
 import { useRef } from "react";
 import * as THREE from "three";
 import { Vector3Array } from "../util";
@@ -65,10 +65,3 @@ export default function Car() {
     </group>
   );
 }
-
-
-
-      // <WheelDebug wheelRef={wheels[0]} radius={wheelRadius} />
-      // <WheelDebug wheelRef={wheels[1]} radius={wheelRadius} />
-      // <WheelDebug wheelRef={wheels[2]} radius={wheelRadius} />
-      // <WheelDebug wheelRef={wheels[3]} radius={wheelRadius} />

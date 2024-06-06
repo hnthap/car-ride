@@ -14,10 +14,10 @@ type KeyControls = {
   w: boolean;
   " ": boolean;
   [key: string]: boolean;
-}
+};
 
-const STEERING_VALUE_FRONT = 0.1
-const STEERING_VALUE_BACK = 0.2
+const STEERING_VALUE_FRONT = 0.1;
+const STEERING_VALUE_BACK = 0.2;
 
 export default function useControls(
   vehicleApi: RaycastVehiclePublicApi,
@@ -129,7 +129,6 @@ export default function useControls(
 
     const { a, w, s, d, enter } = controls;
     console.log(w, a, s, d, enter);
-
   }, [controls, chassisApi, vehicleApi, thirdPersonRef]);
 
   return controls;
