@@ -1,19 +1,18 @@
 import { useBox, useRaycastVehicle } from "@react-three/cannon";
-import { CarA } from "../models";
+import { WheellessCar } from "../models";
 import { useRef } from "react";
 import * as THREE from "three";
-import { Vector3Array } from "../util";
 import { useControls, useWheels } from "../hooks";
 import { useFrame } from "@react-three/fiber";
 import DemoWheel from "./DemoWheel";
 
 export default function Car() {
   const thirdPersonRef = useRef(false);
-  const position: Vector3Array = [-6, 0, 7];
+  const position: [number, number, number] = [-6, 0, 7];
   const width = 0.15;
   const height = 0.07;
   const front = 0.15;
-  const wheelRadius = 0.04;
+  const wheelRadius = 0.05;
 
   const [chassisBody, chassisApi] = useBox<THREE.Group>(
     () => ({
@@ -35,7 +34,11 @@ export default function Car() {
   useControls(vehicleApi, chassisApi, thirdPersonRef);
 
   useFrame(({ camera }) => {
-    if (!chassisBody.current || !thirdPersonRef || thirdPersonRef.current)
+    if (
+      !chassisBody.current ||
+      !thirdPersonRef ||
+      thirdPersonRef.current
+    )
       return;
 
     const position = new THREE.Vector3().setFromMatrixPosition(
@@ -56,7 +59,7 @@ export default function Car() {
   return (
     <group ref={vehicle}>
       <group ref={chassisBody}>
-        <CarA transparent opacity={0.3} position={position} />
+        <WheellessCar transparent opacity={0.3} position={position} />
       </group>
       <DemoWheel wheelRef={wheels[0]} radius={wheelRadius} />
       <DemoWheel wheelRef={wheels[1]} radius={wheelRadius} />
@@ -65,10 +68,3 @@ export default function Car() {
     </group>
   );
 }
-
-
-
-      // <WheelDebug wheelRef={wheels[0]} radius={wheelRadius} />
-      // <WheelDebug wheelRef={wheels[1]} radius={wheelRadius} />
-      // <WheelDebug wheelRef={wheels[2]} radius={wheelRadius} />
-      // <WheelDebug wheelRef={wheels[3]} radius={wheelRadius} />

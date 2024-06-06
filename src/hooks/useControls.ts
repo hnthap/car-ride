@@ -14,7 +14,10 @@ type KeyControls = {
   w: boolean;
   " ": boolean;
   [key: string]: boolean;
-}
+};
+
+const STEERING_VALUE_FRONT = 0.1;
+const STEERING_VALUE_BACK = 0.2;
 
 export default function useControls(
   vehicleApi: RaycastVehiclePublicApi,
@@ -76,15 +79,15 @@ export default function useControls(
     }
 
     if (controls.a) {
-      vehicleApi.setSteeringValue(0.3, 2);
-      vehicleApi.setSteeringValue(0.3, 3);
-      vehicleApi.setSteeringValue(-0.1, 0);
-      vehicleApi.setSteeringValue(-0.1, 1);
+      vehicleApi.setSteeringValue(STEERING_VALUE_BACK, 2);
+      vehicleApi.setSteeringValue(STEERING_VALUE_BACK, 3);
+      vehicleApi.setSteeringValue(-STEERING_VALUE_FRONT, 0);
+      vehicleApi.setSteeringValue(-STEERING_VALUE_FRONT, 1);
     } else if (controls.d) {
-      vehicleApi.setSteeringValue(-0.3, 2);
-      vehicleApi.setSteeringValue(-0.3, 3);
-      vehicleApi.setSteeringValue(0.1, 0);
-      vehicleApi.setSteeringValue(0.1, 1);
+      vehicleApi.setSteeringValue(-STEERING_VALUE_BACK, 2);
+      vehicleApi.setSteeringValue(-STEERING_VALUE_BACK, 3);
+      vehicleApi.setSteeringValue(STEERING_VALUE_FRONT, 0);
+      vehicleApi.setSteeringValue(STEERING_VALUE_FRONT, 1);
     } else {
       for (let i = 0; i < 4; i++) {
         vehicleApi.setSteeringValue(0, i);
@@ -126,7 +129,6 @@ export default function useControls(
 
     const { a, w, s, d, enter } = controls;
     console.log(w, a, s, d, enter);
-
   }, [controls, chassisApi, vehicleApi, thirdPersonRef]);
 
   return controls;

@@ -11,14 +11,14 @@ import Sky from "./Sky.jsx";
 import SportCarRacingParis from "./SportCarRacingParis.jsx";
 import SportsCarRacingMoscow from "./SportsCarRacingMoscow.jsx";
 import VintageLantern from "./VintageLantern.jsx";
-import { Wheel } from "./Wheel.jsx";
+import { WheelA } from "./WheelA.jsx";
 import { WheellessCar } from "./WheellessCar.jsx";
 
 export {
   AdT, Bugatti,
   CarA, DriftClashUluru, EiffelTower, Ground, Lamborghini, Oggy,
   Pedestrian, Sky,
-  SportCarRacingParis, SportsCarRacingMoscow, VintageLantern, Wheel,
+  SportCarRacingParis, SportsCarRacingMoscow, VintageLantern, WheelA,
   WheellessCar
 };
 
