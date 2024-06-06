@@ -1,4 +1,3 @@
-import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import ParisGround from "/ParisScene/Ground.glb"
 
@@ -6,7 +5,7 @@ export default function GroundMap(props) {
   const { nodes, materials } = useGLTF(ParisGround)
 
   return (
-    <group {...props} dispose={null} scale={40}>
+    <group {...props} dispose={null} scale={6.9}>
       <group scale={0.01}>
         <group position={[510.159, 17.934, 88.038]}>
           <mesh
