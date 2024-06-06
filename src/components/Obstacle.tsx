@@ -1,4 +1,4 @@
-import { useBox } from "@react-three/cannon";
+import { Triplet, useBox } from "@react-three/cannon";
 import { useRef } from "react";
 import { ObstacleProps, ThingProps } from "../util";
 
@@ -8,8 +8,11 @@ export default function Obstacle({
   colliderBoxScale,
   thingScale,
   thingPosition,
-  Thing, 
-}: ObstacleProps & ThingProps & { Thing: any}) {
+  Thing,
+}: ObstacleProps &
+  ThingProps & {
+    Thing: (props: { scale: Triplet; position: Triplet }) => JSX.Element;
+  }) {
   useBox(
     () => ({
       args: colliderBoxScale,
@@ -25,12 +28,8 @@ export default function Obstacle({
       <Thing scale={thingScale} position={thingPosition} />
 
       <mesh position={[0, 0.6, 0]}>
-        <boxGeometry args={colliderBoxScale}></boxGeometry>
-        <meshBasicMaterial
-          transparent={true}
-          opacity={0.5}
-          color={"red"}
-        ></meshBasicMaterial>
+        <boxGeometry args={colliderBoxScale} />
+        <meshBasicMaterial transparent={true} opacity={0.5} color={"red"} />
       </mesh>
     </group>
   );

@@ -1,12 +1,12 @@
 import * as THREE from "three";
 import { WheelA } from "../models";
 
-interface DemoWheelProps {
+interface CarWheelProps {
   radius: number;
   wheelRef: React.Ref<THREE.Group>;
 }
 
-export default function DemoWheel({ radius, wheelRef }: DemoWheelProps) {
+export default function CarWheel({ radius, wheelRef }: CarWheelProps) {
   return (
     <group ref={wheelRef}>
       <mesh rotation={[0, 0, 0.5 * Math.PI]}>

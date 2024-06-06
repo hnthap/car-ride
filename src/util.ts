@@ -1,10 +1,12 @@
+import { Triplet } from "@react-three/cannon";
+
 export type ObstacleProps = {
-  position: [number, number, number];
+  position: Triplet;
   rotation: number;
 };
 
 export interface ThingProps {
-  colliderBoxScale: [number, number, number];
-  thingScale: [number, number, number];
-  thingPosition: [number, number, number];
+  colliderBoxScale: Triplet;
+  thingScale: Triplet;
+  thingPosition: Triplet;
 }
