@@ -1,18 +1,8 @@
-import { usePlane } from "@react-three/cannon";
-import { useRef } from "react";
-import { House } from "../components";
-import { Newground } from "../models";
+import { House, Landscape } from "../components";
 import Tree, { TreeProps } from "./Tree";
 import { HouseProps } from "./House";
 
 export default function Ground() {
-  usePlane(
-    () => ({
-      type: "Static",
-      rotation: [-0.5 * Math.PI, 0, 0],
-    }),
-    useRef(null)
-  );
   const treeInfos: TreeProps[] = [
     {
       position: [10.8, 0, 6.9],
@@ -231,10 +221,10 @@ export default function Ground() {
           opacity={0.325}
           transparent={true}
           color={"green"}
-          side={THREE.DoubleSide}
+          side={THREE.DoublelSide}
         />
       </mesh> */}
-      <Newground />
+      <Landscape />
       {houseInfos.map((props, i) => {
         return <House {...props} key={i} />;
       })}

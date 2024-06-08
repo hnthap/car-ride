@@ -74,8 +74,6 @@ export default function useControls(
       for (let i = 0; i < 4; i++) {
         vehicleApi.applyEngineForce(0, i);
       }
-      // vehicleApi.applyEngineForce(0, 2);
-      // vehicleApi.applyEngineForce(0, 3);
     }
 
     if (controls.a) {
@@ -126,9 +124,6 @@ export default function useControls(
     if (controls.enter) {
       thirdPersonRef.current = !thirdPersonRef.current;
     }
-
-    const { a, w, s, d, enter } = controls;
-    console.log(w, a, s, d, enter);
   }, [controls, chassisApi, vehicleApi, thirdPersonRef]);
 
   return controls;
