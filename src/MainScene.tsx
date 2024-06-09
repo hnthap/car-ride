@@ -1,21 +1,14 @@
 import {
-  Environment,
   OrbitControls,
   PerspectiveCamera,
 } from "@react-three/drei";
 import { Suspense, useRef } from "react";
 import { Car, Ground } from "./components";
 import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
-import * as THREE from "three"
 import TheSun from "./components/TheSun";
 
 export default function MainScene() {
   const orbitControlsRef = useRef<VanillaOrbitControls>(null);
-  const targetObject = new THREE.Object3D();
-  const light = new THREE.DirectionalLight;
-  light.target = targetObject;
-  targetObject.position.set(5, 1, 0);
-  console.log(targetObject.position)
   return (
     <Suspense fallback={null}>
       {/* <spotLight intensity={10000} position={[10, 10, 10]} castShadow renderOrder={100} /> */}

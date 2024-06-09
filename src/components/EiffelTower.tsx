@@ -72,6 +72,7 @@ export default function EiffelTowerProps({
                 type: "Box",
             },
         ],
+        
         position,
   }), useRef(null));
 

@@ -1,19 +1,59 @@
-import { usePlane } from "@react-three/cannon";
+import { useCompoundBody } from "@react-three/cannon";
 import { useRef } from "react";
 import { ArcDeTriomphe, House } from "../components";
 import { Newground } from "../models";
 import Tree, { TreeProps } from "./Tree";
 import { HouseProps } from "./House";
 import EiffelTower from "./EiffelTower";
+import * as THREE from "three";
 
 export default function Ground() {
-  usePlane(
-    () => ({
-      type: "Static",
-      rotation: [-0.5 * Math.PI, 0, 0],
-    }),
-    useRef(null)
-  );
+    const rightlandArgs0: [number, number, number] = [110, 0.1, 100]
+    const rightlandArgs1: [number, number, number] = [120, 0.1, 30]
+    const rightlandArgs2: [number, number, number, number] = [5, 10, 1, 40]
+    const bridgeArgs3_1_1: [number, number, number] = [11, 1, 2]
+    const bridgeArgs3_1_2: [number, number, number] = [8.5, 0.06, 2]
+    const bridgeArgs3_1_3: [number, number, number] = [8, 0.06, 2]
+    const bridgeArgs3_1_4: [number, number, number] = [7.4, 0.06, 2]
+    const bridgeArgs3_1_5: [number, number, number] = [6.8, 0.06, 2]
+    const bridgeArgs3_1_6: [number, number, number] = [6.2, 0.06, 2]
+
+
+    const rightlandPos0: [number, number, number] = [-60, -0.05, -48.5]
+    const rightlandPos1: [number, number, number] = [40, -0.05, 5]
+    const rightlandPos2: [number, number, number] = [-70, rightlandArgs2[2]/2, -58]
+    const bridgePos3_1_1: [number, number, number] = [37.7, -0.5, 25.3]
+    const bridgePos3_1_2: [number, number, number] = [37.7, 0, 25.3]
+    const bridgePos3_1_3: [number, number, number] = [37.7, 0.03, 25.3]
+    const bridgePos3_1_4: [number, number, number] = [37.7, 0.06, 25.3]
+    const bridgePos3_1_5: [number, number, number] = [37.7, 0.09, 25.3]
+    const bridgePos3_1_6: [number, number, number] = [37.7, 0.12, 25.3]
+
+    const rightlandRot0: [number, number, number] = [0, 0*Math.PI/180, 0]
+    const rightlandRot1: [number, number, number] = [0, -23*Math.PI/180, 0]
+    const bridgeRot3_1: [number, number, number] = [0, 69.69*Math.PI/180, 0]
+
+    const [ref1] = useCompoundBody<THREE.Mesh>(
+      () => ({
+        mass: 0,
+        shapes: [
+          {args: rightlandArgs0, position: rightlandPos0, type: "Box",},
+          {args: rightlandArgs1, position: rightlandPos1, rotation: rightlandRot1, type: "Box",},
+          {args: rightlandArgs2, position: rightlandPos2, type: "Cylinder",},
+          {args: bridgeArgs3_1_1, position: bridgePos3_1_1, rotation: bridgeRot3_1, type: "Box",},
+          {args: bridgeArgs3_1_2, position: bridgePos3_1_2, rotation: bridgeRot3_1, type: "Box",},
+          {args: bridgeArgs3_1_3, position: bridgePos3_1_3, rotation: bridgeRot3_1, type: "Box",},
+          {args: bridgeArgs3_1_4, position: bridgePos3_1_5, rotation: bridgeRot3_1, type: "Box",},
+          {args: bridgeArgs3_1_5, position: bridgePos3_1_5, rotation: bridgeRot3_1, type: "Box",},
+          {args: bridgeArgs3_1_6, position: bridgePos3_1_6, rotation: bridgeRot3_1, type: "Box",},
+
+
+        ],
+        position: [0, 0, 0],
+      }),
+      useRef(null)
+    );
+
   const treeInfos: TreeProps[] = [
     {
       position: [10.8, 0, 6.9],
@@ -235,7 +275,46 @@ export default function Ground() {
           side={THREE.DoubleSide}
         />
       </mesh> */}
-      <Newground />
+      
+      <mesh ref={ref1} castShadow receiveShadow>
+        <Newground />
+        <mesh position={rightlandPos0} rotation={rightlandRot0}>
+              <boxGeometry args={rightlandArgs0} />
+              <meshBasicMaterial transparent={true} opacity={1} color="orange"/>
+        </mesh>
+        <mesh position={rightlandPos1} rotation={rightlandRot1}>
+              <boxGeometry args={rightlandArgs1} />
+              <meshBasicMaterial transparent={true} opacity={1} color="brown"/>
+        </mesh>
+        <mesh position={rightlandPos2}>
+              <cylinderGeometry args={rightlandArgs2} />
+              <meshBasicMaterial transparent={true} opacity={1} color="yellow"/>
+        </mesh>
+        <mesh position={bridgePos3_1_1} rotation={bridgeRot3_1}>
+              <boxGeometry args={bridgeArgs3_1_1} />
+              <meshBasicMaterial transparent={true} opacity={1} color="gray"/>
+        </mesh>
+        <mesh position={bridgePos3_1_2} rotation={bridgeRot3_1}>
+              <boxGeometry args={bridgeArgs3_1_2} />
+              <meshBasicMaterial transparent={true} opacity={1} color="orange"/>
+        </mesh>
+        <mesh position={bridgePos3_1_3} rotation={bridgeRot3_1}>
+              <boxGeometry args={bridgeArgs3_1_3} />
+              <meshBasicMaterial transparent={true} opacity={1} color="yellow"/>
+        </mesh>
+        <mesh position={bridgePos3_1_4} rotation={bridgeRot3_1}>
+              <boxGeometry args={bridgeArgs3_1_4} />
+              <meshBasicMaterial transparent={true} opacity={1} color="cyan"/>
+        </mesh>
+        <mesh position={bridgePos3_1_5} rotation={bridgeRot3_1}>
+              <boxGeometry args={bridgeArgs3_1_5} />
+              <meshBasicMaterial transparent={true} opacity={1} color="pink"/>
+        </mesh>
+        <mesh position={bridgePos3_1_6} rotation={bridgeRot3_1}>
+              <boxGeometry args={bridgeArgs3_1_6} />
+              <meshBasicMaterial transparent={true} opacity={1} color="blue"/>
+        </mesh>
+      </mesh>
       {houseInfos.map((props, i) => {
         return <House {...props} key={i} />;
       })}
@@ -244,10 +323,7 @@ export default function Ground() {
       })}
       <ArcDeTriomphe position={[-16.6, 0, -23]} rotation={28*Math.PI/180} />
       <EiffelTower position={[-41, 0, -16.5]} rotation={90*Math.PI/180}/>
-      {/* <mesh position={[16, 0, 15]}>
-        <boxGeometry args={[0.5, 4, 1.5]}/>
-        <meshBasicMaterial transparent={true} opacity={0.5} color={"red"} />
-      </mesh> */}
+    
     </>
   );
 }

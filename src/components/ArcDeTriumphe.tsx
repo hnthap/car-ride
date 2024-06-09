@@ -63,7 +63,7 @@ export default function ArcDeTriomphe({
     type: "Static",
   }), useRef(null));
 
-  console.log(ref1.current?.position)
+  // console.log(ref1.current?.position)
 
   return (
     <group>

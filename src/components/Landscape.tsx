@@ -1,6 +1,6 @@
 // import * as THREE from "three";
 // import { useHeightfield, type Triplet } from "@react-three/cannon";
-// import { useEffect, useRef } from "react";
+// import { Jffect, useRef } from "react";
 // import { Ground } from "../models";
 
 // export default function Landscape() {
@@ -49,28 +49,31 @@
 
 import { GroupProps } from "@react-three/fiber";
 import { Ground } from "../models";
-import { useBox, useCompoundBody } from "@react-three/cannon";
+import { useCompoundBody } from "@react-three/cannon";
 import * as THREE from "three";
 import { useRef } from "react";
 
 export default function Landscape(props: GroupProps) {
-  useBox<THREE.Group>(
+  const leftlandPos: [number, number, number] = [20, 10, 20]
+  const [ref1] = useCompoundBody<THREE.Mesh>(
     () => ({
-      allowSleep: true,
-      args: [100, 100, 0.3],
-      mass: 1,
-      type: "Static"
+      mass: 0,
+      shapes: [
+        {args: [2000, 2, 2000],
+          position: leftlandPos,
+          type: "Box",}
+      ],
+      position: [0, 0, 0],
     }),
     useRef(null)
   );
-  return <Ground {...props} />;
-  // useCompoundBody<THREE.Group>(() => ({
-  //     args: [100, 100, 3],
-  //     onCollide: undefined,
-  //     onCollideBegin: undefined,
-  //     onCollideEnd: undefined
-  //     type: "Static",
-  //     type: 'Heightfield',
-
-  // }))
+  return(
+    <mesh ref={ref1} castShadow receiveShadow>
+      <Ground {...props}/>
+      <mesh position={leftlandPos}>
+            <boxGeometry args={[2000, 2, 2000]} />
+            <meshBasicMaterial transparent={true} opacity={1} color="orange"/>
+        </mesh>
+    </mesh>
+  )
 }
