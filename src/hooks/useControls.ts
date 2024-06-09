@@ -79,13 +79,13 @@ export default function useControls(
     if (controls.a) {
       vehicleApi.setSteeringValue(STEERING_VALUE_BACK, 2);
       vehicleApi.setSteeringValue(STEERING_VALUE_BACK, 3); 
-      vehicleApi.setSteeringValue(-STEERING_VALUE_FRONT, 0); 
-      vehicleApi.setSteeringValue(-STEERING_VALUE_FRONT, 1); 
+      // vehicleApi.setSteeringValue(-STEERING_VALUE_FRONT, 0);
+      // vehicleApi.setSteeringValue(-STEERING_VALUE_FRONT, 1);
     } else if (controls.d) {
       vehicleApi.setSteeringValue(-STEERING_VALUE_BACK, 2); 
       vehicleApi.setSteeringValue(-STEERING_VALUE_BACK, 3); 
-      vehicleApi.setSteeringValue(STEERING_VALUE_FRONT, 0);
-      vehicleApi.setSteeringValue(STEERING_VALUE_FRONT, 1);
+      // vehicleApi.setSteeringValue(STEERING_VALUE_FRONT, 0);
+      // vehicleApi.setSteeringValue(STEERING_VALUE_FRONT, 1);
     } else {
       for (let i = 0; i < 4; i++) {
         vehicleApi.setSteeringValue(0, i);
