@@ -30,7 +30,7 @@ export default function Oggy(props) {
           geometry={nodes.Material3.geometry}
           material={materials.Water_Pool}
         />
-        <lineSegments
+        <lineSegments castShadow receiveShadow
           geometry={nodes.Material5.geometry}
           material={materials.edge_color255255240255}
         />
@@ -46,7 +46,7 @@ export default function Oggy(props) {
           geometry={nodes.Material3_1.geometry}
           material={materials.material}
         />
-        <lineSegments
+        <lineSegments castShadow receiveShadow
           geometry={nodes.Material6.geometry}
           material={materials.edge_color153153255255}
         />
@@ -62,7 +62,7 @@ export default function Oggy(props) {
           geometry={nodes.Material2_3.geometry}
           material={materials.Color_H06}
         />
-        <lineSegments
+        <lineSegments castShadow receiveShadow
           geometry={nodes.Material3_2.geometry}
           material={materials.edge_color255250205255}
         />
@@ -79,6 +79,8 @@ export default function Oggy(props) {
           material={materials.Beige_1}
         />
         <lineSegments
+          castShadow
+          receiveShadow
           geometry={nodes.Material5_1.geometry}
           material={materials.edge_color30153153255}
         />
@@ -189,6 +191,8 @@ export default function Oggy(props) {
           material={materials.Metal_Rough}
         />
         <lineSegments
+          castShadow
+          receiveShadow   
           geometry={nodes.Material4_5.geometry}
           material={materials.edge_color153157160255}
         />

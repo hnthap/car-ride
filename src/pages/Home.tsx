@@ -6,10 +6,11 @@ export default function Home() {
   return (
     <section className="w-full h-screen relative">
       <Canvas
-        camera={{ position: [-12, 2.25, 15], near: 0.1, far: 1000 }}
+        //camera={{ position: [-12, 2.25, 15], near: 0.1, far: 1000 }}
+        shadows
         className="w-full h-screen bg-transparent"
       >
-        <Physics broadphase="SAP" gravity={[0, -2.6, 0]}>
+        <Physics gravity={[0, -2.6, 0]}>
           <MainScene />
         </Physics>
       </Canvas>

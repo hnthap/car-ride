@@ -1,9 +1,10 @@
 import { usePlane } from "@react-three/cannon";
 import { useRef } from "react";
-import { House } from "../components";
+import { ArcDeTriomphe, House } from "../components";
 import { Newground } from "../models";
 import Tree, { TreeProps } from "./Tree";
 import { HouseProps } from "./House";
+import EiffelTower from "./EiffelTower";
 
 export default function Ground() {
   usePlane(
@@ -241,6 +242,12 @@ export default function Ground() {
       {treeInfos.map((props, i) => {
         return <Tree {...props} key={i} />;
       })}
+      <ArcDeTriomphe position={[-16.6, 0, -23]} rotation={28*Math.PI/180} />
+      <EiffelTower position={[-41, 0, -16.5]} rotation={90*Math.PI/180}/>
+      {/* <mesh position={[16, 0, 15]}>
+        <boxGeometry args={[0.5, 4, 1.5]}/>
+        <meshBasicMaterial transparent={true} opacity={0.5} color={"red"} />
+      </mesh> */}
     </>
   );
 }
