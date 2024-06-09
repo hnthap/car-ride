@@ -16,9 +16,9 @@ export default function Home() {
 
       <p className="measurement-chart">
         {[
-          "press space to stop",
-          "press enter to move",
-          "outside/inside the car",
+          "press space to brake",
+          "press enter to change person",
+          "press R to reset location",
         ]
           .map((value) => <>{value}</>)
           .reduce((prev, curr) => (
