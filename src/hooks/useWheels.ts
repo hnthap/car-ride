@@ -20,7 +20,7 @@ export default function useWheels(
     axleLocal: [1, 0, 0],
     suspensionStiffness: 60,
     suspensionRestLength: 0.1,
-    frictionSlip: 5,
+    frictionSlip: 10,
     dampingRelaxation: 2.5,
     dampingCompression: 4.5,
     maxSuspensionForce: 100000,

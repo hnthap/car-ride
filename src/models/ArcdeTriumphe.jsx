@@ -1,9 +1,23 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { useTrimesh } from '@react-three/cannon'
 import ArcofTriumph from "/ParisScene/ArcdeTriumphe.glb"
 
 export default function AdT(props) {
   const { nodes, materials } = useGLTF(ArcofTriumph)
+  console.log(nodes, materials)
+
+  const nodeGeometry = nodes.Scene.children[0].geometry;
+  const vertices = nodeGeometry.attributes.position.array;
+  const indices = nodeGeometry.index.array;
+
+  // const [ref] = useTrimesh(() => ({
+  //   args: [vertices, indices],
+  //   mass: 1,
+  //   type: "Static",
+  //   material: "trimesh",
+  // }), useRef(null));
+
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -16,5 +30,3 @@ export default function AdT(props) {
     </group>
   )
 }
-
-useGLTF.preload('/ArcdeTriumphe.glb')

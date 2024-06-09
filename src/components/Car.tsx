@@ -18,7 +18,7 @@ export default function Car() {
     () => ({
       allowSleep: false,
       args: [width, height, 2 * front],
-      mass: 100,
+      mass: 150,
       position,
     }),
     useRef(null)
