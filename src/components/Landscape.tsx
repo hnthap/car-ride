@@ -1,3 +1,28 @@
+import { GroupProps } from "@react-three/fiber";
+import { Newground } from "../models";
+import { usePlane } from "@react-three/cannon";
+import { useRef } from "react";
+import * as THREE from "three";
+
+export default function Landscape(props: GroupProps) {
+  const [ref] = usePlane(
+    () => ({
+      mass: 0,
+      rotation: [-Math.PI / 2, 0, 0],
+    }),
+    useRef<THREE.Mesh>(null)
+  );
+  return (
+    <>
+      <mesh ref={ref} position={props.position} rotation={props.rotation}>
+        <meshBasicMaterial color={"blue"} transparent opacity={0.1} />
+        <planeGeometry args={[210, 210]} />
+      </mesh>
+      <Newground {...props} />
+    </>
+  );
+}
+
 // import * as THREE from "three";
 // import { useHeightfield, type Triplet } from "@react-three/cannon";
 // import { useEffect, useRef } from "react";
@@ -66,24 +91,6 @@
 //   return <Ground {...props} />;
 // }
 
-
-import { GroupProps } from "@react-three/fiber";
-import { Ground } from "../models";
-import { useBox } from "@react-three/cannon";
-import * as THREE from "three";
-import { useRef } from "react";
-
-export default function Landscape(props: GroupProps) {
-  useBox<THREE.Group>(
-    () => ({
-      allowSleep: true,
-      args: [100, 100, 0.3],
-      mass: 1,
-      type: "Static",
-    }),
-    useRef(null)
-  );
-  return <Ground {...props} />;
   // useCompoundBody<THREE.Group>(() => ({
   //     args: [100, 100, 3],
   //     onCollide: undefined,
@@ -93,4 +100,3 @@ export default function Landscape(props: GroupProps) {
   //     type: 'Heightfield',
 
   // }))
-}

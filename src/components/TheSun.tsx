@@ -1,3 +1,8 @@
+import { Triplet } from "@react-three/cannon";
+import { useFrame } from "@react-three/fiber";
+import { useEffect, useRef } from "react";
+import { DirectionalLight, Vector3 } from "three";
+
 export default function TheSun({
   intensity,
   left,
@@ -7,7 +12,9 @@ export default function TheSun({
   near,
   far,
   position,
+  carPosition,
 }: {
+  carPosition: Vector3;
   intensity: number;
   left: number;
   right: number;
@@ -15,13 +22,14 @@ export default function TheSun({
   bottom: number;
   near: number;
   far: number;
-  position: [number, number, number];
+  position: Triplet;
 }) {
   return (
     <mesh position={position}>
-      <sphereGeometry args={[1, 15, 10]} />
+      <sphereGeometry args={[5, 15, 10]} />
       <meshBasicMaterial color={"gold"} transparent opacity={0.8} />
       <directionalLight
+        position={[0, 0, 0]}
         intensity={intensity}
         castShadow
         shadow-camera-right={right}

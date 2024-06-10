@@ -1,34 +1,26 @@
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import { Suspense, useRef } from "react";
-import { Car, Ground } from "./components";
-import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
-import * as THREE from "three"
-import TheSun from "./components/TheSun";
+import { Suspense, useState } from "react";
+import { Car, Ground, TheSun } from "./components";
+import { Vector3 } from "three";
 
 export default function MainScene() {
-  const orbitControlsRef = useRef<VanillaOrbitControls>(null);
-  const targetObject = new THREE.Object3D();
-  const light = new THREE.DirectionalLight;
-  light.target = targetObject;
-  targetObject.position.set(5, 1, 0);
-  console.log(targetObject.position)
+  const [carPosition, setCarPosition] = useState(new Vector3());
   return (
     <Suspense fallback={null}>
       <TheSun
-        position={[40, 14, -4]}
+        carPosition={carPosition}
+        position={[0, 50, -50]}
         intensity={25}
-        near={0.01}
-        far={50}
-        top={125}
-        bottom={-125}
-        left={-125}
-        right={125}
-        shadow-Mapsize-width={1024}
-        shadow-Mapsize-height={1024}
+        near={50}
+        far={200}
+        top={15}
+        bottom={-15}
+        left={-10}
+        right={10}
       />
-      <OrbitControls makeDefault rotateSpeed={0.5} ref={orbitControlsRef} />
-      <PerspectiveCamera makeDefault position={[6, 6, -6.21]} fov={40} />
-      <Car />
+      <OrbitControls makeDefault rotateSpeed={0.5} />
+      <PerspectiveCamera makeDefault position={[0, 400, -6.21]} fov={40} />
+      <Car setCarPosition={setCarPosition} />
       <Ground />
     </Suspense>
   );

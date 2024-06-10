@@ -2,17 +2,8 @@ import { ArcDeTriomphe, House, Landscape } from "../components";
 import Tree, { TreeProps } from "./Tree";
 import { HouseProps } from "./House";
 import EiffelTower from "./EiffelTower";
-import { usePlane } from "@react-three/cannon";
-import { useRef } from "react";
 
 export default function Ground() {
-  usePlane(
-    () => ({
-      mass: 0,
-      rotation: [-Math.PI / 2, 0, 0],
-    }),
-    useRef(null)
-  );
   const treeInfos: TreeProps[] = [
     {
       position: [10.8, 0, 6.9],
@@ -221,19 +212,6 @@ export default function Ground() {
 
   return (
     <>
-      {/* <mesh
-        position={[0, 0, 0]}
-        rotation-x={-0.5 * Math.PI}
-        visible={true}
-      >
-        <planeGeometry args={[50, 50]} />
-        <meshBasicMaterial
-          opacity={0.325}
-          transparent={true}
-          color={"green"}
-          side={THREE.DoublelSide}
-        />
-      </mesh> */}
       <Landscape />
       {houseInfos.map((props, i) => {
         return <House {...props} key={i} />;
@@ -246,10 +224,6 @@ export default function Ground() {
         rotation={(28 * Math.PI) / 180}
       />
       <EiffelTower position={[-41, 0, -16.5]} rotation={(90 * Math.PI) / 180} />
-      {/* <mesh position={[16, 0, 15]}>
-        <boxGeometry args={[0.5, 4, 1.5]}/>
-        <meshBasicMaterial transparent={true} opacity={0.5} color={"red"} />
-      </mesh> */}
     </>
   );
 }

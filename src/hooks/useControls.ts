@@ -37,6 +37,7 @@ export default function useControls(
     w: false,
     " ": false,
   });
+  const [ctrlKey, setCtrlKey] = useState(false);
 
   useEffect(() => {
     function handleKeyDown(ev: KeyboardEvent) {
@@ -44,6 +45,7 @@ export default function useControls(
         ...controls,
         [ev.key.toLowerCase()]: true,
       }));
+      setCtrlKey(ev.ctrlKey);
       console.log("keydown", ev.key.toLowerCase());
     }
     function handleKeyUp(ev: KeyboardEvent) {
@@ -51,7 +53,12 @@ export default function useControls(
         ...controls,
         [ev.key.toLowerCase()]: false,
       }));
-      console.log("keyup", ev.key.toLowerCase());
+      setCtrlKey(!ev.ctrlKey);
+      console.log(
+        "keyup",
+        ev.key.toLowerCase(),
+        controls[ev.key.toLowerCase()]
+      );
     }
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
@@ -59,22 +66,10 @@ export default function useControls(
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, []);
+  }, [controls]);
 
   useEffect(() => {
-    if (!vehicleApi || !chassisApi) return;
-
-    if (controls.w) {
-      vehicleApi.applyEngineForce(150, 2);
-      vehicleApi.applyEngineForce(150, 3);
-    } else if (controls.s) {
-      vehicleApi.applyEngineForce(-150, 2);
-      vehicleApi.applyEngineForce(-150, 3);
-    } else {
-      for (let i = 0; i < 4; i++) {
-        vehicleApi.applyEngineForce(0, i);
-      }
-    }
+    if (!vehicleApi || !chassisApi || ctrlKey) return;
 
     if (controls.a) {
       vehicleApi.setSteeringValue(STEERING_VALUE_BACK, 2);
@@ -87,18 +82,32 @@ export default function useControls(
       // vehicleApi.setSteeringValue(STEERING_VALUE_FRONT, 0);
       // vehicleApi.setSteeringValue(STEERING_VALUE_FRONT, 1);
     } else {
-      for (let i = 0; i < 4; i++) {
+      for (let i = 2; i < 4; i++) {
         vehicleApi.setSteeringValue(0, i);
       }
     }
 
-    if (controls[" "]) {
-      vehicleApi.setBrake(1, 2);
-      vehicleApi.setBrake(1, 3);
-    } else {
+    if (controls.w) {
+      vehicleApi.applyEngineForce(150, 2);
+      vehicleApi.applyEngineForce(150, 3);
       for (let i = 0; i < 4; i++) {
         vehicleApi.setBrake(0, i);
       }
+    } else if (controls.s) {
+      vehicleApi.applyEngineForce(-150, 2);
+      vehicleApi.applyEngineForce(-150, 3);
+      for (let i = 0; i < 4; i++) {
+        vehicleApi.setBrake(0, i);
+      }
+    } else if (controls[" "]) {
+      vehicleApi.setBrake(1, 2);
+      vehicleApi.setBrake(1, 3);
+      for (let i = 0; i < 4; ++i) {
+        vehicleApi.applyEngineForce(0, i);
+      }
+    } else {
+      vehicleApi.applyEngineForce(0, 2);
+      vehicleApi.applyEngineForce(0, 3);
     }
 
     if (controls.arrowdown) {
@@ -124,7 +133,7 @@ export default function useControls(
     if (controls.enter) {
       thirdPersonRef.current = !thirdPersonRef.current;
     }
-  }, [controls, chassisApi, vehicleApi, thirdPersonRef]);
+  }, [controls, chassisApi, vehicleApi, thirdPersonRef, ctrlKey]);
 
   return controls;
 }

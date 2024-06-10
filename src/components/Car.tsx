@@ -6,7 +6,11 @@ import { useControls, useWheels } from "../hooks";
 import { WheellessCar } from "../models";
 import CarWheel from "./DemoWheel";
 
-export default function Car() {
+export default function Car({
+  setCarPosition,
+}: {
+  setCarPosition: React.Dispatch<React.SetStateAction<THREE.Vector3>>;
+}) {
   const thirdPersonRef = useRef(false);
   const position: Triplet = [-6, 0, 7];
   const width = 0.15;
@@ -34,11 +38,7 @@ export default function Car() {
   useControls(vehicleApi, chassisApi, thirdPersonRef);
 
   useFrame(({ camera }) => {
-    if (
-      !chassisBody.current ||
-      !thirdPersonRef ||
-      thirdPersonRef.current
-    )
+    if (!chassisBody.current || !thirdPersonRef || thirdPersonRef.current)
       return;
 
     const position = new THREE.Vector3().setFromMatrixPosition(
@@ -54,7 +54,8 @@ export default function Car() {
 
     camera.position.copy(position.clone().add(worldDirection));
     camera.lookAt(position);
-  })
+    setCarPosition(position.clone());
+  });
 
   return (
     <group ref={vehicle}>

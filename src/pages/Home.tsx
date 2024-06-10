@@ -9,6 +9,7 @@ export default function Home() {
         //camera={{ position: [-12, 2.25, 15], near: 0.1, far: 1000 }}
         shadows
         className="w-full h-screen bg-transparent"
+        style={{ backgroundColor: "lightblue" }}
       >
         <Physics gravity={[0, -2.6, 0]}>
           <MainScene />
