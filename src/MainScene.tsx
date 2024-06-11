@@ -35,7 +35,7 @@ export default function MainScene({
   return (
     <Suspense fallback={null}>
       <TheSun position={[0, 120, -240]} />
-      <OrbitControls autoRotate ref={orbit} makeDefault rotateSpeed={0.5} />
+      <OrbitControls autoRotate autoRotateSpeed={10} ref={orbit} makeDefault rotateSpeed={0.5} />
       <PerspectiveCamera makeDefault position={[0, 180, -6.21]} fov={40} />
       <Car orbit={orbit} setCarPosition={setCarPosition} />
       <Ground

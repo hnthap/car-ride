@@ -29,7 +29,7 @@ export default function NotreDameDeParis({
   }, [landmarkLookup, objectRef]);
 
   const boxScale: [number, number, number] = [12, 10, 27];
-  const boxPositionDelta: Triplet = [1.5, 5, 0.5];
+  const boxPositionDelta: Triplet = [1.5, 4, 0.5];
 
   const [ref] = useBox<THREE.Mesh>(
     () => ({

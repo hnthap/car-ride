@@ -4,7 +4,11 @@ import { useCompoundBody, Triplet } from "@react-three/cannon";
 import { useRef } from "react";
 import * as THREE from "three";
 
-export default function Landscape(props: GroupProps) {
+export default function Landscape(
+  props: GroupProps & { debug: React.RefObject<boolean> }
+) {
+  const { debug } = props;
+
   const leftlandArgs0: Triplet = [69, 0.1, 50];
   const leftlandArgs1: Triplet = [60, 0.1, 50];
   const leftlandArgs2: Triplet = [18, 0.1, 50];
@@ -482,180 +486,348 @@ export default function Landscape(props: GroupProps) {
     <>
       <mesh ref={ref1} castShadow receiveShadow>
         <Newground {...props} />
-        <mesh position={rightlandPos0} rotation={rightlandRot0}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={rightlandPos0}
+          rotation={rightlandRot0}
+        >
           <boxGeometry args={rightlandArgs0} />
           <meshBasicMaterial transparent={true} opacity={1} color="orange" />
         </mesh>
-        <mesh position={rightlandPos1} rotation={rightlandRot1}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={rightlandPos1}
+          rotation={rightlandRot1}
+        >
           <boxGeometry args={rightlandArgs1} />
           <meshBasicMaterial transparent={true} opacity={1} color="brown" />
         </mesh>
-        <mesh position={rightlandPos3} rotation={rightlandRot3}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={rightlandPos3}
+          rotation={rightlandRot3}
+        >
           <boxGeometry args={rightlandArgs3} />
           <meshBasicMaterial transparent={true} opacity={1} color="blue" />
         </mesh>
-        <mesh position={rightlandPos2}>
+        <mesh visible={debug?.current ?? false} position={rightlandPos2}>
           <cylinderGeometry args={rightlandArgs2} />
           <meshBasicMaterial transparent={true} opacity={1} color="yellow" />
         </mesh>
-        <mesh position={rightlandPos4} rotation={rightlandRot4}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={rightlandPos4}
+          rotation={rightlandRot4}
+        >
           <boxGeometry args={rightlandArgs4} />
           <meshBasicMaterial transparent={true} opacity={1} color="yellow" />
         </mesh>
-        <mesh position={rightlandPos5} rotation={rightlandRot5} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={rightlandPos5}
+          rotation={rightlandRot5}
+        >
           <boxGeometry args={rightlandArgs5} />
           <meshBasicMaterial transparent={true} opacity={1} color="pink" />
         </mesh>
-        <mesh position={rightlandPos6} rotation={rightlandRot6} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={rightlandPos6}
+          rotation={rightlandRot6}
+        >
           <boxGeometry args={rightlandArgs6} />
           <meshBasicMaterial transparent={true} opacity={1} color="brown" />
         </mesh>
 
-        <mesh position={leftlandPos0} rotation={leftlandRot0} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftlandPos0}
+          rotation={leftlandRot0}
+        >
           <boxGeometry args={leftlandArgs0} />
           <meshBasicMaterial transparent={true} opacity={1} color="brown" />
         </mesh>
-        <mesh position={leftlandPos1} rotation={leftlandRot1} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftlandPos1}
+          rotation={leftlandRot1}
+        >
           <boxGeometry args={leftlandArgs1} />
           <meshBasicMaterial transparent={true} opacity={1} color="cyan" />
         </mesh>
-        <mesh position={leftlandPos2} rotation={leftlandRot2} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftlandPos2}
+          rotation={leftlandRot2}
+        >
           <boxGeometry args={leftlandArgs2} />
           <meshBasicMaterial transparent={true} opacity={1} color="green" />
         </mesh>
-        <mesh position={leftlandPos3} rotation={leftlandRot3} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftlandPos3}
+          rotation={leftlandRot3}
+        >
           <boxGeometry args={leftlandArgs3} />
           <meshBasicMaterial transparent={true} opacity={1} color="gray" />
         </mesh>
-        <mesh position={leftlandPos4} rotation={leftlandRot4} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftlandPos4}
+          rotation={leftlandRot4}
+        >
           <boxGeometry args={leftlandArgs4} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={leftlandPos5} rotation={leftlandRot5} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftlandPos5}
+          rotation={leftlandRot5}
+        >
           <boxGeometry args={leftlandArgs5} />
           <meshBasicMaterial transparent={true} opacity={1} color="pink" />
         </mesh>
-        <mesh position={leftlandPos6} rotation={leftlandRot6} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftlandPos6}
+          rotation={leftlandRot6}
+        >
           <boxGeometry args={leftlandArgs6} />
           <meshBasicMaterial transparent={true} opacity={1} color="brown" />
         </mesh>
-        <mesh position={leftlandPos7} rotation={leftlandRot7} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftlandPos7}
+          rotation={leftlandRot7}
+        >
           <boxGeometry args={leftlandArgs7} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={leftlandPos8} rotation={leftlandRot8} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftlandPos8}
+          rotation={leftlandRot8}
+        >
           <boxGeometry args={leftlandArgs8} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={leftlandPos9} rotation={leftlandRot9} visible={true}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftlandPos9}
+          rotation={leftlandRot9}
+        >
           <boxGeometry args={leftlandArgs9} />
           <meshBasicMaterial transparent={true} opacity={1} color="blue" />
         </mesh>
 
-        <mesh position={bridgePos3_1_1} rotation={bridgeRot3_1_1}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={bridgePos3_1_1}
+          rotation={bridgeRot3_1_1}
+        >
           <boxGeometry args={bridgeArgs3_1_1} />
           <meshBasicMaterial transparent={true} opacity={1} color="gray" />
         </mesh>
-        <mesh position={bridgePos3_1_2} rotation={bridgeRot3_1_2}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={bridgePos3_1_2}
+          rotation={bridgeRot3_1_2}
+        >
           <boxGeometry args={bridgeArgs3_1_2} />
           <meshBasicMaterial transparent={true} opacity={1} color="orange" />
         </mesh>
-        <mesh position={bridgePos3_1_3} rotation={bridgeRot3_1_3}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={bridgePos3_1_3}
+          rotation={bridgeRot3_1_3}
+        >
           <boxGeometry args={bridgeArgs3_1_3} />
           <meshBasicMaterial transparent={true} opacity={1} color="orange" />
         </mesh>
-        <mesh position={bridgePos3_1_4} rotation={bridgeRot3_1_4}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={bridgePos3_1_4}
+          rotation={bridgeRot3_1_4}
+        >
           <boxGeometry args={bridgeArgs3_1_4} />
           <meshBasicMaterial transparent={true} opacity={1} color="orange" />
         </mesh>
 
-        <mesh position={bridgePos3_2} rotation={bridgeRot3_2}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={bridgePos3_2}
+          rotation={bridgeRot3_2}
+        >
           <boxGeometry args={bridgeArgs3_2} />
           <meshBasicMaterial transparent={true} opacity={1} color="gray" />
         </mesh>
 
-        <mesh position={bridgePos3_3_1} rotation={bridgeRot3_3_1}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={bridgePos3_3_1}
+          rotation={bridgeRot3_3_1}
+        >
           <boxGeometry args={bridgeArgs3_3_1} />
           <meshBasicMaterial transparent={true} opacity={1} color="gray" />
         </mesh>
-        <mesh position={bridgePos3_3_2} rotation={bridgeRot3_3_2}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={bridgePos3_3_2}
+          rotation={bridgeRot3_3_2}
+        >
           <boxGeometry args={bridgeArgs3_3_2} />
           <meshBasicMaterial transparent={true} opacity={1} color="orange" />
         </mesh>
-        <mesh position={bridgePos3_3_3} rotation={bridgeRot3_3_3}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={bridgePos3_3_3}
+          rotation={bridgeRot3_3_3}
+        >
           <boxGeometry args={bridgeArgs3_3_3} />
           <meshBasicMaterial transparent={true} opacity={1} color="orange" />
         </mesh>
-        <mesh position={bridgePos3_3_4} rotation={bridgeRot3_3_4}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={bridgePos3_3_4}
+          rotation={bridgeRot3_3_4}
+        >
           <boxGeometry args={bridgeArgs3_3_4} />
           <meshBasicMaterial transparent={true} opacity={1} color="orange" />
         </mesh>
-        <mesh position={bridgePos3_3_5} rotation={bridgeRot3_3_5}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={bridgePos3_3_5}
+          rotation={bridgeRot3_3_5}
+        >
           <boxGeometry args={bridgeArgs3_3_5} />
           <meshBasicMaterial transparent={true} opacity={1} color="orange" />
         </mesh>
-        <mesh position={leftbridgePos4_1_1} rotation={bridgeRot4_1}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftbridgePos4_1_1}
+          rotation={bridgeRot4_1}
+        >
           <boxGeometry args={leftbridgeArgs4_1_1} />
           <meshBasicMaterial transparent={true} opacity={1} color="gray" />
         </mesh>
-        <mesh position={leftbridgePos4_1_2} rotation={bridgeRot4_2}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftbridgePos4_1_2}
+          rotation={bridgeRot4_2}
+        >
           <boxGeometry args={leftbridgeArgs4_1_2} />
           <meshBasicMaterial transparent={true} opacity={1} color="orange" />
         </mesh>
-        <mesh position={leftbridgePos4_1_3} rotation={bridgeRot4_3}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={leftbridgePos4_1_3}
+          rotation={bridgeRot4_3}
+        >
           <boxGeometry args={leftbridgeArgs4_1_3} />
           <meshBasicMaterial transparent={true} opacity={1} color="orange" />
         </mesh>
 
-        <mesh position={seablockPos0} rotation={seablockRot0}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos0}
+          rotation={seablockRot0}
+        >
           <boxGeometry args={seablockArgs0} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos1} rotation={seablockRot1}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos1}
+          rotation={seablockRot1}
+        >
           <boxGeometry args={seablockArgs1} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos2} rotation={seablockRot2}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos2}
+          rotation={seablockRot2}
+        >
           <boxGeometry args={seablockArgs2} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos3} rotation={seablockRot3}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos3}
+          rotation={seablockRot3}
+        >
           <boxGeometry args={seablockArgs3} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos4} rotation={seablockRot4}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos4}
+          rotation={seablockRot4}
+        >
           <boxGeometry args={seablockArgs4} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos5} rotation={seablockRot5}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos5}
+          rotation={seablockRot5}
+        >
           <boxGeometry args={seablockArgs5} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos6} rotation={seablockRot6}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos6}
+          rotation={seablockRot6}
+        >
           <boxGeometry args={seablockArgs6} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos7} rotation={seablockRot7}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos7}
+          rotation={seablockRot7}
+        >
           <boxGeometry args={seablockArgs7} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos8} rotation={seablockRot8}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos8}
+          rotation={seablockRot8}
+        >
           <boxGeometry args={seablockArgs8} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos9} rotation={seablockRot9}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos9}
+          rotation={seablockRot9}
+        >
           <boxGeometry args={seablockArgs9} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos10} rotation={seablockRot10}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos10}
+          rotation={seablockRot10}
+        >
           <boxGeometry args={seablockArgs10} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos11} rotation={seablockRot11}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos11}
+          rotation={seablockRot11}
+        >
           <boxGeometry args={seablockArgs11} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>
-        <mesh position={seablockPos12} rotation={seablockRot12}>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos12}
+          rotation={seablockRot12}
+        >
           <boxGeometry args={seablockArgs12} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
         </mesh>

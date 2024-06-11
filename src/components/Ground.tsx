@@ -698,7 +698,7 @@ export default function Ground({
   
   return (
     <>
-      <Landscape />
+      <Landscape debug={debug} />
       {houseInfos.map((props, i) => {
         return <House {...props} key={`house_${i}`} debug={debug} />;
       })}
