@@ -5,11 +5,11 @@ import ArcofTriumph from "/ParisScene/ArcdeTriumphe.glb"
 
 export default function AdT(props) {
   const { nodes, materials } = useGLTF(ArcofTriumph)
-  console.log(nodes, materials)
+  // console.log(nodes, materials)
 
-  const nodeGeometry = nodes.Scene.children[0].geometry;
-  const vertices = nodeGeometry.attributes.position.array;
-  const indices = nodeGeometry.index.array;
+  // const nodeGeometry = nodes.Scene.children[0].geometry;
+  // const vertices = nodeGeometry.attributes.position.array;
+  // const indices = nodeGeometry.index.array;
 
   // const [ref] = useTrimesh(() => ({
   //   args: [vertices, indices],

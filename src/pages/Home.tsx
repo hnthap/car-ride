@@ -10,7 +10,7 @@ export default function Home() {
         shadows
         className="w-full h-screen bg-transparent"
       >
-        <Physics gravity={[0, -2.6, 0]}>
+        <Physics gravity={[0, -9.81, 0]}>
           <MainScene />
         </Physics>
       </Canvas>
