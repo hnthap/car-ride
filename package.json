@@ -15,6 +15,8 @@
     "@react-three/drei": "^9.105.3",
     "@react-three/fiber": "^8.16.1",
     "@tweenjs/tween.js": "^23.1.2",
+    "@types/dat.gui": "^0.7.13",
+    "dat.gui": "^0.7.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",

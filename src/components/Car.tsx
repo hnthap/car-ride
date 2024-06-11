@@ -1,13 +1,20 @@
 import { Triplet, useBox, useRaycastVehicle } from "@react-three/cannon";
-import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useControls, useWheels } from "../hooks";
 import { WheellessCar } from "../models";
 import CarWheel from "./DemoWheel";
+import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
 
-export default function Car() {
-  const thirdPersonRef = useRef(false);
+export default function Car({
+  setCarPosition,
+  orbit,
+}: {
+  setCarPosition: React.Dispatch<React.SetStateAction<THREE.Vector3>>;
+  orbit: React.RefObject<VanillaOrbitControls>;
+}) {
+  const thirdPersonRef = useRef(true);
   const position: Triplet = [-6, 0, 7];
   const width = 0.15;
   const height = 0.07;
@@ -34,27 +41,40 @@ export default function Car() {
   useControls(vehicleApi, chassisApi, thirdPersonRef);
 
   useFrame(({ camera }) => {
-    if (
-      !chassisBody.current ||
-      !thirdPersonRef ||
-      thirdPersonRef.current
-    )
-      return;
+    if (!chassisBody.current) return;
 
     const position = new THREE.Vector3().setFromMatrixPosition(
       chassisBody.current.matrixWorld
     );
-    const quaternion = new THREE.Quaternion().setFromRotationMatrix(
-      chassisBody.current.matrixWorld
-    );
-    const worldDirection = new THREE.Vector3(0, 0, 1)
-      .applyQuaternion(quaternion)
-      .normalize()
-      .add(new THREE.Vector3(0, 0.2, 0));
+    setCarPosition(position.clone());
 
-    camera.position.copy(position.clone().add(worldDirection));
-    camera.lookAt(position);
-  })
+    if (!orbit.current) return;
+
+    if (!thirdPersonRef.current) {
+      const quaternion = new THREE.Quaternion().setFromRotationMatrix(
+        chassisBody.current.matrixWorld
+      );
+      const worldDirection = new THREE.Vector3(0, 0, 1)
+        .applyQuaternion(quaternion)
+        .normalize()
+        .add(new THREE.Vector3(0, 0.2, 0));
+
+      camera.position.copy(position.clone().add(worldDirection));
+      camera.lookAt(position);
+    }
+  });
+
+  const { camera } = useThree();
+
+  useEffect(() => {
+    if (orbit.current && thirdPersonRef.current) {
+      console.log(orbit.current.target.toArray().map((v) => v.toFixed(2)));
+      camera.position
+        .copy(orbit.current.target)
+        .add(new THREE.Vector3(0, 100, 100));
+      camera.updateMatrixWorld();
+    }
+  }, [camera, orbit, thirdPersonRef]);
 
   return (
     <group ref={vehicle}>

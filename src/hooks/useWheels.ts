@@ -27,6 +27,7 @@ export default function useWheels(
     rollInfluence: 0.01,
     maxSuspensionTravel: 0.1,
     customSlidingRotationalSpeed: -15,
+    customSlidingRotationalSpeed: -15,
     useCustomSlidingRotationalSpeed: true,
   };
   const scaledWidth = width * 0.65;
@@ -56,7 +57,7 @@ export default function useWheels(
   function propsFunc(): CompoundBodyProps {
     return {
       collisionFilterGroup: 0,
-      mass: 5,
+      mass: 20,
       shapes: [
         {
           // @ts-expect-error Somehow it must be it

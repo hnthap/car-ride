@@ -215,3 +215,48 @@ body:has(.card[data-color="green"]:hover) {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
+.info-chart {
+    width: 33%;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    background-color: rgb(0, 0, 0, 0.8);
+    color: lightyellow;
+    font-size: 10pt;
+    text-indent: 0.5cm;
+    padding-left: 20pt;
+    padding-right: 15pt;
+    padding-top: 20pt;
+    padding-bottom: 10pt;
+    font-family: sans-serif;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.info-chart > p {
+    padding-bottom: 10pt;
+    text-align: justify;
+    text-justify: auto;
+}
+
+.chart-close-button {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    background-color: rgb(0, 0, 0, 0.11);
+    color: white;
+    padding-left: 9pt;
+    padding-right: 9pt;
+    padding-top: 3pt;
+    padding-bottom: 3pt;
+    font-family: monospace;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
