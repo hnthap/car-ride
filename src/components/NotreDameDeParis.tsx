@@ -2,16 +2,32 @@ import { LandmarkName, ObstacleProps } from "../util";
 import { NotreDameDeParis as Model } from "../models";
 import { Triplet, useBox } from "@react-three/cannon";
 import * as THREE from "three";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function NotreDameDeParis({
   position,
   rotation,
   debug,
   setLandmark,
+  landmarkLookup,
 }: ObstacleProps & {
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
+  landmarkLookup: React.MutableRefObject<{
+    [key: string]: THREE.Object3D;
+  }>;
 }) {
+  const objectRef = useRef<THREE.Object3D>(null);
+
+  useEffect(() => {
+    if (
+      !landmarkLookup.current ||
+      !objectRef.current ||
+      "Notre-Dame de Paris" in landmarkLookup.current
+    )
+      return;
+    landmarkLookup.current["Notre-Dame de Paris"] = objectRef.current;
+  }, [landmarkLookup, objectRef]);
+
   const boxScale: [number, number, number] = [12, 10, 27];
   const boxPositionDelta: Triplet = [1.5, 5, 0.5];
 
@@ -31,6 +47,7 @@ export default function NotreDameDeParis({
   return (
     <>
       <Model
+        innerRef={objectRef}
         position={[0, -0.1, 0].map((p, i) => p + position[i])}
         rotation={[0, rotation ?? 0, 0]}
         scale={[0.005, 0.005, 0.005]}

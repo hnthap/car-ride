@@ -8,13 +8,18 @@ import Tree, { TreeProps } from "./Tree";
 import { HouseProps } from "./House";
 import EiffelTower from "./EiffelTower";
 import { LandmarkName } from "../util";
+import { Object3D } from "three";
 
 export default function Ground({
   debug,
   setLandmark,
+  landmarkLookup,
 }: {
   debug: React.RefObject<boolean>;
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
+  landmarkLookup: React.MutableRefObject<{
+    [key: string]: Object3D;
+  }>;
 }) {
   const treeInfos: TreeProps[] = [
     {
@@ -704,18 +709,21 @@ export default function Ground({
         rotation={(28 * Math.PI) / 180}
         debug={debug}
         setLandmark={setLandmark}
+        landmarkLookup={landmarkLookup}
       />
       <EiffelTower
         position={[-41, 0, -16.5]}
         rotation={(90 * Math.PI) / 180}
         debug={debug}
         setLandmark={setLandmark}
+        landmarkLookup={landmarkLookup}
       />
       <NotreDameDeParis
         position={[20, 0, -30]}
         rotation={(4 * Math.PI) / 180}
         debug={debug}
         setLandmark={setLandmark}
+        landmarkLookup={landmarkLookup}
       />
     </>
   );

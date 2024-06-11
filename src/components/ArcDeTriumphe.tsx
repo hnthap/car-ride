@@ -1,5 +1,5 @@
 import { useCylinder } from "@react-three/cannon";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { LandmarkName, ObstacleProps } from "../util";
 import { AdT } from "../models";
 import * as THREE from "three";
@@ -10,9 +10,25 @@ export default function ArcDeTriomphe({
   rotation,
   debug,
   setLandmark,
+  landmarkLookup,
 }: ObstacleProps & {
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
+  landmarkLookup: React.MutableRefObject<{
+    [key: string]: THREE.Object3D;
+  }>;
 }) {
+  const objectRef = useRef<THREE.Object3D>(null);
+
+  useEffect(() => {
+    if (
+      !landmarkLookup.current ||
+      !objectRef.current ||
+      "Arc de Triomphe" in landmarkLookup.current
+    )
+      return;
+    landmarkLookup.current["Arc de Triomphe"] = objectRef.current;
+  }, [landmarkLookup, objectRef]);
+
   const colliderBoxScale: [number, number, number, number] = [0.5, 0.5, 4, 10];
   const thingScale: [number, number, number] = [0.1, 0.1, 0.1];
   const thingPosition: [number, number, number] = [0, 0, 0];
@@ -137,6 +153,7 @@ export default function ArcDeTriomphe({
           .vadd(new CANNON.Vec3(...position))
           .toArray()}
         rotation={[0, rotation, 0]}
+        innerRef={objectRef}
       />
       <mesh ref={ref1} visible={debug?.current ?? false}>
         <cylinderGeometry args={colliderBoxScale} />

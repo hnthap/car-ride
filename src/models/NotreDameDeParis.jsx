@@ -11,7 +11,7 @@ import { useGLTF } from '@react-three/drei'
 export function Model(props) {
   const { nodes, materials } = useGLTF('/NotreDameDeParis/notre_dame_de_paris.glb')
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} ref={props.innerRef}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group position={[14.737, 16.52, 0]} rotation={[0, 0, -2.657]}>
           <lineSegments geometry={nodes.Material3.geometry} material={materials.edge_color000255} />

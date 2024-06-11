@@ -1,11 +1,10 @@
-import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import ET from "/ParisScene/EiffelTower.glb"
 
 export default function EiffelTower(props) {
   const { nodes, materials } = useGLTF(ET)
   return (
-    <group {...props} dispose={null} scale={0.1}>
+    <group {...props} dispose={null} scale={0.1} ref={props.innerRef}>
           <mesh
             castShadow
             receiveShadow

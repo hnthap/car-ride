@@ -8,13 +8,8 @@ import { LandmarkInfo, LandmarkName } from "../util.ts";
 
 export default function Home() {
   const [carPosition, setCarPosition] = useState(new THREE.Vector3());
-  const debug = useRef(true);
-  const [mainGui] = useState(() => {
-    try {
-      if (mainGui) return;
-    } catch {
-      // Expected error
-    }
+  const debug = useRef(false);
+  useState(() => {
     const gui = new dat.GUI();
     gui.add(debug, "current").name("Debug mode");
     return gui;
@@ -29,6 +24,7 @@ export default function Home() {
       >
         <Physics gravity={[0, -9.81, 0]}>
           <MainScene
+            landmark={landmark}
             debug={debug}
             setCarPosition={setCarPosition}
             setLandmark={setLandmark}
@@ -47,26 +43,22 @@ export default function Home() {
           <p key={i}>{v}</p>
         ))}
       </div>
-      {landmark && (
-        <LandmarkChart name={landmark} onClose={() => setLandmark(null)} />
-      )}
+      {landmark && <LandmarkChart name={landmark} />}
       <img className="control-keys" src="/controls.png" alt="control keys" />
     </section>
   );
 }
 
-function LandmarkChart({
-  name,
-  onClose,
-}: {
-  name: LandmarkName;
-  onClose: () => void;
-}) {
+function LandmarkChart({ name }: { name: LandmarkName }) {
+  const [open, setOpen] = useState(true);
   const { title, content, image, url } = getLandmarkInfo(name);
   return (
     <div className="info-chart">
-      <span className="chart-close-button" onClick={onClose}>
-        {"(close) X"}
+      <span
+        className="chart-close-button"
+        onClick={() => setOpen((open) => !open)}
+      >
+        {open ? "[close]" : "[open]"}
       </span>
       <span
         style={{
@@ -76,20 +68,26 @@ function LandmarkChart({
           textIndent: "0%",
         }}
       >
-        <a href={url} target={"_blank"}>{title}</a>
+        <a href={url} target={"_blank"}>
+          {title}
+        </a>
       </span>
-      <img
-        style={{
-          paddingLeft: "20%",
-          paddingRight: "20%",
-          paddingTop: "10px",
-          paddingBottom: "5px",
-        }}
-        src={image}
-      />
-      {["", ...content].map((v, i) => (
-        <p key={i}>{v}</p>
-      ))}
+      {open && (
+        <>
+          <img
+            style={{
+              paddingLeft: "20%",
+              paddingRight: "20%",
+              paddingTop: "10px",
+              paddingBottom: "5px",
+            }}
+            src={image}
+          />
+          {["", ...content].map((v, i) => (
+            <p key={i}>{v}</p>
+          ))}{" "}
+        </>
+      )}
     </div>
   );
 }

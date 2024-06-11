@@ -1,5 +1,5 @@
 import { useCompoundBody } from "@react-three/cannon";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { LandmarkName, ObstacleProps } from "../util";
 // import { eiffelTower } from "../models";
 import { EiffelTower } from "../models";
@@ -11,9 +11,25 @@ export default function EiffelTowerProps({
   rotation,
   debug,
   setLandmark,
+  landmarkLookup,
 }: ObstacleProps & {
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
+  landmarkLookup: React.MutableRefObject<{
+    [key: string]: THREE.Object3D;
+  }>;
 }) {
+  const objectRef = useRef<THREE.Object3D>(null);
+
+  useEffect(() => {
+    if (
+      !landmarkLookup.current ||
+      !objectRef.current ||
+      "Eiffel Tower" in landmarkLookup.current
+    )
+      return;
+    landmarkLookup.current["Eiffel Tower"] = objectRef.current;
+  }, [landmarkLookup, objectRef]);
+
   const rotateABit: number = (82 * Math.PI) / 180;
   const collider1Position: [number, number, number] = [3, 0.6, -2];
   const collider2Position: [number, number, number] = [2.3, 1.8, -1.65];
@@ -103,7 +119,11 @@ export default function EiffelTowerProps({
 
   return (
     <mesh ref={ref1} castShadow receiveShadow>
-      <EiffelTower position={position} rotation={[0, rotation, 0]} />
+      <EiffelTower
+        position={position}
+        rotation={[0, rotation, 0]}
+        innerRef={objectRef}
+      />
       <mesh
         position={new CANNON.Vec3(...position)
           .vadd(new CANNON.Vec3(...collider1Position))
