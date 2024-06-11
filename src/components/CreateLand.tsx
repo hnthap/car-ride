@@ -5,6 +5,11 @@ export type LandType = {
     name: string
 }
 
-export default function land() {
-    
-}
+export default function LandSpawn({args, pos, rot}: LandType) {
+      return (
+        <mesh position={pos} rotation={rot}>
+          <boxGeometry args={args} />
+          <meshBasicMaterial transparent={true} opacity={1} color="pink" />
+        </mesh>
+      );
+    }
