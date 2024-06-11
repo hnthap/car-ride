@@ -6,13 +6,27 @@ Source: https://sketchfab.com/3d-models/car-scene-b7b32eaca80d460c9338197e2c9d14
 Title: Car Scene
 */
 
+import { useCompoundBody } from "@react-three/cannon";
 import carScene from "/car_scene.glb";
 import { useGLTF } from "@react-three/drei";
+import { useRef } from "react";
+import * as THREE from "three";
 
 export default function VintageLantern(props) {
   const { nodes, materials } = useGLTF(carScene);
+  console.log(nodes.vintage_lantern_7_base_lantern_wall_base_2_0.geometry.attributes.position.array, nodes.vintage_lantern_7_base_lantern_wall_base_2_0.geometry.index.array)
+  console.log(nodes.vintage_lantern_7_base_lantern_wall_base_2_0)
+
+  const [ref] = useCompoundBody(
+    () => ({
+      mass: 0,
+      shapes:[
+        {args: [nodes.vintage_lantern_7_base_lantern_wall_base_2_0.geometry.attributes.position.array, nodes.vintage_lantern_7_base_lantern_wall_base_2_0.geometry.index.array], position: [54.766, -2.068, -284.313], rotation: [-Math.PI / 2, 0, 0], type: "Trimesh"}
+      ]
+    }), useRef(null));
+
   return (
-    <group {...props} dispose={null} scale={0.02}>
+    <group {...props} dispose={null} scale={0.02} ref={ref}>
       <group
         position={[54.766, -2.068, -284.313]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -27,9 +41,7 @@ export default function VintageLantern(props) {
           <mesh
             castShadow
             receiveShadow
-            geometry={
-              nodes.vintage_lantern_glass_7_lantern_wall_glass_1_0.geometry
-            }
+            geometry={nodes.vintage_lantern_glass_7_lantern_wall_glass_1_0.geometry}
             material={materials.lantern_wall_glass_1}
             position={[0.238, -7.28, 149.232]}
           />
