@@ -1,6 +1,6 @@
 import { useCompoundBody } from "@react-three/cannon";
 import { useRef } from "react";
-import { ObstacleProps } from "../util";
+import { LandmarkName, ObstacleProps } from "../util";
 // import { eiffelTower } from "../models";
 import { EiffelTower } from "../models";
 import * as THREE from "three";
@@ -9,7 +9,11 @@ import * as CANNON from "cannon-es";
 export default function EiffelTowerProps({
   position,
   rotation,
-}: ObstacleProps) {
+  debug,
+  setLandmark,
+}: ObstacleProps & {
+  setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
+}) {
   const rotateABit: number = (82 * Math.PI) / 180;
   const collider1Position: [number, number, number] = [3, 0.6, -2];
   const collider2Position: [number, number, number] = [2.3, 1.8, -1.65];
@@ -89,9 +93,12 @@ export default function EiffelTowerProps({
           type: "Box",
         },
       ],
-      position
+      position,
+      onCollideBegin() {
+        setLandmark("Eiffel Tower");
+      },
     }),
-    useRef(null),
+    useRef(null)
   );
 
   return (
@@ -102,6 +109,7 @@ export default function EiffelTowerProps({
           .vadd(new CANNON.Vec3(...collider1Position))
           .toArray()}
         rotation={[0, rotateABit, 0]}
+        visible={debug?.current ?? false}
       >
         <boxGeometry args={[1.2, 1.2, 1.2]} />
         <meshBasicMaterial transparent={true} opacity={0.5} color="yellow" />
@@ -111,6 +119,7 @@ export default function EiffelTowerProps({
           .vadd(new CANNON.Vec3(...collider2Position))
           .toArray()}
         rotation={[0, rotateABit, 0]}
+        visible={debug?.current ?? false}
       >
         <boxGeometry args={[1.2, 1.2, 1.2]} />
         <meshBasicMaterial transparent={true} opacity={0.5} color="yellow" />
@@ -120,6 +129,7 @@ export default function EiffelTowerProps({
           .vadd(new CANNON.Vec3(...collider3Position))
           .toArray()}
         rotation={[0, rotateABit, 0]}
+        visible={debug?.current ?? false}
       >
         <boxGeometry args={[1.2, 1.2, 1.2]} />
         <meshBasicMaterial transparent={true} opacity={0.5} color="yellow" />
@@ -129,6 +139,7 @@ export default function EiffelTowerProps({
           .vadd(new CANNON.Vec3(...collider4Position))
           .toArray()}
         rotation={[0, rotateABit, 0]}
+        visible={debug?.current ?? false}
       >
         <boxGeometry args={[1.2, 1.2, 1.2]} />
         <meshBasicMaterial transparent={true} opacity={0.5} color="yellow" />
@@ -138,6 +149,7 @@ export default function EiffelTowerProps({
           .vadd(new CANNON.Vec3(...collider5Position))
           .toArray()}
         rotation={[0, rotateABit, 0]}
+        visible={debug?.current ?? false}
       >
         <boxGeometry args={[1.2, 1.2, 1.2]} />
         <meshBasicMaterial transparent={true} opacity={0.5} color="yellow" />
@@ -147,6 +159,7 @@ export default function EiffelTowerProps({
           .vadd(new CANNON.Vec3(...collider6Position))
           .toArray()}
         rotation={[0, rotateABit, 0]}
+        visible={debug?.current ?? false}
       >
         <boxGeometry args={[1.2, 1.2, 1.2]} />
         <meshBasicMaterial transparent={true} opacity={0.5} color="yellow" />
@@ -156,6 +169,7 @@ export default function EiffelTowerProps({
           .vadd(new CANNON.Vec3(...collider7Position))
           .toArray()}
         rotation={[0, rotateABit, 0]}
+        visible={debug?.current ?? false}
       >
         <boxGeometry args={[1.2, 1.2, 1.2]} />
         <meshBasicMaterial transparent={true} opacity={0.5} color="yellow" />
@@ -165,6 +179,7 @@ export default function EiffelTowerProps({
           .vadd(new CANNON.Vec3(...collider8Position))
           .toArray()}
         rotation={[0, rotateABit, 0]}
+        visible={debug?.current ?? false}
       >
         <boxGeometry args={[1.2, 1.2, 1.2]} />
         <meshBasicMaterial transparent={true} opacity={0.5} color="yellow" />
@@ -174,6 +189,7 @@ export default function EiffelTowerProps({
           .vadd(new CANNON.Vec3(...collider9Position))
           .toArray()}
         rotation={[0, rotateABit, 0]}
+        visible={debug?.current ?? false}
       >
         <boxGeometry args={[4, 0.5, 4]} />
         <meshBasicMaterial transparent={true} opacity={0.5} color="yellow" />

@@ -1,11 +1,18 @@
 import { useCylinder } from "@react-three/cannon";
 import { useRef } from "react";
-import { ObstacleProps } from "../util";
+import { LandmarkName, ObstacleProps } from "../util";
 import { AdT } from "../models";
 import * as THREE from "three";
 import * as CANNON from "cannon-es";
 
-export default function ArcDeTriomphe({ position, rotation }: ObstacleProps) {
+export default function ArcDeTriomphe({
+  position,
+  rotation,
+  debug,
+  setLandmark,
+}: ObstacleProps & {
+  setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
+}) {
   const colliderBoxScale: [number, number, number, number] = [0.5, 0.5, 4, 10];
   const thingScale: [number, number, number] = [0.1, 0.1, 0.1];
   const thingPosition: [number, number, number] = [0, 0, 0];
@@ -25,6 +32,9 @@ export default function ArcDeTriomphe({ position, rotation }: ObstacleProps) {
         .vadd(new CANNON.Vec3(...pillar1Position))
         .toArray(),
       type: "Static",
+      onCollide() {
+        setLandmark("Arc de Triomphe");
+      },
     }),
     useRef(null)
   );
@@ -35,6 +45,9 @@ export default function ArcDeTriomphe({ position, rotation }: ObstacleProps) {
         .vadd(new CANNON.Vec3(...pillar2Position))
         .toArray(),
       type: "Static",
+      onCollide() {
+        setLandmark("Arc de Triomphe");
+      },
     }),
     useRef(null)
   );
@@ -45,6 +58,9 @@ export default function ArcDeTriomphe({ position, rotation }: ObstacleProps) {
         .vadd(new CANNON.Vec3(...pillar3Position))
         .toArray(),
       type: "Static",
+      onCollide() {
+        setLandmark("Arc de Triomphe");
+      },
     }),
     useRef(null)
   );
@@ -55,6 +71,9 @@ export default function ArcDeTriomphe({ position, rotation }: ObstacleProps) {
         .vadd(new CANNON.Vec3(...pillar4Position))
         .toArray(),
       type: "Static",
+      onCollide() {
+        setLandmark("Arc de Triomphe");
+      },
     }),
     useRef(null)
   );
@@ -65,6 +84,9 @@ export default function ArcDeTriomphe({ position, rotation }: ObstacleProps) {
         .vadd(new CANNON.Vec3(...pillar5Position))
         .toArray(),
       type: "Static",
+      onCollide() {
+        setLandmark("Arc de Triomphe");
+      },
     }),
     useRef(null)
   );
@@ -75,6 +97,9 @@ export default function ArcDeTriomphe({ position, rotation }: ObstacleProps) {
         .vadd(new CANNON.Vec3(...pillar6Position))
         .toArray(),
       type: "Static",
+      onCollide() {
+        setLandmark("Arc de Triomphe");
+      },
     }),
     useRef(null)
   );
@@ -85,6 +110,9 @@ export default function ArcDeTriomphe({ position, rotation }: ObstacleProps) {
         .vadd(new CANNON.Vec3(...pillar7Position))
         .toArray(),
       type: "Static",
+      onCollide() {
+        setLandmark("Arc de Triomphe");
+      },
     }),
     useRef(null)
   );
@@ -95,6 +123,9 @@ export default function ArcDeTriomphe({ position, rotation }: ObstacleProps) {
         .vadd(new CANNON.Vec3(...pillar8Position))
         .toArray(),
       type: "Static",
+      onCollide() {
+        setLandmark("Arc de Triomphe");
+      },
     }),
     useRef(null)
   );
@@ -107,35 +138,35 @@ export default function ArcDeTriomphe({ position, rotation }: ObstacleProps) {
           .toArray()}
         rotation={[0, rotation, 0]}
       />
-      <mesh ref={ref1}>
+      <mesh ref={ref1} visible={debug?.current ?? false}>
         <cylinderGeometry args={colliderBoxScale} />
         <meshBasicMaterial transparent={true} opacity={0.5} color={"red"} />
       </mesh>
-      <mesh ref={ref2}>
+      <mesh ref={ref2} visible={debug?.current ?? false}>
         <cylinderGeometry args={colliderBoxScale} />
         <meshBasicMaterial transparent={true} opacity={0.5} color={"yellow"} />
       </mesh>
-      <mesh ref={ref3}>
+      <mesh ref={ref3} visible={debug?.current ?? false}>
         <cylinderGeometry args={colliderBoxScale} />
         <meshBasicMaterial transparent={true} opacity={0.5} color={"blue"} />
       </mesh>
-      <mesh ref={ref4}>
+      <mesh ref={ref4} visible={debug?.current ?? false}>
         <cylinderGeometry args={colliderBoxScale} />
         <meshBasicMaterial transparent={true} opacity={0.5} color={"orange"} />
       </mesh>
-      <mesh ref={ref5}>
+      <mesh ref={ref5} visible={debug?.current ?? false}>
         <cylinderGeometry args={colliderBoxScale} />
         <meshBasicMaterial transparent={true} opacity={0.5} color={"cyan"} />
       </mesh>
-      <mesh ref={ref6}>
+      <mesh ref={ref6} visible={debug?.current ?? false}>
         <cylinderGeometry args={colliderBoxScale} />
         <meshBasicMaterial transparent={true} opacity={0.5} color={"green"} />
       </mesh>
-      <mesh ref={ref7}>
+      <mesh ref={ref7} visible={debug?.current ?? false}>
         <cylinderGeometry args={colliderBoxScale} />
         <meshBasicMaterial transparent={true} opacity={0.5} color={"pink"} />
       </mesh>
-      <mesh ref={ref8}>
+      <mesh ref={ref8} visible={debug?.current ?? false}>
         <cylinderGeometry args={colliderBoxScale} />
         <meshBasicMaterial transparent={true} opacity={0.5} color={"white"} />
       </mesh>

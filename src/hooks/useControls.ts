@@ -99,15 +99,17 @@ export default function useControls(
       for (let i = 0; i < 4; i++) {
         vehicleApi.setBrake(0, i);
       }
-    } else if (controls[" "]) {
-      vehicleApi.setBrake(1, 2);
-      vehicleApi.setBrake(1, 3);
-      for (let i = 0; i < 4; ++i) {
-        vehicleApi.applyEngineForce(0, i);
-      }
     } else {
       vehicleApi.applyEngineForce(0, 2);
       vehicleApi.applyEngineForce(0, 3);
+    }
+
+    if (controls[" "]) {
+      vehicleApi.setBrake(1, 2);
+      vehicleApi.setBrake(1, 3);
+    } else {
+      vehicleApi.setBrake(0, 2);
+      vehicleApi.setBrake(0, 3);
     }
 
     if (controls.arrowdown) {

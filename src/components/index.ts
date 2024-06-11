@@ -4,6 +4,7 @@ import CarWheel from "./DemoWheel";
 import Ground from "./Ground";
 import House from "./House.tsx";
 import Landscape from "./Landscape";
+import NotreDameDeParis from "./NotreDameDeParis.tsx";
 import Obstacle from "./Obstacle.tsx";
 import TheSun from "./TheSun.tsx";
 import Tree from "./Tree.tsx";
@@ -14,9 +15,8 @@ export {
   CarWheel,
   Ground,
   House,
-  Landscape,
-  Obstacle,
+  Landscape, NotreDameDeParis, Obstacle,
   TheSun,
-  Tree,
+  Tree
 };
 

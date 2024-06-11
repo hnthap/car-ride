@@ -11,7 +11,7 @@ export default function Car({
 }: {
   setCarPosition: React.Dispatch<React.SetStateAction<THREE.Vector3>>;
 }) {
-  const thirdPersonRef = useRef(false);
+  const thirdPersonRef = useRef(true);
   const position: Triplet = [-6, 0, 7];
   const width = 0.15;
   const height = 0.07;
@@ -22,7 +22,7 @@ export default function Car({
     () => ({
       allowSleep: false,
       args: [width, height, 2 * front],
-      mass: 150,
+      mass: 400,
       position,
     }),
     useRef(null)
@@ -38,12 +38,14 @@ export default function Car({
   useControls(vehicleApi, chassisApi, thirdPersonRef);
 
   useFrame(({ camera }) => {
-    if (!chassisBody.current || !thirdPersonRef || thirdPersonRef.current)
-      return;
+    if (!chassisBody.current) return;
 
     const position = new THREE.Vector3().setFromMatrixPosition(
       chassisBody.current.matrixWorld
     );
+    setCarPosition(position.clone());
+
+    if (thirdPersonRef.current) return;
     const quaternion = new THREE.Quaternion().setFromRotationMatrix(
       chassisBody.current.matrixWorld
     );
@@ -54,7 +56,6 @@ export default function Car({
 
     camera.position.copy(position.clone().add(worldDirection));
     camera.lookAt(position);
-    setCarPosition(position.clone());
   });
 
   return (

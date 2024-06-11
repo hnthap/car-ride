@@ -1,27 +1,25 @@
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import { Car, Ground, TheSun } from "./components";
 import { Vector3 } from "three";
+import { LandmarkName } from "./util";
 
-export default function MainScene() {
-  const [carPosition, setCarPosition] = useState(new Vector3());
+export default function MainScene({
+  setCarPosition,
+  setLandmark,
+  debug,
+}: {
+  setCarPosition: React.Dispatch<React.SetStateAction<Vector3>>;
+  setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
+  debug: React.RefObject<boolean>;
+}) {
   return (
     <Suspense fallback={null}>
-      <TheSun
-        carPosition={carPosition}
-        position={[0, 50, -50]}
-        intensity={25}
-        near={50}
-        far={200}
-        top={15}
-        bottom={-15}
-        left={-10}
-        right={10}
-      />
+      <TheSun position={[0, 120, -240]} />
       <OrbitControls makeDefault rotateSpeed={0.5} />
-      <PerspectiveCamera makeDefault position={[0, 400, -6.21]} fov={40} />
+      <PerspectiveCamera makeDefault position={[0, 180, -6.21]} fov={40} />
       <Car setCarPosition={setCarPosition} />
-      <Ground />
+      <Ground debug={debug} setLandmark={setLandmark} />
     </Suspense>
   );
 }
