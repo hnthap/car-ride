@@ -27,7 +27,6 @@ export default function useWheels(
     rollInfluence: 0.01,
     maxSuspensionTravel: 0.1,
     customSlidingRotationalSpeed: -15,
-    customSlidingRotationalSpeed: -15,
     useCustomSlidingRotationalSpeed: true,
   };
   const scaledWidth = width * 0.65;
