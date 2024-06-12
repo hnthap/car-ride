@@ -14,7 +14,7 @@ export default function Home() {
     gui.add(debug, "current").name("Debug mode");
     return gui;
   });
-  const [landmark, setLandmark] = useState<LandmarkName>("Arc de Triomphe");
+  const [landmark, setLandmark] = useState<LandmarkName>(null);
   return (
     <section className="w-full h-screen relative">
       <Canvas
