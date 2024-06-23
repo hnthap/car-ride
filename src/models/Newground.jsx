@@ -144,13 +144,6 @@ export function Newground(props) {
             <mesh
               castShadow
               receiveShadow
-              geometry={nodes.shaidao_57_6_D_zhibei_12_0.geometry}
-              material={materials.D_zhibei_12}
-              rotation={[-Math.PI / 2, 0, 0]}
-            />
-            <mesh
-              castShadow
-              receiveShadow
               geometry={nodes.shaidao_57_7_D_qiang_5_0.geometry}
               material={materials.D_qiang_5}
               rotation={[-Math.PI / 2, 0, 0]}
@@ -213,13 +206,6 @@ export function Newground(props) {
               receiveShadow
               geometry={nodes.shaidao_60_10_D_qiang_3_0.geometry}
               material={materials.D_qiang_3}
-              rotation={[-Math.PI / 2, 0, 0]}
-            />
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={nodes.shaidao_60_11_D_qiang_5_0.geometry}
-              material={materials.D_qiang_5}
               rotation={[-Math.PI / 2, 0, 0]}
             />
             <mesh
