@@ -1,6 +1,5 @@
 import { useCompoundBody } from "@react-three/cannon";
 import { useEffect, useRef } from "react";
-// import { eiffelTower } from "../models";
 import { EiffelTower as Model } from "../models";
 import * as THREE from "three";
 import * as CANNON from "cannon-es";
@@ -13,11 +12,13 @@ export default function EiffelTower({
   debug,
   setLandmark,
   landmarkLookup,
+  setThirdPerson,
 }: ObstacleProps & {
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
   landmarkLookup: React.MutableRefObject<{
     [key: string]: THREE.Object3D;
   }>;
+  setThirdPerson: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const objectRef = useRef<THREE.Object3D>(null);
 
@@ -113,6 +114,7 @@ export default function EiffelTower({
       position,
       onCollideBegin() {
         setLandmark("Eiffel Tower");
+        setThirdPerson(true);
       },
     }),
     useRef(null)

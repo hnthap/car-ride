@@ -11,12 +11,16 @@ export default function MainScene({
   debug,
   landmark,
   orbit,
+  thirdPerson,
+  setThirdPerson,
 }: {
   setCarPosition: React.Dispatch<React.SetStateAction<Vector3>>;
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
   debug: React.RefObject<boolean>;
   landmark: LandmarkName;
-  orbit: React.RefObject<VanillaOrbitControls>
+  orbit: React.RefObject<VanillaOrbitControls>;
+  thirdPerson: boolean;
+  setThirdPerson: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const landmarkLookup = useRef<{ [key: string]: Object3D }>({});
 
@@ -47,8 +51,14 @@ export default function MainScene({
         rotateSpeed={0.5}
       />
       <PerspectiveCamera makeDefault position={[0, 180, -6.21]} fov={40} />
-      <Car orbit={orbit} setCarPosition={setCarPosition} />
+      <Car
+        orbit={orbit}
+        setCarPosition={setCarPosition}
+        thirdPerson={thirdPerson}
+        setThirdPerson={setThirdPerson}
+      />
       <Ground
+        setThirdPerson={setThirdPerson}
         landmarkLookup={landmarkLookup}
         debug={debug}
         setLandmark={setLandmark}
@@ -56,9 +66,3 @@ export default function MainScene({
     </Suspense>
   );
 }
-
-      {/* <spotLight intensity={10000} position={[10, 10, 10]} castShadow renderOrder={100} /> */}
-      {/* <directionalLight intensity={9} position={[0, 12, 0]}
-      target={targetObject}
-      castShadow shadow-camera-right={150} shadow-camera-left={-125} shadow-camera-top={150} shadow-camera-bottom={-25} shadow-camera-far={100} shadow-camera-near={0.1} /> */}
-      {/* <Environment files={"/sky.jpg"} /> */}

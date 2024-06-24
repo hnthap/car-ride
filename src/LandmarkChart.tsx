@@ -56,7 +56,7 @@ function getLandmarkInfo(name: LandmarkName): {
       return {
         title: "Eiffel Tower",
         content: [
-          "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889. (Wikipedia)",
+          "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1888. (Wikipedia)",
         ],
         image: "/Eiffel_Tower_20051010.jpg",
         url: "https://en.wikipedia.org/wiki/Eiffel_Tower",
@@ -67,7 +67,7 @@ function getLandmarkInfo(name: LandmarkName): {
         title: "Notre-Dame de Paris",
         content: [
           'Notre-Dame de Paris (meaning "Our Lady of Paris"), referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité (an island in the Seine River), in the 4th arrondissement of Paris, France. The cathedral, dedicated to the Virgin Mary, is considered one of the finest examples of French Gothic architecture. ',
-          "Several attributes set it apart from the earlier Romanesque style, particularly its pioneering use of the rib vault and flying buttress, its enormous and colourful rose windows, and the naturalism and abundance of its sculptural decoration. Notre-Dame also stands out for its three pipe organs (one historic) and its immense church bells.(Wikipedia) ",
+          "Several attributes set it apart from the earlier Romanesque style, particularly its pioneering use of the rib vault and flying buttress, its enormous and colourful rose windows, and the naturalism and abundance of its sculptural decoration. Notre-Dame also stands out for its three pipe organs (one historic) and its immense church bells. (Wikipedia) ",
         ],
         image: "/Flèche_et_rosace_transept_sud_Notre-Dame_de_Paris.jpg",
         url: "https://www.notredamedeparis.fr/",
