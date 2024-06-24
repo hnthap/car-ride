@@ -1,34 +1,77 @@
-# Car Ride
+# Giả lập di chuyển xe
 
-THIS PROJECT IS STILL UNDER DEVELOPMENT. A LOT OF FEATURES HAVE NOT BEEN IMPLEMENTED YET.
+Đồ án môn Đồ họa máy tính CS105.O22.KHCL của nhóm 15.
 
-## Prerequisites
+## Yêu cầu
 
-* NodeJS
+- NodeJS để chạy chương trình,
+- `git` để tải repository này về máy.
 
-## Usage
+## Hướng dẫn sử dụng
+
+### Cài đặt
 
 ```{bash}
-git clone https://github.com/hnthap/car-ride --depth=1
+git clone https://github.com/hnthap/car-ride.git --depth=1
 cd car-ride
 npm install
+```
+
+### Chạy
+
+```{bash}
+npm run build
+npm run preview
+```
+
+### Dev mode
+
+```{bash}
 npm run dev
 ```
 
-## Credit
+## Ghi công
 
-Contributors:
+### Hình ảnh
 
-* hnthap
+| Hình ảnh | Mô tả | Nguồn | Giấy phép |
+| --- | --- | --- | --- |
+| <img src="public/controls.png" width="200px" /> | Các phím di chuyển | [*Ecctrl + Fisheye*](https://codesandbox.io/s/nvk9pf) | Không áp dụng |
+| <img src="public/Eiffel_Tower_20051010.jpg" width="300px" /> | Tháp Eiffel | [Tognopop (Wikimedia Commons)](https://commons.wikimedia.org/wiki/File:Eiffel_Tower_20051010.jpg) | [Phạm vi công cộng](https://en.wikipedia.org/wiki/Public_domain) |
+| <img src="public/Crowds_of_French_patriots_line_the_Champs_Elysees-edit2.jpg" width="300px" /> | Khải hoàn môn | [Jack Downey (Wikimedia Commons)](https://commons.wikimedia.org/wiki/File:Crowds_of_French_patriots_line_the_Champs_Elysees-edit2.jpg) | [Phạm vi công cộng](https://en.wikipedia.org/wiki/Public_domain) |
+| <img src="public/Flèche_et_rosace_transept_sud_Notre-Dame_de_Paris.jpg" width="200px" /> | Nhà thờ Đức Bà Paris | [Jebulon (Wikimedia Commons)](https://commons.wikimedia.org/wiki/File:Fl%C3%A8che_et_rosace_transept_sud_Notre-Dame_de_Paris.jpg) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
 
-Styling at `postcss.config.js`, `tailwind.config.js` and `src/index.css` and configurations at `vite.config.ts` are from [*3D portfolio* by Adrian Hajdin](https://github.com/adrianhajdin/3D_portfolio).
 
-The image at `public/controls.png` is from [*Ecctrl + Fisheye*](https://codesandbox.io/s/nvk9pf).
+### Mô hình 3D
 
-3D models:
+| Mô hình | Mô tả | Tác giả | Giấy phép |
+| --- | --- | --- | --- |
+| <img src="images/car.png" width="200px" /> [Car Scene](https://skfb.ly/6uSoM) | Xe | toivo | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/ground.png" width="300px" /> [sport car racing paris](https://skfb.ly/oIME6) | Địa hình, đường xá, tháp Eiffel và Khải hoàn môn | amogusstrikesback2 | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/birch.png" width="300px" /> [Birch Tree](https://sketchfab.com/3d-models/birch-tree-aa842dffd9654d33b8b91170ce83c172) | Cây bạch dương | evolveduk | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/fancy-house.png" width="300px" /> [Preceptory and Dower House - game asset](https://sketchfab.com/3d-models/preceptory-and-dower-house-game-asset-50d31c70e44b4000b17d81ff0fbcdf98) | Nhà thường | Andy Woodhead | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/modern-house.png" width="300px" /> [Modern Home](https://sketchfab.com/3d-models/modern-home-7054d2d8710b4213ad3857c1e37e57ec) | Nhà thường | Ciolan-T. Sebastian | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/oggy-house.png" width="300px" /> [Oggy House](https://sketchfab.com/3d-models/oggys-house-d65ef2f37773403b8f40cd9f49faec13) | Nhà thường | 18sh Det Har Ar Hadeed NAUTTP | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/NOTRE-DAME-de-paris.png" width="300px" /> [Notre-Dame de Paris](https://sketchfab.com/3d-models/notre-dame-de-paris-cbe2bbde869c4139912ce2cc35567d2c) | Nhà thờ Đức Bà Paris | copybrian | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
-* [*Car Scene* by toivo (CC-BY)](https://skfb.ly/6uSoM)
-* [*SkyBox Basic Sky* by Paul (CC-BY)](https://skfb.ly/oIHQL)
-* [*sport car racing paris* by amogusstrikesback2 (CC-BY)](https://skfb.ly/oIME6)
+## Việc cần làm
 
-<a href="https://www.freepik.com/free-photo/white-cloud-blue-sky-sea_3962982.htm#fromView=search&page=1&position=1&uuid=1cd46f5e-037f-4af0-a8ee-3596d38fdf2f">Image by lifeforstock on Freepik</a>
+### Dễ
+
+- [x] Thêm nguồn ảnh
+- [x] Thêm nguồn mô hình vào các file JSX
+- [ ] Bỏ các bức tường thấp và bãi cỏ xanh quanh Khải hoàn môn
+- [ ] Thêm nhà và cây cho đỡ trống trải
+- [x] Dọn dẹp file không dùng đến
+  
+### Trung bình
+
+- [x] Sửa vị trí khởi đầu của xe
+- [x] Cải thiện GUI controller
+- [x] Control auto rotate.
+- [ ] Nếu xe rơi tự do khỏi map, spawn xe về vị trí trước khi rơi
+- [ ] Better control car movement.
+
+### Khó
+
+- [ ] Night mode.

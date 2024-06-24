@@ -56,7 +56,7 @@ export default function useWheels(
   function propsFunc(): CompoundBodyProps {
     return {
       collisionFilterGroup: 0,
-      mass: 5,
+      mass: 20,
       shapes: [
         {
           // @ts-expect-error Somehow it must be it
