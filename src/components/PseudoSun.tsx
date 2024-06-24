@@ -1,7 +1,7 @@
 import { Triplet } from "@react-three/cannon";
 import { Object3D } from "three";
 
-export default function TheSun({ position }: { position: Triplet }) {
+export function PseudoSun({ position }: { position: Triplet }) {
   return (
     <mesh position={position}>
       <sphereGeometry args={[5, 15, 10]} />

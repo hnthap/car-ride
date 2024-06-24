@@ -1,8 +1,9 @@
-import { LandmarkName, ObstacleProps } from "../util";
 import { NotreDameDeParis as Model } from "../models";
 import { Triplet, useBox } from "@react-three/cannon";
 import * as THREE from "three";
 import { useEffect, useRef } from "react";
+import { ObstacleProps } from "./Obstacle";
+import { LandmarkName } from "../LandmarkChart";
 
 export default function NotreDameDeParis({
   position,

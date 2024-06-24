@@ -1,6 +1,5 @@
 import { FancyHouse, ModernHouse, Oggy } from "../models";
-import { ObstacleProps } from "../util";
-import Obstacle from "./Obstacle";
+import Obstacle, { ObstacleProps } from "./Obstacle";
 
 export type HouseProps = ObstacleProps & { name: "Oggy" | "Fancy" | "Modern" };
 

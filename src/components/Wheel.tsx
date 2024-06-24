@@ -1,14 +1,18 @@
+import { Triplet } from "@react-three/cannon";
+import { GroupProps } from "@react-three/fiber";
 import * as THREE from "three";
 import { WheelA } from "../models";
 
-interface CarWheelProps {
+interface WheelProps extends GroupProps {
   radius: number;
   wheelRef: React.Ref<THREE.Group>;
+  position?: Triplet;
 }
 
-export default function CarWheel({ radius, wheelRef }: CarWheelProps) {
+export default function Wheel(props: WheelProps) {
+  const { radius, wheelRef } = props;
   return (
-    <group ref={wheelRef}>
+    <group {...props} ref={wheelRef}>
       <mesh rotation={[0, 0, 0.5 * Math.PI]}>
         <cylinderGeometry args={[radius, radius, 0.015, 16]} />
         <meshNormalMaterial transparent opacity={0.25} />

@@ -2,24 +2,29 @@ import { Triplet, useBox, useRaycastVehicle } from "@react-three/cannon";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
 import { useControls, useWheels } from "../hooks";
 import { WheellessCar } from "../models";
-import CarWheel from "./DemoWheel";
-import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
+import Wheel from "./Wheel";
 
 export default function Car({
   setCarPosition,
   orbit,
+  startPosition,
+  startRotationY,
 }: {
   setCarPosition: React.Dispatch<React.SetStateAction<THREE.Vector3>>;
   orbit: React.RefObject<VanillaOrbitControls>;
+  startPosition?: Triplet;
+  startRotationY?: number;
 }) {
   const thirdPersonRef = useRef(true);
-  const position: Triplet = [-6, 0, 7];
   const width = 0.15;
   const height = 0.07;
   const front = 0.15;
   const wheelRadius = 0.05;
+  const position: Triplet = startPosition ?? [6, 1, 7];
+  const rotationY = startRotationY ?? 65 * Math.PI / 180;
 
   const [chassisBody, chassisApi] = useBox<THREE.Group>(
     () => ({
@@ -27,6 +32,7 @@ export default function Car({
       args: [width, height, 2 * front],
       mass: 400,
       position,
+      rotation: [0, rotationY, 0],
     }),
     useRef(null)
   );
@@ -79,12 +85,12 @@ export default function Car({
   return (
     <group ref={vehicle}>
       <group ref={chassisBody}>
-        <WheellessCar transparent opacity={0.3} position={position} />
+        <WheellessCar transparent opacity={0.3} />
       </group>
-      <CarWheel wheelRef={wheels[0]} radius={wheelRadius} />
-      <CarWheel wheelRef={wheels[1]} radius={wheelRadius} />
-      <CarWheel wheelRef={wheels[2]} radius={wheelRadius} />
-      <CarWheel wheelRef={wheels[3]} radius={wheelRadius} />
+      <Wheel wheelRef={wheels[0]} radius={wheelRadius} position={position} />
+      <Wheel wheelRef={wheels[1]} radius={wheelRadius} position={position} />
+      <Wheel wheelRef={wheels[2]} radius={wheelRadius} position={position} />
+      <Wheel wheelRef={wheels[3]} radius={wheelRadius} position={position} />
     </group>
   );
 }
