@@ -1,23 +1,25 @@
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Suspense, useEffect, useRef } from "react";
-import { Car, Ground, TheSun } from "./components";
 import { Object3D, Vector3 } from "three";
-import { LandmarkName } from "./util";
+import { Car, Ground, PseudoSun } from "./components";
+import { LandmarkName } from "./LandmarkChart";
 import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
 
 export default function MainScene({
   setCarPosition,
   setLandmark,
   debug,
-  landmark
+  landmark,
+  orbit,
 }: {
   setCarPosition: React.Dispatch<React.SetStateAction<Vector3>>;
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
   debug: React.RefObject<boolean>;
   landmark: LandmarkName;
+  orbit: React.RefObject<VanillaOrbitControls>
 }) {
-  const orbit = useRef<VanillaOrbitControls>(null);
   const landmarkLookup = useRef<{ [key: string]: Object3D }>({});
+
   useEffect(() => {
     if (
       !landmarkLookup.current ||
@@ -32,10 +34,18 @@ export default function MainScene({
       .add(new Vector3(0, 50, 50));
     orbit.current.update();
   }, [landmark]);
+
   return (
     <Suspense fallback={null}>
-      <TheSun position={[0, 120, -240]} />
-      <OrbitControls autoRotate autoRotateSpeed={10} ref={orbit} makeDefault rotateSpeed={0.5} />
+      <PseudoSun position={[0, 120, -240]} />
+      <OrbitControls
+        autoRotate
+        autoRotateSpeed={10}
+        ref={orbit}
+        makeDefault
+        maxDistance={10}
+        rotateSpeed={0.5}
+      />
       <PerspectiveCamera makeDefault position={[0, 180, -6.21]} fov={40} />
       <Car orbit={orbit} setCarPosition={setCarPosition} />
       <Ground

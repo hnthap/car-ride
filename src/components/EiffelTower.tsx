@@ -1,12 +1,13 @@
 import { useCompoundBody } from "@react-three/cannon";
 import { useEffect, useRef } from "react";
-import { LandmarkName, ObstacleProps } from "../util";
 // import { eiffelTower } from "../models";
-import { EiffelTower } from "../models";
+import { EiffelTower as Model } from "../models";
 import * as THREE from "three";
 import * as CANNON from "cannon-es";
+import { ObstacleProps } from "./Obstacle";
+import { LandmarkName } from "../LandmarkChart";
 
-export default function EiffelTowerProps({
+export default function EiffelTower({
   position,
   rotation,
   debug,
@@ -119,7 +120,7 @@ export default function EiffelTowerProps({
 
   return (
     <mesh ref={ref1} castShadow receiveShadow>
-      <EiffelTower
+      <Model
         position={position}
         rotation={[0, rotation, 0]}
         innerRef={objectRef}

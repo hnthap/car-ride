@@ -7,8 +7,8 @@ import {
 import Tree, { TreeProps } from "./Tree";
 import { HouseProps } from "./House";
 import EiffelTower from "./EiffelTower";
-import { LandmarkName } from "../util";
 import { Object3D } from "three";
+import { LandmarkName } from "../LandmarkChart";
 
 export default function Ground({
   debug,
