@@ -44,15 +44,15 @@ npm run dev
 
 ### Mô hình 3D
 
-| Mô hình | Mô tả | Tác giả | Giấy phép |
+| Mô hình | Mô tả | Nguồn | Giấy phép |
 | --- | --- | --- | --- |
-| <img src="images/car.png" width="200px" /> [Car Scene](https://skfb.ly/6uSoM) | Xe | toivo | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| <img src="images/ground.png" width="300px" /> [sport car racing paris](https://skfb.ly/oIME6) | Địa hình, đường xá, tháp Eiffel và Khải hoàn môn | amogusstrikesback2 | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| <img src="images/birch.png" width="300px" /> [Birch Tree](https://sketchfab.com/3d-models/birch-tree-aa842dffd9654d33b8b91170ce83c172) | Cây bạch dương | evolveduk | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| <img src="images/fancy-house.png" width="300px" /> [Preceptory and Dower House - game asset](https://sketchfab.com/3d-models/preceptory-and-dower-house-game-asset-50d31c70e44b4000b17d81ff0fbcdf98) | Nhà thường | Andy Woodhead | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| <img src="images/modern-house.png" width="300px" /> [Modern Home](https://sketchfab.com/3d-models/modern-home-7054d2d8710b4213ad3857c1e37e57ec) | Nhà thường | Ciolan-T. Sebastian | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| <img src="images/oggy-house.png" width="300px" /> [Oggy House](https://sketchfab.com/3d-models/oggys-house-d65ef2f37773403b8f40cd9f49faec13) | Nhà thường | 18sh Det Har Ar Hadeed NAUTTP | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-| <img src="images/NOTRE-DAME-de-paris.png" width="300px" /> [Notre-Dame de Paris](https://sketchfab.com/3d-models/notre-dame-de-paris-cbe2bbde869c4139912ce2cc35567d2c) | Nhà thờ Đức Bà Paris | copybrian | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/car.png" width="200px" /> | Xe | [Car Scene](https://skfb.ly/6uSoM) của toivo | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/ground.png" width="300px" /> | Địa hình, đường xá, tháp Eiffel và Khải hoàn môn | [sport car racing paris](https://skfb.ly/oIME6) của amogusstrikesback2 | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/birch.png" width="300px" /> | Cây bạch dương | [Birch Tree](https://sketchfab.com/3d-models/birch-tree-aa842dffd9654d33b8b91170ce83c172) của evolveduk | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/fancy-house.png" width="300px" /> | Nhà thường | [Preceptory and Dower House - game asset](https://sketchfab.com/3d-models/preceptory-and-dower-house-game-asset-50d31c70e44b4000b17d81ff0fbcdf98) của Andy Woodhead | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/modern-house.png" width="300px" /> | Nhà thường | [Modern Home](https://sketchfab.com/3d-models/modern-home-7054d2d8710b4213ad3857c1e37e57ec) của Ciolan-T. Sebastian | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/oggy-house.png" width="300px" /> | Nhà thường | [Oggy House](https://sketchfab.com/3d-models/oggys-house-d65ef2f37773403b8f40cd9f49faec13) của 18sh Det Har Ar Hadeed NAUTTP | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| <img src="images/NOTRE-DAME-de-paris.png" width="300px" /> | Nhà thờ Đức Bà Paris | [Notre-Dame de Paris](https://sketchfab.com/3d-models/notre-dame-de-paris-cbe2bbde869c4139912ce2cc35567d2c) của copybrian | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
 ## Việc cần làm
 

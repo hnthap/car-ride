@@ -11,11 +11,13 @@ export default function NotreDameDeParis({
   debug,
   setLandmark,
   landmarkLookup,
+  setThirdPerson,
 }: ObstacleProps & {
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
   landmarkLookup: React.MutableRefObject<{
     [key: string]: THREE.Object3D;
   }>;
+  setThirdPerson: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const objectRef = useRef<THREE.Object3D>(null);
 
@@ -40,6 +42,7 @@ export default function NotreDameDeParis({
       rotation: [0, (68 * Math.PI) / 180, 0],
       onCollide() {
         setLandmark("Notre-Dame de Paris");
+        setThirdPerson(true);
       },
     }),
     useRef(null)
