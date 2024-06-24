@@ -12,11 +12,13 @@ export default function ArcDeTriomphe({
   debug,
   setLandmark,
   landmarkLookup,
+  setThirdPerson,
 }: ObstacleProps & {
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
   landmarkLookup: React.MutableRefObject<{
     [key: string]: THREE.Object3D;
   }>;
+  setThirdPerson: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const objectRef = useRef<THREE.Object3D>(null);
 
@@ -51,6 +53,7 @@ export default function ArcDeTriomphe({
       type: "Static",
       onCollide() {
         setLandmark("Arc de Triomphe");
+        setThirdPerson(true);
       },
     }),
     useRef(null)
@@ -64,6 +67,7 @@ export default function ArcDeTriomphe({
       type: "Static",
       onCollide() {
         setLandmark("Arc de Triomphe");
+        setThirdPerson(true);
       },
     }),
     useRef(null)
@@ -77,6 +81,7 @@ export default function ArcDeTriomphe({
       type: "Static",
       onCollide() {
         setLandmark("Arc de Triomphe");
+        setThirdPerson(true);
       },
     }),
     useRef(null)
@@ -90,6 +95,7 @@ export default function ArcDeTriomphe({
       type: "Static",
       onCollide() {
         setLandmark("Arc de Triomphe");
+        setThirdPerson(true);
       },
     }),
     useRef(null)
@@ -103,6 +109,7 @@ export default function ArcDeTriomphe({
       type: "Static",
       onCollide() {
         setLandmark("Arc de Triomphe");
+        setThirdPerson(true);
       },
     }),
     useRef(null)
@@ -116,6 +123,7 @@ export default function ArcDeTriomphe({
       type: "Static",
       onCollide() {
         setLandmark("Arc de Triomphe");
+        setThirdPerson(true);
       },
     }),
     useRef(null)
@@ -129,6 +137,7 @@ export default function ArcDeTriomphe({
       type: "Static",
       onCollide() {
         setLandmark("Arc de Triomphe");
+        setThirdPerson(true);
       },
     }),
     useRef(null)
@@ -142,6 +151,7 @@ export default function ArcDeTriomphe({
       type: "Static",
       onCollide() {
         setLandmark("Arc de Triomphe");
+        setThirdPerson(true);
       },
     }),
     useRef(null)

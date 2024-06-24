@@ -1,4 +1,4 @@
-import { Physics } from "@react-three/cannon";
+import { Physics, Triplet } from "@react-three/cannon";
 import { Canvas } from "@react-three/fiber";
 import * as dat from "dat.gui";
 import { useEffect, useRef, useState } from "react";
@@ -14,16 +14,43 @@ export function App() {
   const [landmark, setLandmark] = useState<LandmarkName>(null);
   const debug = useRef(false);
   const orbit = useRef<VanillaOrbitControls>(null);
+  const [thirdPerson, setThirdPerson] = useState(false);
 
   useEffect(() => {
     if (orbit.current === null) return;
+
     const gui = new dat.GUI();
+
+    // Debug mode
     gui.add(debug, "current").name("Debug mode");
-    gui.add(orbit.current!, "autoRotate").name("Auto rotate");
+
+    // Person ("first" or "third")
+    gui
+      .add({ v: thirdPerson ? "third" : "first" }, "v", ["first", "third"])
+      .name("Person")
+      .onChange((v) => setThirdPerson(v === "third"));
+
+    // Orbit controls's auto rotate
+    const orbitAutoRotate = gui
+      .add(orbit.current, "autoRotate")
+      .name("Auto rotate");
+    let lastOrbitAutoRotate: boolean;
+    function handleMouseDown() {
+      lastOrbitAutoRotate = orbit.current!.autoRotate;
+      orbitAutoRotate.setValue(false);
+    }
+    function handleMouseUp() {
+      orbitAutoRotate.setValue(lastOrbitAutoRotate);
+    }
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("mouseup", handleMouseUp);
+
     return () => {
       gui.destroy();
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [orbit.current]);
+  }, [orbit.current, thirdPerson]);
 
   return (
     <>
@@ -32,6 +59,8 @@ export function App() {
           <MainScene
             landmark={landmark}
             debug={debug}
+            thirdPerson={thirdPerson}
+            setThirdPerson={setThirdPerson}
             setCarPosition={setCarPosition}
             setLandmark={setLandmark}
             orbit={orbit}

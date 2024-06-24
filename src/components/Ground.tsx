@@ -14,12 +14,14 @@ export default function Ground({
   debug,
   setLandmark,
   landmarkLookup,
+  setThirdPerson,
 }: {
   debug: React.RefObject<boolean>;
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
   landmarkLookup: React.MutableRefObject<{
     [key: string]: Object3D;
   }>;
+  setThirdPerson: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const treeInfos: TreeProps[] = [
     {
@@ -695,7 +697,7 @@ export default function Ground({
       name: "Modern",
     },
   ];
-  
+
   return (
     <>
       <Landscape debug={debug} />
@@ -711,6 +713,7 @@ export default function Ground({
         debug={debug}
         setLandmark={setLandmark}
         landmarkLookup={landmarkLookup}
+        setThirdPerson={setThirdPerson}
       />
       <EiffelTower
         position={[-41, 0, -16.5]}
@@ -718,6 +721,7 @@ export default function Ground({
         debug={debug}
         setLandmark={setLandmark}
         landmarkLookup={landmarkLookup}
+        setThirdPerson={setThirdPerson}
       />
       <NotreDameDeParis
         position={[20, 0, -30]}
@@ -725,6 +729,7 @@ export default function Ground({
         debug={debug}
         setLandmark={setLandmark}
         landmarkLookup={landmarkLookup}
+        setThirdPerson={setThirdPerson}
       />
     </>
   );
