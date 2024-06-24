@@ -1,7 +1,6 @@
 import { Triplet } from "@react-three/cannon";
 import Birch1 from "../models/Birch1";
-import Obstacle from "./Obstacle";
-import { ObstacleProps } from "../util";
+import Obstacle, { ObstacleProps } from "./Obstacle";
 
 export type TreeProps = ObstacleProps & {
   position: Triplet;

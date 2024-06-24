@@ -1,6 +1,17 @@
 import { Triplet, useBox } from "@react-three/cannon";
 import { useRef } from "react";
-import { ObstacleProps, ThingProps } from "../util";
+
+export interface ThingProps {
+  colliderBoxScale: Triplet;
+  thingScale: Triplet;
+  thingPosition: Triplet;
+}
+
+export type ObstacleProps = {
+  position: Triplet;
+  rotation?: number;
+  debug?: React.RefObject<boolean>;
+}
 
 export default function Obstacle({
   position,

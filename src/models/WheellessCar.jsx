@@ -12,7 +12,12 @@ export function WheellessCar(props) {
   const { nodes, materials } = useGLTF("/CarAndWheels/tireless_car.glb");
   return (
     <group {...props} dispose={null} ref={props.innerRef}>
-      <group scale={[0.0015, 0.0015, 0.0015]} position={[6.001, -0.085, -7.04]} rotation={[0, -Math.PI/2, 0]}>
+      <group
+        scale={[0.0015, 0.0015, 0.0015]}
+        // position={[6.001, -0.085, -7.04]}
+        position={[0.002, -0.055, -0.05]}
+        rotation={[0, -Math.PI / 2, 0]}
+      >
         <group position={[40.507, 74.477, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <mesh
             castShadow
