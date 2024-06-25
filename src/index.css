@@ -12,8 +12,32 @@ body {
 
 .control-keys {
     position: absolute;
-    width: 6rem;
+    width: 10rem;
     left: 5%;
+    bottom: 5%;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.github-logo {
+    position: absolute;
+    height: 5%;
+    left: 45%;
+    bottom: 5%;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.uit-logo {
+    position: absolute;
+    height: 5%;
+    right: 45%;
     bottom: 5%;
     user-select: none;
     -moz-user-select: none;

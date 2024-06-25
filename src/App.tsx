@@ -21,18 +21,8 @@ export function App() {
   const [loading, setLoading] = useState<string | null>(null);
   const { progress } = useProgress();
 
-  let lastProgress: number | null = null;
   useEffect(() => {
-    console.log(`loading ${progress} %`);
-    if (progress === 100) {
-      setLoading(null);
-    } else {
-      if (lastProgress !== null && lastProgress > progress) {
-        return;
-      }
-      setLoading(`Loading ${progress.toFixed(1)} %`);
-      lastProgress = progress;
-    }
+    setLoading(progress === 100 ? null : `Loading ${progress.toFixed(1)} %`);
   }, [progress]);
 
   useEffect(() => {
@@ -111,6 +101,12 @@ export function App() {
         </div>
       )}
       {landmark && <LandmarkChart name={landmark} />}
+      <a target="_blank" href="https://github.com/hnthap/car-ride">
+        <img className="github-logo" src="/github.png" alt="GitHub" />
+      </a>
+      <a target="_blank" href="https://en.uit.edu.vn/">
+        <img className="uit-logo" src="/uit.png" alt="UIT" />
+      </a>
       <img className="control-keys" src="/controls.png" alt="control keys" />
     </>
   );
