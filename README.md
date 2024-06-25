@@ -53,25 +53,3 @@ npm run dev
 | <img src="images/modern-house.png" width="300px" /> | Nhà thường | [Modern Home](https://sketchfab.com/3d-models/modern-home-7054d2d8710b4213ad3857c1e37e57ec) của Ciolan-T. Sebastian | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | <img src="images/oggy-house.png" width="300px" /> | Nhà thường | [Oggy House](https://sketchfab.com/3d-models/oggys-house-d65ef2f37773403b8f40cd9f49faec13) của 18sh Det Har Ar Hadeed NAUTTP | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | <img src="images/NOTRE-DAME-de-paris.png" width="300px" /> | Nhà thờ Đức Bà Paris | [Notre-Dame de Paris](https://sketchfab.com/3d-models/notre-dame-de-paris-cbe2bbde869c4139912ce2cc35567d2c) của copybrian | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
-
-## Việc cần làm
-
-### Dễ
-
-- [x] Thêm nguồn ảnh
-- [x] Thêm nguồn mô hình vào các file JSX
-- [ ] Bỏ các bức tường thấp và bãi cỏ xanh quanh Khải hoàn môn
-- [ ] Thêm nhà và cây cho đỡ trống trải
-- [x] Dọn dẹp file không dùng đến
-  
-### Trung bình
-
-- [x] Sửa vị trí khởi đầu của xe
-- [x] Cải thiện GUI controller
-- [x] Control auto rotate.
-- [ ] Nếu xe rơi tự do khỏi map, spawn xe về vị trí trước khi rơi
-- [ ] Better control car movement.
-
-### Khó
-
-- [ ] Night mode.
