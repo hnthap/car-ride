@@ -6,8 +6,13 @@ const STEERING_VALUE_BACK = 0.05;
 const ENGINE_FORCE_BACK = 150;
 const BRAKE_BACK = 10;
 
-type Keys = Record<string, boolean>;
-const ALLOWED_KEYS = new Set(["a", "d", "r", "s", "w", " ", "enter"]);
+const CAR_CONTROL_KEYS = ["a", "d", "r", "s", "w", " ", "enter"] as const;
+const CAR_CONTROL_KET_SET = new Set(CAR_CONTROL_KEYS);
+type CarControlKey = (typeof CAR_CONTROL_KEYS)[number];
+
+function isCarControlKey(key: string): key is CarControlKey {
+  return CAR_CONTROL_KET_SET.has(key as CarControlKey);
+}
 
 export default function useControls(
   vehicleApi: RaycastVehiclePublicApi,
@@ -56,22 +61,32 @@ export default function useControls(
     setThirdPerson((third) => !third);
   }
 
-  const [keys, setKeys] = useState<Keys>({});
+  const [keys, setKeys] = useState<Record<CarControlKey, boolean>>({
+    a: false,
+    d: false,
+    r: false,
+    s: false,
+    w: false,
+    " ": false,
+    enter: false,
+  });
 
   useEffect(() => {
     function handleKeyDown(ev: KeyboardEvent) {
       if (ev.ctrlKey) return;
       const key = ev.key.toLowerCase();
-      if (!ALLOWED_KEYS.has(key)) return;
-      setKeys((keys) => ({ ...keys, [key]: true }));
+      if (isCarControlKey(key) && keys[key] === false) {
+        setKeys((keys) => ({ ...keys, [key]: true }));
+      }
       ev.preventDefault();
     }
 
     function handleKeyUp(ev: KeyboardEvent) {
       if (ev.ctrlKey) return;
       const key = ev.key.toLowerCase();
-      if (!ALLOWED_KEYS.has(key)) return;
-      setKeys((keys) => ({ ...keys, [key]: false }));
+      if (isCarControlKey(key) && keys[key] === true) {
+        setKeys((keys) => ({ ...keys, [key]: false }));
+      }
       ev.preventDefault();
     }
 
@@ -83,7 +98,7 @@ export default function useControls(
       window.removeEventListener("keyup", handleKeyUp);
     };
   });
-
+  
   useEffect(() => {
     if (keys["a"] && keys["d"]) {
       goStraight();
