@@ -19,11 +19,14 @@ export function App() {
   const [thirdPerson, setThirdPerson] = useState(false);
   const [message, setMessage, subMessage] = useMessages();
   const [loading, setLoading] = useState<string | null>(null);
-  const { progress } = useProgress();
+  const { progress, item } = useProgress();
 
   useEffect(() => {
-    setLoading(progress === 100 ? null : `Loading ${progress.toFixed(1)} %`);
-  }, [progress]);
+    const s: string = item.startsWith("/")
+      ? `Loading ${item.split("/").pop()} ${progress.toFixed(1)} %`
+      : `Loading ${progress.toFixed(1)} %`;
+    setLoading(progress === 100 ? null : s);
+  }, [progress, item]);
 
   useEffect(() => {
     if (orbit.current === null) return;
