@@ -1,4 +1,4 @@
-import { Physics, Triplet } from "@react-three/cannon";
+import { Physics } from "@react-three/cannon";
 import { Canvas } from "@react-three/fiber";
 import * as dat from "dat.gui";
 import { useEffect, useRef, useState } from "react";
@@ -6,6 +6,8 @@ import * as THREE from "three";
 import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
 import { LandmarkChart, LandmarkName } from "./LandmarkChart.tsx";
 import MainScene from "./MainScene.tsx";
+import { useProgress } from "@react-three/drei";
+import { useMessages } from "./hooks/useMessages.ts";
 
 export function App() {
   const [carPosition, setCarPosition] = useState(
@@ -15,6 +17,13 @@ export function App() {
   const debug = useRef(false);
   const orbit = useRef<VanillaOrbitControls>(null);
   const [thirdPerson, setThirdPerson] = useState(false);
+  const [message, setMessage, subMessage] = useMessages();
+  const [loading, setLoading] = useState<string | null>(null);
+  const { progress } = useProgress();
+
+  useEffect(() => {
+    setLoading(progress === 100 ? null : `Loading ${progress.toFixed(1)} %`);
+  }, [progress]);
 
   useEffect(() => {
     if (orbit.current === null) return;
@@ -63,6 +72,7 @@ export function App() {
             setThirdPerson={setThirdPerson}
             setCarPosition={setCarPosition}
             setLandmark={setLandmark}
+            setMessage={setMessage}
             orbit={orbit}
           />
         </Physics>
@@ -79,7 +89,24 @@ export function App() {
           <p key={i}>{v}</p>
         ))}
       </div>
+      {loading && <div className="loading">{loading}</div>}
+      {message && (
+        <div className="message">
+          <img src="public/warning.png" alt="warning" width={"100px"} />
+          <p>{message}</p>
+          <p>{subMessage}</p>
+          <div className="chart-close-button" onClick={() => setMessage(null)}>
+            {"[x]"}
+          </div>
+        </div>
+      )}
       {landmark && <LandmarkChart name={landmark} />}
+      <a target="_blank" href="https://github.com/hnthap/car-ride">
+        <img className="github-logo" src="/github.png" alt="GitHub" />
+      </a>
+      <a target="_blank" href="https://en.uit.edu.vn/">
+        <img className="uit-logo" src="/uit.png" alt="UIT" />
+      </a>
       <img className="control-keys" src="/controls.png" alt="control keys" />
     </>
   );
