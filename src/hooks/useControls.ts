@@ -84,7 +84,7 @@ export default function useControls(
     function handleKeyUp(ev: KeyboardEvent) {
       if (ev.ctrlKey) return;
       const key = ev.key.toLowerCase();
-      if (isCarControlKey(key) && keys[key]) {
+      if (isCarControlKey(key) && keys[key] === true) {
         setKeys((keys) => ({ ...keys, [key]: false }));
       }
       ev.preventDefault();
@@ -98,42 +98,6 @@ export default function useControls(
       window.removeEventListener("keyup", handleKeyUp);
     };
   });
-
-  useEffect(() => {
-    if (keys["a"] && keys["d"]) {
-      goStraight();
-    } else if (keys["a"]) {
-      turnLeft();
-    } else if (keys["d"]) {
-      turnRight();
-    } else {
-      goStraight();
-    }
-
-    if (keys["w"] && keys["s"]) {
-      deaccelerate();
-    } else if (keys["w"]) {
-      accelerateForward();
-    } else if (keys["s"]) {
-      accelerateBackward();
-    } else {
-      deaccelerate();
-    }
-
-    if (keys[" "]) {
-      brake();
-    } else {
-      ease();
-    }
-
-    if (keys["r"]) {
-      resetPlace();
-    }
-
-    if (keys["enter"]) {
-      switchPerson();
-    }
-  }, [keys]);
 
   useEffect(() => {
     if (keys["a"] && keys["d"]) {
