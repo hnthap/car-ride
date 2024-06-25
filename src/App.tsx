@@ -1,4 +1,4 @@
-import { Physics, Triplet } from "@react-three/cannon";
+import { Physics } from "@react-three/cannon";
 import { Canvas } from "@react-three/fiber";
 import * as dat from "dat.gui";
 import { useEffect, useRef, useState } from "react";
@@ -15,6 +15,7 @@ export function App() {
   const debug = useRef(false);
   const orbit = useRef<VanillaOrbitControls>(null);
   const [thirdPerson, setThirdPerson] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (orbit.current === null) return;
@@ -63,6 +64,7 @@ export function App() {
             setThirdPerson={setThirdPerson}
             setCarPosition={setCarPosition}
             setLandmark={setLandmark}
+            setMessage={setMessage}
             orbit={orbit}
           />
         </Physics>
@@ -79,6 +81,18 @@ export function App() {
           <p key={i}>{v}</p>
         ))}
       </div>
+      {message && (
+        <div className="message">
+          <img src="public/warning.png" alt="warning" width={"100px"} />
+          <p>{message}</p>
+          <p style={{ fontSize: "9pt" }} onClick={() => setMessage(null)}>
+            {"[click here to close]"}
+          </p>
+          <div className="chart-close-button" onClick={() => setMessage(null)}>
+            {"[x]"}
+          </div>
+        </div>
+      )}
       {landmark && <LandmarkChart name={landmark} />}
       <img className="control-keys" src="/controls.png" alt="control keys" />
     </>
