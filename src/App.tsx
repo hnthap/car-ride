@@ -95,7 +95,7 @@ export function App() {
       {loading && <div className="loading">{loading}</div>}
       {message && (
         <div className="message">
-          <img src="public/warning.png" alt="warning" width={"100px"} />
+          <img src="/warning.png" alt="warning" width={"100px"} />
           <p>{message}</p>
           <p>{subMessage}</p>
           <div className="chart-close-button" onClick={() => setMessage(null)}>
