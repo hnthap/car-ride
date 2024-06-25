@@ -134,4 +134,40 @@ export default function useControls(
       switchPerson();
     }
   }, [keys]);
+
+  useEffect(() => {
+    if (keys["a"] && keys["d"]) {
+      goStraight();
+    } else if (keys["a"]) {
+      turnLeft();
+    } else if (keys["d"]) {
+      turnRight();
+    } else {
+      goStraight();
+    }
+
+    if (keys["w"] && keys["s"]) {
+      deaccelerate();
+    } else if (keys["w"]) {
+      accelerateForward();
+    } else if (keys["s"]) {
+      accelerateBackward();
+    } else {
+      deaccelerate();
+    }
+
+    if (keys[" "]) {
+      brake();
+    } else {
+      ease();
+    }
+
+    if (keys["r"]) {
+      resetPlace();
+    }
+
+    if (keys["enter"]) {
+      switchPerson();
+    }
+  }, [keys]);
 }
