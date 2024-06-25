@@ -1,10 +1,18 @@
 import { PublicApi, RaycastVehiclePublicApi } from "@react-three/cannon";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { START_CAR_POSITION, START_CAR_ROTATION_Y } from "../utils";
 
 const STEERING_VALUE_BACK = 0.05;
 const ENGINE_FORCE_BACK = 150;
 const BRAKE_BACK = 10;
+
+const CAR_CONTROL_KEYS = ["a", "d", "r", "s", "w", " ", "enter"] as const;
+const CAR_CONTROL_KET_SET = new Set(CAR_CONTROL_KEYS);
+type CarControlKey = (typeof CAR_CONTROL_KEYS)[number];
+
+function isCarControlKey(key: string): key is CarControlKey {
+  return CAR_CONTROL_KET_SET.has(key as CarControlKey);
+}
 
 export default function useControls(
   vehicleApi: RaycastVehiclePublicApi,
@@ -53,29 +61,32 @@ export default function useControls(
     setThirdPerson((third) => !third);
   }
 
-  useEffect(() => {
+  const [keys, setKeys] = useState<Record<CarControlKey, boolean>>({
+    a: false,
+    d: false,
+    r: false,
+    s: false,
+    w: false,
+    " ": false,
+    enter: false,
+  });
 
+  useEffect(() => {
     function handleKeyDown(ev: KeyboardEvent) {
       if (ev.ctrlKey) return;
       const key = ev.key.toLowerCase();
-
-      if (key === "a") turnLeft();
-      else if (key === "d") turnRight();
-      else if (key === "w") accelerateForward();
-      else if (key === "s") accelerateBackward();
-      else if (key === " ") brake();
-      else if (key === "r") resetPlace();
-      else if (key === "enter") switchPerson();
+      if (isCarControlKey(key) && keys[key] === false) {
+        setKeys((keys) => ({ ...keys, [key]: true }));
+      }
       ev.preventDefault();
     }
 
     function handleKeyUp(ev: KeyboardEvent) {
       if (ev.ctrlKey) return;
       const key = ev.key.toLowerCase();
-      
-      if (key === "a" || key === "d") goStraight();
-      else if (key === "w" || key === "s") deaccelerate();
-      else if (key === " ") ease();
+      if (isCarControlKey(key) && keys[key]) {
+        setKeys((keys) => ({ ...keys, [key]: false }));
+      }
       ev.preventDefault();
     }
 
@@ -87,4 +98,40 @@ export default function useControls(
       window.removeEventListener("keyup", handleKeyUp);
     };
   });
+
+  useEffect(() => {
+    if (keys["a"] && keys["d"]) {
+      goStraight();
+    } else if (keys["a"]) {
+      turnLeft();
+    } else if (keys["d"]) {
+      turnRight();
+    } else {
+      goStraight();
+    }
+
+    if (keys["w"] && keys["s"]) {
+      deaccelerate();
+    } else if (keys["w"]) {
+      accelerateForward();
+    } else if (keys["s"]) {
+      accelerateBackward();
+    } else {
+      deaccelerate();
+    }
+
+    if (keys[" "]) {
+      brake();
+    } else {
+      ease();
+    }
+
+    if (keys["r"]) {
+      resetPlace();
+    }
+
+    if (keys["enter"]) {
+      switchPerson();
+    }
+  }, [keys]);
 }
