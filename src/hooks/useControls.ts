@@ -56,6 +56,7 @@ export default function useControls(
   useEffect(() => {
 
     function handleKeyDown(ev: KeyboardEvent) {
+      if (ev.ctrlKey) return;
       const key = ev.key.toLowerCase();
 
       if (key === "a") turnLeft();
@@ -65,14 +66,17 @@ export default function useControls(
       else if (key === " ") brake();
       else if (key === "r") resetPlace();
       else if (key === "enter") switchPerson();
+      ev.preventDefault();
     }
 
     function handleKeyUp(ev: KeyboardEvent) {
+      if (ev.ctrlKey) return;
       const key = ev.key.toLowerCase();
-
+      
       if (key === "a" || key === "d") goStraight();
       else if (key === "w" || key === "s") deaccelerate();
       else if (key === " ") ease();
+      ev.preventDefault();
     }
 
     window.addEventListener("keydown", handleKeyDown);
