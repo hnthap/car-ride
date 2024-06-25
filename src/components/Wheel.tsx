@@ -9,18 +9,23 @@ interface WheelProps extends GroupProps {
   position?: Triplet;
 }
 
-export default function Wheel(props: WheelProps) {
-  const { radius, wheelRef } = props;
+export default function Wheel(
+  props: WheelProps & {
+    debug: React.RefObject<boolean>;
+  }
+) {
+  const { radius, wheelRef, debug } = props;
   return (
     <group {...props} ref={wheelRef}>
-      <mesh rotation={[0, 0, 0.5 * Math.PI]}>
+      <mesh rotation={[0, 0, 0.5 * Math.PI]} visible={debug?.current ?? false}>
         <cylinderGeometry args={[radius, radius, 0.015, 16]} />
-        <meshNormalMaterial transparent opacity={0.25} />
+        <meshNormalMaterial transparent opacity={0.5} />
       </mesh>
       <WheelA
         scale={[0.002, 0.002, 0.002]}
         position={[-0.123, 0.14255, -0.05]}
         rotation={[0, Math.PI / 2, Math.PI / 2]}
+        visible={!(debug?.current ?? false)}
       />
     </group>
   );

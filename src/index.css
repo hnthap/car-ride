@@ -1,4 +1,4 @@
-html, body {
+body {
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -12,8 +12,32 @@ html, body {
 
 .control-keys {
     position: absolute;
-    width: 6rem;
+    width: 10rem;
     left: 5%;
+    bottom: 5%;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.github-logo {
+    position: absolute;
+    height: 5%;
+    left: 45%;
+    bottom: 5%;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.uit-logo {
+    position: absolute;
+    height: 5%;
+    right: 45%;
     bottom: 5%;
     user-select: none;
     -moz-user-select: none;
@@ -61,6 +85,48 @@ html, body {
     -ms-user-select: none;
 }
 
+div.message {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30%;
+    background-color: rgb(0, 0, 0, 0.9);
+    color: lightyellow;
+    font-size: 13pt;
+    text-align: center;
+    padding-left: 20pt;
+    padding-right: 15pt;
+    padding-top: 20pt;
+    padding-bottom: 10pt;
+    font-family: 'Times New Roman', Times, serif;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+div.loading {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30%;
+    background-color: rgb(255, 255, 255, 0.5);
+    color: rgb(0, 0, 0, 0.33);
+    font-size: 13pt;
+    text-align: center;
+    padding-left: 20pt;
+    padding-right: 15pt;
+    padding-top: 20pt;
+    padding-bottom: 10pt;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 .info-chart p {
     padding-bottom: 10pt;
     text-align: justify;
@@ -91,14 +157,13 @@ html, body {
     position: absolute;
     top: 0%;
     right: 0%;
-    background-color: rgb(0, 0, 0, 0.11);
     color: white;
-    padding-left: 9pt;
     padding-right: 9pt;
     padding-top: 3pt;
     padding-bottom: 3pt;
     font-family: monospace;
     user-select: none;
+    text-align: center;
     -moz-user-select: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;

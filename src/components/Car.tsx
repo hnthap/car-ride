@@ -15,6 +15,7 @@ export default function Car({
   startRotationY,
   thirdPerson,
   setThirdPerson,
+  debug,
 }: {
   setCarPosition: React.Dispatch<React.SetStateAction<THREE.Vector3>>;
   orbit: React.RefObject<VanillaOrbitControls>;
@@ -22,6 +23,7 @@ export default function Car({
   startRotationY?: number;
   thirdPerson: boolean;
   setThirdPerson: React.Dispatch<React.SetStateAction<boolean>>;
+  debug: React.RefObject<boolean>;
 }) {
   const width = 0.15;
   const height = 0.07;
@@ -86,13 +88,33 @@ export default function Car({
 
   return (
     <group ref={vehicle}>
-      <group ref={chassisBody}>
+      <group ref={chassisBody} visible={!(debug?.current ?? false)}>
         <WheellessCar transparent opacity={0.3} />
       </group>
-      <Wheel wheelRef={wheels[0]} radius={wheelRadius} position={position} />
-      <Wheel wheelRef={wheels[1]} radius={wheelRadius} position={position} />
-      <Wheel wheelRef={wheels[2]} radius={wheelRadius} position={position} />
-      <Wheel wheelRef={wheels[3]} radius={wheelRadius} position={position} />
+      <Wheel
+        wheelRef={wheels[0]}
+        radius={wheelRadius}
+        position={position}
+        debug={debug}
+      />
+      <Wheel
+        wheelRef={wheels[1]}
+        radius={wheelRadius}
+        position={position}
+        debug={debug}
+      />
+      <Wheel
+        wheelRef={wheels[2]}
+        radius={wheelRadius}
+        position={position}
+        debug={debug}
+      />
+      <Wheel
+        wheelRef={wheels[3]}
+        radius={wheelRadius}
+        position={position}
+        debug={debug}
+      />
     </group>
   );
 }

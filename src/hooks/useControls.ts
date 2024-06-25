@@ -2,8 +2,7 @@ import { PublicApi, RaycastVehiclePublicApi } from "@react-three/cannon";
 import { useEffect } from "react";
 import { START_CAR_POSITION, START_CAR_ROTATION_Y } from "../utils";
 
-// const STEERING_VALUE_FRONT = 0.1;
-const STEERING_VALUE_BACK = 0.1;
+const STEERING_VALUE_BACK = 0.05;
 const ENGINE_FORCE_BACK = 150;
 const BRAKE_BACK = 10;
 
@@ -53,6 +52,7 @@ export default function useControls(
   function switchPerson() {
     setThirdPerson((third) => !third);
   }
+
   useEffect(() => {
 
     function handleKeyDown(ev: KeyboardEvent) {
