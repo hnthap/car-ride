@@ -6,6 +6,8 @@ import * as THREE from "three";
 import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
 import { LandmarkChart, LandmarkName } from "./LandmarkChart.tsx";
 import MainScene from "./MainScene.tsx";
+import { useProgress } from "@react-three/drei";
+import { useMessages } from "./hooks/useMessages.ts";
 
 export function App() {
   const [carPosition, setCarPosition] = useState(
@@ -15,7 +17,23 @@ export function App() {
   const debug = useRef(false);
   const orbit = useRef<VanillaOrbitControls>(null);
   const [thirdPerson, setThirdPerson] = useState(false);
-  const [message, setMessage] = useState<string | null>(null);
+  const [message, setMessage, subMessage] = useMessages();
+  const [loading, setLoading] = useState<string | null>(null);
+  const { progress } = useProgress();
+
+  let lastProgress: number | null = null;
+  useEffect(() => {
+    console.log(`loading ${progress} %`);
+    if (progress === 100) {
+      setLoading(null);
+    } else {
+      if (lastProgress !== null && lastProgress > progress) {
+        return;
+      }
+      setLoading(`Loading ${progress.toFixed(1)} %`);
+      lastProgress = progress;
+    }
+  }, [progress]);
 
   useEffect(() => {
     if (orbit.current === null) return;
@@ -81,13 +99,12 @@ export function App() {
           <p key={i}>{v}</p>
         ))}
       </div>
+      {loading && <div className="loading">{loading}</div>}
       {message && (
         <div className="message">
           <img src="public/warning.png" alt="warning" width={"100px"} />
           <p>{message}</p>
-          <p style={{ fontSize: "9pt" }} onClick={() => setMessage(null)}>
-            {"[click here to close]"}
-          </p>
+          <p>{subMessage}</p>
           <div className="chart-close-button" onClick={() => setMessage(null)}>
             {"[x]"}
           </div>

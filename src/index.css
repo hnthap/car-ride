@@ -82,6 +82,27 @@ div.message {
     -ms-user-select: none;
 }
 
+div.loading {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30%;
+    background-color: rgb(255, 255, 255, 0.5);
+    color: rgb(0, 0, 0, 0.33);
+    font-size: 13pt;
+    text-align: center;
+    padding-left: 20pt;
+    padding-right: 15pt;
+    padding-top: 20pt;
+    padding-bottom: 10pt;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 .info-chart p {
     padding-bottom: 10pt;
     text-align: justify;

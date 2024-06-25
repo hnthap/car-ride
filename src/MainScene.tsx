@@ -45,8 +45,8 @@ export default function MainScene({
     <Suspense fallback={null}>
       <PseudoSun position={[0, 120, -240]} />
       <OrbitControls
-        autoRotate={false}
-        autoRotateSpeed={10}
+        autoRotate={true}
+        autoRotateSpeed={5}
         ref={orbit}
         makeDefault
         maxDistance={50}
