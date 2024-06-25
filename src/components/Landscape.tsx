@@ -22,11 +22,16 @@ export default function Landscape(
 
   const rightlandArgs0: Triplet = [110, 0.1, 100.5];
   const rightlandArgs1: Triplet = [110, 0.1, 25];
-  const rightlandArgs2: [number, number, number, number] = [5, 10, 1, 40];
+  const rightlandArgs2: Triplet = [11.9, 4, 0.01,];
   const rightlandArgs3: Triplet = [24, 0.1, 48];
   const rightlandArgs4: Triplet = [40, 0.1, 130];
   const rightlandArgs5: Triplet = [40, 0.1, 130];
   const rightlandArgs6: Triplet = [15, 0.1, 15];
+  const rightlandArgs7: Triplet = [7, 5, 0.01];
+  const rightlandArgs8: Triplet = [12.55, 5, 0.01];
+  const rightlandArgs9: Triplet = [5.5, 5, 0.01];
+  const rightlandArgs10: Triplet = [9, 5, 0.01];
+  const rightlandArgs11: Triplet = [4, 5, 0.01];
 
   const bridgeArgs3_1_1: Triplet = [11, 1, 2];
   const bridgeArgs3_1_2: Triplet = [4, 0.06, 2];
@@ -88,11 +93,16 @@ export default function Landscape(
 
   const rightlandPos0: Triplet = [-60, -0.05, -48.4];
   const rightlandPos1: Triplet = [39.75, -0.05, 8.4];
-  const rightlandPos2: Triplet = [-70, rightlandArgs2[2] / 2, -58];
+  const rightlandPos2: Triplet = [-66.5, 1, -58];
   const rightlandPos3: Triplet = [5, -0.26, -48];
   const rightlandPos4: Triplet = [43.15, -0.4, -25.45];
   const rightlandPos5: Triplet = [50, -0.45, -36];
   const rightlandPos6: Triplet = [10, -0.29, -36];
+  const rightlandPos7: Triplet = [-68.45, 1, -52];
+  const rightlandPos8: Triplet = [-78.4, 1, -59.5];
+  const rightlandPos9: Triplet = [-70.7, 1, -63.4];
+  const rightlandPos10: Triplet = [-76, 1, -53.6];
+  const rightlandPos11: Triplet = [-81.5, 1, -55.65];
 
   const bridgePos3_1_1: Triplet = [37.7, -0.5, 25.3];
   const bridgePos3_1_2: Triplet = [38.65, 0.1, 22.7];
@@ -166,6 +176,7 @@ export default function Landscape(
 
   const rightlandRot0: Triplet = [0, (-1 * Math.PI) / 180, 0];
   const rightlandRot1: Triplet = [0, (-23 * Math.PI) / 180, 0];
+  const rightlandRot2: Triplet = [0, (105 * Math.PI) / 180, 0];
   const rightlandRot3: Triplet = [
     (0 * Math.PI) / 180,
     (-1 * Math.PI) / 180,
@@ -186,6 +197,11 @@ export default function Landscape(
     (-113 * Math.PI) / 180,
     (0.6 * Math.PI) / 180,
   ];
+  const rightlandRot7: Triplet = [0, (5 * Math.PI) / 180, 0];
+  const rightlandRot8: Triplet = [0, (36 * Math.PI) / 180, 0];
+  const rightlandRot9: Triplet = [0, (4 * Math.PI) / 180, 0];
+  const rightlandRot10: Triplet = [0, (-25 * Math.PI) / 180, 0];
+  const rightlandRot11: Triplet = [0, (-7 * Math.PI) / 180, 0];
 
   const bridgeRot3_1_1: Triplet = [0, (69.69 * Math.PI) / 180, 0];
   const bridgeRot3_1_2: Triplet = [
@@ -278,7 +294,11 @@ export default function Landscape(
           rotation: rightlandRot1,
           type: "Box",
         },
-        { args: rightlandArgs2, position: rightlandPos2, type: "Cylinder" },
+        { args: rightlandArgs2,
+          position: rightlandPos2, 
+          rotation: rightlandRot2, 
+          type: "Box" 
+        },
         {
           args: rightlandArgs3,
           position: rightlandPos3,
@@ -301,6 +321,36 @@ export default function Landscape(
           args: rightlandArgs6,
           position: rightlandPos6,
           rotation: rightlandRot6,
+          type: "Box",
+        },
+        {
+          args: rightlandArgs7,
+          position: rightlandPos7,
+          rotation: rightlandRot7,
+          type: "Box",
+        },
+        {
+          args: rightlandArgs8,
+          position: rightlandPos8,
+          rotation: rightlandRot8,
+          type: "Box",
+        },
+        {
+          args: rightlandArgs9,
+          position: rightlandPos9,
+          rotation: rightlandRot9,
+          type: "Box",
+        },
+        {
+          args: rightlandArgs10,
+          position: rightlandPos10,
+          rotation: rightlandRot10,
+          type: "Box",
+        },
+        {
+          args: rightlandArgs11,
+          position: rightlandPos11,
+          rotation: rightlandRot11,
           type: "Box",
         },
 
@@ -654,8 +704,11 @@ export default function Landscape(
           <boxGeometry args={rightlandArgs3} />
           <meshBasicMaterial transparent={true} opacity={1} color="blue" />
         </mesh>
-        <mesh visible={debug?.current ?? false} position={rightlandPos2}>
-          <cylinderGeometry args={rightlandArgs2} />
+        <mesh visible={debug?.current ?? false}
+              position={rightlandPos2}
+              rotation={rightlandRot2}
+        >
+          <boxGeometry args={rightlandArgs2} />
           <meshBasicMaterial transparent={true} opacity={1} color="yellow" />
         </mesh>
         <mesh
@@ -673,6 +726,46 @@ export default function Landscape(
         >
           <boxGeometry args={rightlandArgs5} />
           <meshBasicMaterial transparent={true} opacity={1} color="pink" />
+        </mesh>
+        <mesh
+          visible={debug?.current ?? false}
+          position={rightlandPos7}
+          rotation={rightlandRot7}
+        >
+          <boxGeometry args={rightlandArgs7} />
+          <meshBasicMaterial transparent={true} opacity={1} color="brown" />
+        </mesh>
+        <mesh
+          visible={debug?.current ?? false}
+          position={rightlandPos8}
+          rotation={rightlandRot8}
+        >
+          <boxGeometry args={rightlandArgs8} />
+          <meshBasicMaterial transparent={true} opacity={1} color="brown" />
+        </mesh>
+        <mesh
+          visible={debug?.current ?? false}
+          position={rightlandPos9}
+          rotation={rightlandRot9}
+        >
+          <boxGeometry args={rightlandArgs9} />
+          <meshBasicMaterial transparent={true} opacity={1} color="brown" />
+        </mesh>
+        <mesh
+          visible={debug?.current ?? false}
+          position={rightlandPos10}
+          rotation={rightlandRot10}
+        >
+          <boxGeometry args={rightlandArgs10} />
+          <meshBasicMaterial transparent={true} opacity={1} color="brown" />
+        </mesh>
+        <mesh
+          visible={debug?.current ?? false}
+          position={rightlandPos11}
+          rotation={rightlandRot11}
+        >
+          <boxGeometry args={rightlandArgs11} />
+          <meshBasicMaterial transparent={true} opacity={1} color="brown" />
         </mesh>
         <mesh
           visible={debug?.current ?? false}
