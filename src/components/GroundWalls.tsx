@@ -14,7 +14,7 @@ export function GroundWalls({
       rotation: [0, (60 * Math.PI) / 180, 0],
     },
     {
-      position: [-32, 0, 30],
+      position: [-32, 0, 45],
       width: 200,
       rotation: [0, (170 * Math.PI) / 180, 0],
     },

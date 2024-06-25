@@ -70,6 +70,10 @@ export default function Landscape(
   const seablockArgs22: Triplet = [14, 10, 0.01];
   const seablockArgs23: Triplet = [14, 10, 0.01];
   const seablockArgs24: Triplet = [14, 10, 0.01];
+  const seablockArgs25: Triplet = [14, 10, 0.01];
+  const seablockArgs26: Triplet = [14, 10, 0.01];
+  const seablockArgs27: Triplet = [14, 10, 0.01];
+  const seablockArgs28: Triplet = [14, 10, 0.01];
 
   const leftlandPos0: Triplet = [-81, -0.05, 40.2];
   const leftlandPos1: Triplet = [-39, -0.05, 39];
@@ -132,6 +136,10 @@ export default function Landscape(
   const seablockPos22: Triplet = [-67.2, -0.5, 8.3];
   const seablockPos23: Triplet = [-67.2, -0.5, 8.3];
   const seablockPos24: Triplet = [-67.2, -0.5, 8.3];
+  const seablockPos25: Triplet = [-67.2, -0.5, 8.3];
+  const seablockPos26: Triplet = [-67.2, -0.5, 8.3];
+  const seablockPos27: Triplet = [-67.2, -0.5, 8.3];
+  const seablockPos28: Triplet = [-67.2, -0.5, 8.3];
 
   const leftlandRot0: Triplet = [0, (1.28 * Math.PI) / 180, 0];
   const leftlandRot1: Triplet = [0, (4 * Math.PI) / 180, 0];
@@ -249,6 +257,10 @@ export default function Landscape(
   const seablockRot22: Triplet = [0, (89.7 * Math.PI) / 180, 0];
   const seablockRot23: Triplet = [0, (89.7 * Math.PI) / 180, 0];
   const seablockRot24: Triplet = [0, (89.7 * Math.PI) / 180, 0];
+  const seablockRot25: Triplet = [0, (89.7 * Math.PI) / 180, 0];
+  const seablockRot26: Triplet = [0, (89.7 * Math.PI) / 180, 0];
+  const seablockRot27: Triplet = [0, (89.7 * Math.PI) / 180, 0];
+  const seablockRot28: Triplet = [0, (89.7 * Math.PI) / 180, 0];
 
   const [ref1] = useCompoundBody<THREE.Mesh>(
     () => ({
