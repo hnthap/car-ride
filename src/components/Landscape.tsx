@@ -59,11 +59,11 @@ export default function Landscape(
   const seablockArgs11: Triplet = [14, 10, 0.01];
   const seablockArgs12: Triplet = [14, 10, 0.01];
   const seablockArgs13: Triplet = [45, 10, 0.01];
-  const seablockArgs14: Triplet = [14, 10, 0.01];
-  const seablockArgs15: Triplet = [14, 10, 0.01];
-  const seablockArgs16: Triplet = [14, 10, 0.01];
-  const seablockArgs17: Triplet = [14, 10, 0.01];
-  const seablockArgs18: Triplet = [14, 10, 0.01];
+  const seablockArgs14: Triplet = [5.2, 10, 0.01];
+  const seablockArgs15: Triplet = [3.5, 10, 0.01];
+  const seablockArgs16: Triplet = [10, 1.5, 0.01];
+  const seablockArgs17: Triplet = [7, 10, 0.01];
+  const seablockArgs18: Triplet = [9, 10, 0.01];
   const seablockArgs19: Triplet = [14, 10, 0.01];
   const seablockArgs20: Triplet = [14, 10, 0.01];
   const seablockArgs21: Triplet = [14, 10, 0.01];
@@ -121,11 +121,11 @@ export default function Landscape(
   const seablockPos11: Triplet = [-65.25, -0.5, 8.3];
   const seablockPos12: Triplet = [-67.2, -0.5, 8.3];
   const seablockPos13: Triplet = [57.25, -0.5, 40.15];
-  const seablockPos14: Triplet = [-67.2, -0.5, 8.3];
-  const seablockPos15: Triplet = [-67.2, -0.5, 8.3];
-  const seablockPos16: Triplet = [-67.2, -0.5, 8.3];
-  const seablockPos17: Triplet = [-67.2, -0.5, 8.3];
-  const seablockPos18: Triplet = [-67.2, -0.5, 8.3];
+  const seablockPos14: Triplet = [29.25, -0.5, 30.35];
+  const seablockPos15: Triplet = [33.02, -0.5, 29.97];
+  const seablockPos16: Triplet = [16, -1, 26.43];
+  const seablockPos17: Triplet = [23.65, -0.5, 29.88];
+  const seablockPos18: Triplet = [7.5, -0.5, 22.5];
   const seablockPos19: Triplet = [-67.2, -0.5, 8.3];
   const seablockPos20: Triplet = [-67.2, -0.5, 8.3];
   const seablockPos21: Triplet = [-67.2, -0.5, 8.3];
@@ -238,11 +238,11 @@ export default function Landscape(
   const seablockRot11: Triplet = [0, (89.7 * Math.PI) / 180, 0];
   const seablockRot12: Triplet = [0, (89.7 * Math.PI) / 180, 0];
   const seablockRot13: Triplet = [0, (-23 * Math.PI) / 180, 0];
-  const seablockRot14: Triplet = [0, (89.7 * Math.PI) / 180, 0];
-  const seablockRot15: Triplet = [0, (89.7 * Math.PI) / 180, 0];
-  const seablockRot16: Triplet = [0, (89.7 * Math.PI) / 180, 0];
-  const seablockRot17: Triplet = [0, (89.7 * Math.PI) / 180, 0];
-  const seablockRot18: Triplet = [0, (89.7 * Math.PI) / 180, 0];
+  const seablockRot14: Triplet = [0, (19.4 * Math.PI) / 180, 0];
+  const seablockRot15: Triplet = [0, (-20 * Math.PI) / 180, 0];
+  const seablockRot16: Triplet = [0, (-24.7 * Math.PI) / 180, 0];
+  const seablockRot17: Triplet = [0, (-23.5 * Math.PI) / 180, 0];
+  const seablockRot18: Triplet = [0, (-24.9 * Math.PI) / 180, 0];
   const seablockRot19: Triplet = [0, (89.7 * Math.PI) / 180, 0];
   const seablockRot20: Triplet = [0, (89.7 * Math.PI) / 180, 0];
   const seablockRot21: Triplet = [0, (89.7 * Math.PI) / 180, 0];
@@ -518,6 +518,30 @@ export default function Landscape(
         position: seablockPos13,
         rotation: seablockRot13,
         type: "Box",
+        },
+        {
+          args: seablockArgs14,
+          position: seablockPos14,
+          rotation: seablockRot14,
+          type: "Box",
+        },
+        {
+          args: seablockArgs15,
+          position: seablockPos15,
+          rotation: seablockRot15,
+          type: "Box",
+        },
+        {
+          args: seablockArgs16,
+          position: seablockPos16,
+          rotation: seablockRot16,
+          type: "Box",
+        },
+        {
+          args: seablockArgs16,
+          position: seablockPos16,
+          rotation: seablockRot16,
+          type: "Box",
         },
       ],
       position: [0, 0, 0],
@@ -872,12 +896,53 @@ export default function Landscape(
         >
           <boxGeometry args={seablockArgs12} />
           <meshBasicMaterial transparent={true} opacity={1} color="red" />
-        </mesh><mesh
+        </mesh>
+        <mesh
           visible={debug?.current ?? false}
           position={seablockPos13}
           rotation={seablockRot13}
         >
           <boxGeometry args={seablockArgs13} />
+          <meshBasicMaterial transparent={true} opacity={1} color="blue" />
+        </mesh>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos14}
+          rotation={seablockRot14}
+        >
+          <boxGeometry args={seablockArgs14} />
+          <meshBasicMaterial transparent={true} opacity={1} color="blue" />
+        </mesh>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos15}
+          rotation={seablockRot15}
+        >
+          <boxGeometry args={seablockArgs15} />
+          <meshBasicMaterial transparent={true} opacity={1} color="blue" />
+        </mesh>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos16}
+          rotation={seablockRot16}
+        >
+          <boxGeometry args={seablockArgs16} />
+          <meshBasicMaterial transparent={true} opacity={1} color="blue" />
+        </mesh>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos17}
+          rotation={seablockRot17}
+        >
+          <boxGeometry args={seablockArgs17} />
+          <meshBasicMaterial transparent={true} opacity={1} color="blue" />
+        </mesh>
+        <mesh
+          visible={debug?.current ?? false}
+          position={seablockPos18}
+          rotation={seablockRot18}
+        >
+          <boxGeometry args={seablockArgs18} />
           <meshBasicMaterial transparent={true} opacity={1} color="blue" />
         </mesh>
       </mesh>
