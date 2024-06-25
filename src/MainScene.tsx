@@ -49,7 +49,7 @@ export default function MainScene({
         autoRotateSpeed={5}
         ref={orbit}
         makeDefault
-        maxDistance={50}
+        maxDistance={500}
         rotateSpeed={0.5}
       />
       <PerspectiveCamera makeDefault position={[0, 180, -6.21]} fov={40} />

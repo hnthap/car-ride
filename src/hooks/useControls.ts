@@ -98,7 +98,7 @@ export default function useControls(
       window.removeEventListener("keyup", handleKeyUp);
     };
   });
-
+  
   useEffect(() => {
     if (keys["a"] && keys["d"]) {
       goStraight();
