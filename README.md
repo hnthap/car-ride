@@ -2,6 +2,8 @@
 
 Đồ án môn Đồ họa máy tính CS105.O22.KHCL của nhóm 15.
 
+![](./images/starting-screen.png)
+
 ## Yêu cầu
 
 - NodeJS để chạy chương trình,
