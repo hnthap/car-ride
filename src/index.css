@@ -22,10 +22,10 @@ body {
     -ms-user-select: none;
 }
 
-.github-logo {
+.logo-1 {
     position: absolute;
-    height: 5%;
-    left: 45%;
+    width: 4%;
+    left: 48%;
     bottom: 5%;
     user-select: none;
     -moz-user-select: none;
@@ -34,10 +34,10 @@ body {
     -ms-user-select: none;
 }
 
-.uit-logo {
+/* .logo-2 {
     position: absolute;
     height: 5%;
-    right: 45%;
+    left: 50%;
     bottom: 5%;
     user-select: none;
     -moz-user-select: none;
@@ -45,6 +45,18 @@ body {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
+.logo-3 {
+    position: absolute;
+    height: 5%;
+    left: 54%;
+    bottom: 5%;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+} */
 
 .measurement-chart {
     position: absolute;

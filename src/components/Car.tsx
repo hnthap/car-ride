@@ -68,7 +68,7 @@ export default function Car({
       const worldDirection = new THREE.Vector3(0, 0, 1)
         .applyQuaternion(quaternion)
         .normalize()
-        .add(new THREE.Vector3(0, 0.25, 0));
+        .add(new THREE.Vector3(0, 0.19, 0));
 
       camera.position.copy(position.clone().add(worldDirection));
       camera.lookAt(position);
