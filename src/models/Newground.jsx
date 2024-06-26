@@ -36,29 +36,29 @@ export function Newground(props) {
             rotation={[-Math.PI / 2, 0, 0]}
           />
           <group position={[-510.159, -17.934, -88.038]}>
-            <mesh
+            {/* <mesh
               castShadow
               receiveShadow
               geometry={nodes.shaidao_55_10_D_qiang_5_0.geometry}
               material={materials.D_qiang_5}
               rotation={[-Math.PI / 2, 0, 0]}
-            />
-            <mesh
+            /> */}
+            {/* <mesh
               castShadow
               receiveShadow
               geometry={nodes.shaidao_55_11_D_zhibei_12_0.geometry}
               material={materials.D_zhibei_12}
               position={[0, 8.818, 0]}
               rotation={[-Math.PI / 2, 0, 0]}
-            />
-            <mesh
+            /> */}
+            {/* <mesh
               castShadow
               receiveShadow
               geometry={nodes.shaidao_55_12_D_zhibei_11_0.geometry}
               material={materials.D_zhibei_11}
               position={[0, 8.818, 0]}
               rotation={[-Math.PI / 2, 0, 0]}
-            />
+            /> */}
             <mesh
               castShadow
               receiveShadow
@@ -1379,7 +1379,7 @@ export function Newground(props) {
             position={[-309.524, -17.817, -194.075]}
             rotation={[-Math.PI / 2, 0, -2.327]}
           />
-          <mesh
+          {/* <mesh
             castShadow
             receiveShadow
             geometry={nodes.luzhang_2_D_luzhang_2_0.geometry}
@@ -1466,7 +1466,7 @@ export function Newground(props) {
             material={materials.D_luzhang_2}
             position={[-1486.333, -18.186, 136.008]}
             rotation={[-Math.PI / 2, 0, 0.007]}
-          />
+          /> 
           <mesh
             castShadow
             receiveShadow
@@ -1474,7 +1474,7 @@ export function Newground(props) {
             material={materials.D_luzhang_2}
             position={[-483.827, -18.186, 232.184]}
             rotation={[-Math.PI / 2, 0, 1.155]}
-          />
+          />*/}
           <mesh
             castShadow
             receiveShadow
