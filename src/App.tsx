@@ -85,6 +85,7 @@ export function App() {
           `📍 ${carPosition.x.toFixed(2)} -- ${carPosition.y.toFixed(
             2
           )} -- ${carPosition.z.toFixed(2)}`,
+          "press WASD to move",
           "press SPACE to brake",
           "press ENTER to change person",
           "press R to reset location",
@@ -105,11 +106,18 @@ export function App() {
       )}
       {landmark && <LandmarkChart name={landmark} />}
       <a target="_blank" href="https://github.com/hnthap/car-ride">
-        <img className="github-logo" src="/github.png" alt="GitHub" />
+        <img className="logo-1" src="/github.png" alt="GitHub" />
       </a>
-      <a target="_blank" href="https://en.uit.edu.vn/">
-        <img className="uit-logo" src="/uit.png" alt="UIT" />
+      {/* <a target="_blank" href="https://en.uit.edu.vn/">
+        <img className="logo-2" src="/uit.png" alt="UIT" />
       </a>
+      <a target="_blank" href="https://cs.uit.edu.vn/thong-tin-chung-en/">
+        <img
+          className="logo-3"
+          src="/uit-cs-logo.png"
+          alt="UIT Computer Science"
+        />
+      </a> */}
       <img className="control-keys" src="/controls.png" alt="control keys" />
     </>
   );
