@@ -3,7 +3,6 @@ import { useState } from "react";
 export type LandmarkName =
   | "Arc de Triomphe"
   | "Eiffel Tower"
-  | "Notre-Dame de Paris"
   | null;
 
 export function LandmarkChart({ name }: { name: LandmarkName }) {
@@ -60,16 +59,6 @@ function getLandmarkInfo(name: LandmarkName): {
         ],
         image: "/Eiffel_Tower_20051010.jpg",
         url: "https://en.wikipedia.org/wiki/Eiffel_Tower",
-      };
-
-    case "Notre-Dame de Paris":
-      return {
-        title: "Notre-Dame de Paris",
-        content: [
-          'Notre-Dame de Paris (meaning "Our Lady of Paris"), referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité (an island in the Seine River), in the 4th arrondissement of Paris, France. The cathedral, dedicated to the Virgin Mary, is considered one of the finest examples of French Gothic architecture. (Wikipedia) ',
-        ],
-        image: "/Flèche_et_rosace_transept_sud_Notre-Dame_de_Paris.jpg",
-        url: "https://www.notredamedeparis.fr/",
       };
 
     default:

@@ -1,9 +1,4 @@
-import {
-  ArcDeTriomphe,
-  House,
-  Landscape,
-  NotreDameDeParis,
-} from "../components";
+import { ArcDeTriomphe, House, Landscape } from "../components";
 import Tree, { TreeProps } from "./Tree";
 import { HouseProps } from "./House";
 import EiffelTower from "./EiffelTower";
@@ -512,56 +507,6 @@ export default function Ground({
   ];
   const houseInfos: HouseProps[] = [
     {
-      position: [-8, 0, -2.2],
-      rotation: (0.5 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [-14, 0, -2.2],
-      rotation: (0.5 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [-20, 0, -2.2],
-      rotation: (0.5 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [-26, 0, -2.2],
-      rotation: (0.5 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [-32, 0, -2.31],
-      rotation: (-1.55 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [-38, 0, -2.43],
-      rotation: (-1.55 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [-44, 0, -2.55],
-      rotation: (-1.55 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [-50, 0, -2.67],
-      rotation: (-1.55 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [-56, 0, -2.79],
-      rotation: (-1.55 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [-62, 0, -2.91],
-      rotation: (-1.55 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
       position: [-66, 0, -1.5],
       rotation: (-90 * Math.PI) / 180,
       name: "Modern",
@@ -595,76 +540,6 @@ export default function Ground({
       position: [-80.8, 0, -7.6],
       rotation: (-140 * Math.PI) / 180,
       name: "Modern",
-    },
-    {
-      position: [-2.2, 0, -0.8],
-      rotation: (-21.7 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [3.3, 0, 1.33],
-      rotation: (-21.2 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [8.8, 0, 3.47],
-      rotation: (-21.7 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [14.3, 0, 5.64],
-      rotation: (-21.6 * Math.PI) / 180,
-      name: "Oggy",
-    },
-    {
-      position: [10, 0, 28],
-      rotation: (65.3 * Math.PI) / 180,
-      name: "Fancy",
-    },
-    {
-      position: [4, 0, 25.2],
-      rotation: (65.3 * Math.PI) / 180,
-      name: "Fancy",
-    },
-    {
-      position: [-4, 0, 23.2],
-      rotation: (65.3 * Math.PI) / 180,
-      name: "Fancy",
-    },
-    {
-      position: [-10, 0, 22.2],
-      rotation: (90.3 * Math.PI) / 180,
-      name: "Fancy",
-    },
-    {
-      position: [-16, 0, 22.2],
-      rotation: (95.3 * Math.PI) / 180,
-      name: "Fancy",
-    },
-    {
-      position: [-22, 0, 22.8],
-      rotation: (95.3 * Math.PI) / 180,
-      name: "Fancy",
-    },
-    {
-      position: [-28, 0, 23.2],
-      rotation: (95.3 * Math.PI) / 180,
-      name: "Fancy",
-    },
-    {
-      position: [-34, 0, 23.8],
-      rotation: (95.3 * Math.PI) / 180,
-      name: "Fancy",
-    },
-    {
-      position: [-40, 0, 24.5],
-      rotation: (95.3 * Math.PI) / 180,
-      name: "Fancy",
-    },
-    {
-      position: [-44, 0, 25.0],
-      rotation: (95.3 * Math.PI) / 180,
-      name: "Fancy",
     },
     {
       position: [61, -0.22, -4.8],
@@ -718,14 +593,6 @@ export default function Ground({
       <EiffelTower
         position={[-41, 0, -16.5]}
         rotation={(90 * Math.PI) / 180}
-        debug={debug}
-        setLandmark={setLandmark}
-        landmarkLookup={landmarkLookup}
-        setThirdPerson={setThirdPerson}
-      />
-      <NotreDameDeParis
-        position={[20, 0, -30]}
-        rotation={(4 * Math.PI) / 180}
         debug={debug}
         setLandmark={setLandmark}
         landmarkLookup={landmarkLookup}

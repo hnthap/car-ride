@@ -1,4 +1,4 @@
-import { useCylinder } from "@react-three/cannon";
+import { Triplet, useCylinder } from "@react-three/cannon";
 import { useEffect, useRef } from "react";
 import { ArcDeTriomphe as Model } from "../models";
 import * as THREE from "three";
@@ -33,120 +33,64 @@ export default function ArcDeTriomphe({
   }, [landmarkLookup, objectRef]);
 
   const colliderBoxScale: [number, number, number, number] = [0.5, 0.5, 4, 10];
-  const thingScale: [number, number, number] = [0.1, 0.1, 0.1];
-  const thingPosition: [number, number, number] = [0, 0, 0];
-  const pillar1Position: [number, number, number] = [2, 2, 0.7];
-  const pillar2Position: [number, number, number] = [-0.5, 2, 2.1];
-  const pillar3Position: [number, number, number] = [0.5, 2, -2.2];
-  const pillar4Position: [number, number, number] = [-2.1, 2, -0.8];
-  const pillar5Position: [number, number, number] = [-3.8, 2, 0.2];
-  const pillar6Position: [number, number, number] = [-2.3, 2, 3];
-  const pillar7Position: [number, number, number] = [3.8, 2, -0.2];
-  const pillar8Position: [number, number, number] = [2.3, 2, -3.1];
 
-  const [ref1] = useCylinder<THREE.Mesh>(
-    () => ({
-      args: colliderBoxScale,
-      position: new CANNON.Vec3(...position)
-        .vadd(new CANNON.Vec3(...pillar1Position))
-        .toArray(),
-      type: "Static",
-      onCollide() {
-        setLandmark("Arc de Triomphe");
-        setThirdPerson(true);
-      },
-    }),
-    useRef(null)
+  const additionalPositions: Triplet[] = [
+    [2, 2, 0.7],
+    [-0.5, 2, 2.1],
+    [0.5, 2, -2.2],
+    [-2.1, 2, -0.8],
+    [-3.8, 2, 0.2],
+    [-2.3, 2, 3],
+    [3.8, 2, -0.2],
+    [2.3, 2, -3.1],
+  ];
+  return (
+    <group>
+      <Model
+        scale={[0.1, 0.1, 0.1]}
+        position={new CANNON.Vec3(0, 0, 0)
+          .vadd(new CANNON.Vec3(...position))
+          .toArray()}
+        rotation={[0, rotation, 0]}
+        innerRef={objectRef}
+      />
+      {additionalPositions.map((additionPosition, i) => (
+        <CustomCylinder
+          key={i}
+          colliderBoxScale={colliderBoxScale}
+          position={position}
+          additionPosition={additionPosition}
+          setLandmark={setLandmark}
+          setThirdPerson={setThirdPerson}
+          debug={debug}
+        />
+      ))}
+    </group>
   );
-  const [ref2] = useCylinder<THREE.Mesh>(
+}
+
+interface CustomCylinderProps {
+  colliderBoxScale: [number, number, number, number];
+  position: [number, number, number];
+  additionPosition: [number, number, number];
+  setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
+  setThirdPerson: React.Dispatch<React.SetStateAction<boolean>>;
+  debug?: React.RefObject<boolean>;
+}
+
+function CustomCylinder({
+  colliderBoxScale,
+  position,
+  additionPosition,
+  setLandmark,
+  setThirdPerson,
+  debug,
+}: CustomCylinderProps) {
+  const [ref] = useCylinder<THREE.Mesh>(
     () => ({
       args: colliderBoxScale,
       position: new CANNON.Vec3(...position)
-        .vadd(new CANNON.Vec3(...pillar2Position))
-        .toArray(),
-      type: "Static",
-      onCollide() {
-        setLandmark("Arc de Triomphe");
-        setThirdPerson(true);
-      },
-    }),
-    useRef(null)
-  );
-  const [ref3] = useCylinder<THREE.Mesh>(
-    () => ({
-      args: colliderBoxScale,
-      position: new CANNON.Vec3(...position)
-        .vadd(new CANNON.Vec3(...pillar3Position))
-        .toArray(),
-      type: "Static",
-      onCollide() {
-        setLandmark("Arc de Triomphe");
-        setThirdPerson(true);
-      },
-    }),
-    useRef(null)
-  );
-  const [ref4] = useCylinder<THREE.Mesh>(
-    () => ({
-      args: colliderBoxScale,
-      position: new CANNON.Vec3(...position)
-        .vadd(new CANNON.Vec3(...pillar4Position))
-        .toArray(),
-      type: "Static",
-      onCollide() {
-        setLandmark("Arc de Triomphe");
-        setThirdPerson(true);
-      },
-    }),
-    useRef(null)
-  );
-  const [ref5] = useCylinder<THREE.Mesh>(
-    () => ({
-      args: colliderBoxScale,
-      position: new CANNON.Vec3(...position)
-        .vadd(new CANNON.Vec3(...pillar5Position))
-        .toArray(),
-      type: "Static",
-      onCollide() {
-        setLandmark("Arc de Triomphe");
-        setThirdPerson(true);
-      },
-    }),
-    useRef(null)
-  );
-  const [ref6] = useCylinder<THREE.Mesh>(
-    () => ({
-      args: colliderBoxScale,
-      position: new CANNON.Vec3(...position)
-        .vadd(new CANNON.Vec3(...pillar6Position))
-        .toArray(),
-      type: "Static",
-      onCollide() {
-        setLandmark("Arc de Triomphe");
-        setThirdPerson(true);
-      },
-    }),
-    useRef(null)
-  );
-  const [ref7] = useCylinder<THREE.Mesh>(
-    () => ({
-      args: colliderBoxScale,
-      position: new CANNON.Vec3(...position)
-        .vadd(new CANNON.Vec3(...pillar7Position))
-        .toArray(),
-      type: "Static",
-      onCollide() {
-        setLandmark("Arc de Triomphe");
-        setThirdPerson(true);
-      },
-    }),
-    useRef(null)
-  );
-  const [ref8] = useCylinder<THREE.Mesh>(
-    () => ({
-      args: colliderBoxScale,
-      position: new CANNON.Vec3(...position)
-        .vadd(new CANNON.Vec3(...pillar8Position))
+        .vadd(new CANNON.Vec3(...additionPosition))
         .toArray(),
       type: "Static",
       onCollide() {
@@ -157,47 +101,9 @@ export default function ArcDeTriomphe({
     useRef(null)
   );
   return (
-    <group>
-      <Model
-        scale={thingScale}
-        position={new CANNON.Vec3(...thingPosition)
-          .vadd(new CANNON.Vec3(...position))
-          .toArray()}
-        rotation={[0, rotation, 0]}
-        innerRef={objectRef}
-      />
-      <mesh ref={ref1} visible={debug?.current ?? false}>
-        <cylinderGeometry args={colliderBoxScale} />
-        <meshBasicMaterial transparent={true} opacity={0.5} color={"red"} />
-      </mesh>
-      <mesh ref={ref2} visible={debug?.current ?? false}>
-        <cylinderGeometry args={colliderBoxScale} />
-        <meshBasicMaterial transparent={true} opacity={0.5} color={"yellow"} />
-      </mesh>
-      <mesh ref={ref3} visible={debug?.current ?? false}>
-        <cylinderGeometry args={colliderBoxScale} />
-        <meshBasicMaterial transparent={true} opacity={0.5} color={"blue"} />
-      </mesh>
-      <mesh ref={ref4} visible={debug?.current ?? false}>
-        <cylinderGeometry args={colliderBoxScale} />
-        <meshBasicMaterial transparent={true} opacity={0.5} color={"orange"} />
-      </mesh>
-      <mesh ref={ref5} visible={debug?.current ?? false}>
-        <cylinderGeometry args={colliderBoxScale} />
-        <meshBasicMaterial transparent={true} opacity={0.5} color={"cyan"} />
-      </mesh>
-      <mesh ref={ref6} visible={debug?.current ?? false}>
-        <cylinderGeometry args={colliderBoxScale} />
-        <meshBasicMaterial transparent={true} opacity={0.5} color={"green"} />
-      </mesh>
-      <mesh ref={ref7} visible={debug?.current ?? false}>
-        <cylinderGeometry args={colliderBoxScale} />
-        <meshBasicMaterial transparent={true} opacity={0.5} color={"pink"} />
-      </mesh>
-      <mesh ref={ref8} visible={debug?.current ?? false}>
-        <cylinderGeometry args={colliderBoxScale} />
-        <meshBasicMaterial transparent={true} opacity={0.5} color={"white"} />
-      </mesh>
-    </group>
+    <mesh ref={ref} visible={debug?.current ?? false}>
+      <cylinderGeometry args={colliderBoxScale} />
+      <meshBasicMaterial transparent={true} opacity={0.5} color={"red"} />
+    </mesh>
   );
 }
