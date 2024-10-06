@@ -71,8 +71,8 @@ export default function ArcDeTriomphe({
 
 interface CustomCylinderProps {
   colliderBoxScale: [number, number, number, number];
-  position: [number, number, number];
-  additionPosition: [number, number, number];
+  position: Triplet;
+  additionPosition: Triplet;
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
   setThirdPerson: React.Dispatch<React.SetStateAction<boolean>>;
   debug?: React.RefObject<boolean>;

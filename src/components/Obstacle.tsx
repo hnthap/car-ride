@@ -37,7 +37,6 @@ export default function Obstacle({
   return (
     <group position={position} rotation={[0, rotation ?? 0, 0]}>
       <Thing scale={thingScale} position={thingPosition} />
-
       {(debug?.current ?? false) && (
         <mesh position={[0, 0.6, 0]} visible={true}>
           <boxGeometry args={colliderBoxScale} />
