@@ -1,7 +1,7 @@
 import { ModernHouse } from "../models";
 import Obstacle, { ObstacleProps } from "./Obstacle";
 
-export type HouseProps = ObstacleProps & { name: "Modern" };
+export type HouseProps = ObstacleProps;
 
 export default function House(props: HouseProps) {
   return (
