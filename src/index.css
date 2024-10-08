@@ -191,3 +191,24 @@ div.loading {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
+.clock {
+    --padding-horizontal: 20px;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    background-color: black;
+    color: white;
+    font-size: 22pt;
+    text-align: center;
+    font-family: monospace;
+    padding-left: var(--padding-horizontal);
+    padding-right: var(--padding-horizontal);
+    border-radius: 10px;
+    opacity: 0.75;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}

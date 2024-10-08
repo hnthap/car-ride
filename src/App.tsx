@@ -7,7 +7,8 @@ import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
 import { LandmarkChart, LandmarkName } from "./LandmarkChart.tsx";
 import MainScene from "./MainScene.tsx";
 import { useProgress } from "@react-three/drei";
-import { useMessages } from "./hooks/useMessages.ts";
+import { useMessages, useSky } from "./hooks";
+import { Clock } from "./components/Clock.tsx";
 
 export function App() {
   const [carPosition, setCarPosition] = useState(
@@ -20,6 +21,7 @@ export function App() {
   const [message, setMessage, subMessage] = useMessages();
   const [loading, setLoading] = useState<string | null>(null);
   const { progress, item } = useProgress();
+  const { getSkyColor, getLightIntensity, hours } = useSky();
 
   const authors: {
     className: "profile-1" | "profile-2" | "profile-3";
@@ -92,9 +94,10 @@ export function App() {
 
   return (
     <>
-      <Canvas shadows style={{ backgroundColor: "lightblue" }}>
+      <Canvas shadows style={{ backgroundColor: getSkyColor() }}>
         <Physics gravity={[0, -9.81, 0]}>
           <MainScene
+            getLightIntensity={getLightIntensity}
             landmark={landmark}
             debug={debug}
             thirdPerson={thirdPerson}
@@ -106,11 +109,13 @@ export function App() {
           />
         </Physics>
       </Canvas>
+      <Clock hours={hours} />
       <div className="measurement-chart">
         {[
           `📍 ${carPosition.x.toFixed(2)} -- ${carPosition.y.toFixed(
             2
           )} -- ${carPosition.z.toFixed(2)}`,
+          `☀️ ${getLightIntensity().toFixed(1)}`,
           "press WASD to move",
           "press SPACE to brake",
           "press ENTER to change person",
