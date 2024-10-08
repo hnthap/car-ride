@@ -129,6 +129,7 @@ export default function useControls(
 
     if (keys["r"]) {
       resetPlace();
+      setThirdPerson(false);
     }
 
     if (keys["enter"]) {

@@ -14,21 +14,28 @@ export function LandmarkChart({ name }: { name: LandmarkName }) {
         className="chart-close-button"
         onClick={() => setOpen((open) => !open)}
       >
-        {open ? "[close]" : "[open]"}
-      </span>
-      <span className="chart-title">
-        <a href={url} target={"_blank"}>
-          {title}
-        </a>
+        {open ? "[ close ]" : "[ open ]"}
       </span>
       {open && (
         <>
           <img src={image} />
-          {["", ...content].map((v, i) => (
+          <div className="chart-title">{title}</div>
+          {content.map((v, i) => (
             <p key={i}>{v}</p>
-          ))}{" "}
+          ))}
+          <SeeMore name={title} url={url} />
         </>
       )}
+    </div>
+  );
+}
+
+function SeeMore({ name, url }: { name: string; url: string }) {
+  return (
+    <div className="see-more">
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        See more about {name}...
+      </a>
     </div>
   );
 }
