@@ -13,6 +13,5 @@ export {
   ModernHouse,
   Newground,
   WheelA,
-  WheellessCar
+  WheellessCar,
 };
-

@@ -6,11 +6,11 @@ Source: https://sketchfab.com/3d-models/birch-tree-aa842dffd9654d33b8b91170ce83c
 Title: Birch tree
 */
 
-import { useGLTF } from '@react-three/drei'
-import birch_1 from "/ParisScene/birch_tree.glb"
+import { useGLTF } from "@react-three/drei";
+import birch_1 from "/ParisScene/birch_tree.glb";
 
 export default function Birch1(props) {
-  const { nodes, materials } = useGLTF(birch_1)
+  const { nodes, materials } = useGLTF(birch_1);
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>
@@ -28,5 +28,5 @@ export default function Birch1(props) {
         />
       </group>
     </group>
-  )
+  );
 }
