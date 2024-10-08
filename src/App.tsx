@@ -21,6 +21,32 @@ export function App() {
   const [loading, setLoading] = useState<string | null>(null);
   const { progress, item } = useProgress();
 
+  const authors: {
+    className: "profile-1" | "profile-2" | "profile-3";
+    github: string;
+    profileUri: string;
+    alt: string;
+  }[] = [
+    {
+      github: "hnthap",
+      profileUri: "https://avatars.githubusercontent.com/u/94937751?v=4",
+      className: "profile-1",
+      alt: "Huynh Nhan Thap",
+    },
+    {
+      github: "VuNamPhuong",
+      profileUri: "https://avatars.githubusercontent.com/u/96564836?v=4",
+      className: "profile-2",
+      alt: "Vu Nam Phuong",
+    },
+    {
+      github: "daccuong-uit",
+      profileUri: "https://avatars.githubusercontent.com/u/96415329?v=4",
+      className: "profile-3",
+      alt: "Nguyen Dac Cuong",
+    },
+  ];
+
   useEffect(() => {
     const s: string = item.startsWith("/")
       ? `Loading ${item.split("/").pop()} ${progress.toFixed(1)} %`
@@ -108,16 +134,11 @@ export function App() {
       <a target="_blank" href="https://github.com/hnthap/car-ride">
         <img className="logo-1" src="/github.png" alt="GitHub" />
       </a>
-      {/* <a target="_blank" href="https://en.uit.edu.vn/">
-        <img className="logo-2" src="/uit.png" alt="UIT" />
-      </a>
-      <a target="_blank" href="https://cs.uit.edu.vn/thong-tin-chung-en/">
-        <img
-          className="logo-3"
-          src="/uit-cs-logo.png"
-          alt="UIT Computer Science"
-        />
-      </a> */}
+      {authors.map(({ github, className, profileUri, alt }, i) => (
+        <a target="_blank" href={`https://github.com/${github}`} key={i}>
+          <img className={className + " profile"} src={profileUri} alt={alt} />
+        </a>
+      ))}
       <img className="control-keys" src="/controls.png" alt="control keys" />
     </>
   );

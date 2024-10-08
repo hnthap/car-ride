@@ -75,6 +75,7 @@ export default function useControls(
     function handleKeyDown(ev: KeyboardEvent) {
       if (ev.ctrlKey) return;
       const key = ev.key.toLowerCase();
+      if (key === "f12") return;
       if (isCarControlKey(key) && keys[key] === false) {
         setKeys((keys) => ({ ...keys, [key]: true }));
       }
