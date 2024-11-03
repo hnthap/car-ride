@@ -11,6 +11,8 @@ import { useMessages, useSky } from "./hooks";
 import { Clock } from "./components/Clock.tsx";
 
 export function App() {
+  const [realMilliSecondsPer10Minute, setRealMilliSecondsPer10Minute] =
+    useState(300);
   const [carPosition, setCarPosition] = useState(
     new THREE.Vector3(NaN, NaN, NaN)
   );
@@ -21,7 +23,9 @@ export function App() {
   const [message, setMessage, subMessage] = useMessages();
   const [loading, setLoading] = useState<string | null>(null);
   const { progress, item } = useProgress();
-  const { getSkyColor, getLightIntensity, hours } = useSky();
+  const { getSkyColor, getLightIntensity, minutes } = useSky(
+    realMilliSecondsPer10Minute
+  );
 
   const authors: {
     className: "profile-1" | "profile-2" | "profile-3";
@@ -70,6 +74,12 @@ export function App() {
       .name("Person")
       .onChange((v) => setThirdPerson(v === "third"));
 
+    // Time speed (real ms passed per minute)
+    gui
+      .add({ v: realMilliSecondsPer10Minute }, "v", 25, 1000, 25)
+      .name("Time Speed (ms/15 min)")
+      .onChange((v) => setRealMilliSecondsPer10Minute(v));
+
     // Orbit controls's auto rotate
     const orbitAutoRotate = gui
       .add(orbit.current, "autoRotate")
@@ -109,7 +119,7 @@ export function App() {
           />
         </Physics>
       </Canvas>
-      <Clock hours={hours} />
+      <Clock minutes={minutes} />
       <div className="measurement-chart">
         {[
           `📍 ${carPosition.x.toFixed(2)} -- ${carPosition.y.toFixed(

@@ -1,10 +1,10 @@
 export interface ClockProps {
-  hours: number;
+  minutes: number;
 }
 
-export function Clock({ hours: hoursArg }: ClockProps ) {
-  const hours = Math.floor( hoursArg);
-  const minutes = Math.floor((hoursArg - hours) * 60);
+export function Clock(props: ClockProps ) {
+  const hours = Math.floor(props.minutes / 60.0);
+  const minutes = props.minutes - hours * 60;
   return (
     <div className="clock">
       {padZeros(hours, 2)}:{padZeros(minutes, 2)}
