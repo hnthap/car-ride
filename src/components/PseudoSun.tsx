@@ -1,7 +1,12 @@
 import { Triplet } from "@react-three/cannon";
 import { Object3D } from "three";
 
-export function PseudoSun({ position }: { position: Triplet }) {
+export interface PseudoSunProps {
+  position: Triplet; // position of the pseudo sun in the world space. This position is used to calculate the direction of the sun. The actual position of the sun is not used in the rendering.
+  intensity: number; // intensity
+}
+
+export function PseudoSun({ position, intensity }: PseudoSunProps) {
   return (
     <mesh position={position}>
       <sphereGeometry args={[5, 15, 10]} />
@@ -9,7 +14,7 @@ export function PseudoSun({ position }: { position: Triplet }) {
       <ambientLight intensity={1} />
       <directionalLight
         castShadow
-        intensity={10}
+        intensity={intensity}
         position={[0, 0, 0]}
         shadow-camera-right={100}
         shadow-camera-left={-100}
@@ -22,47 +27,3 @@ export function PseudoSun({ position }: { position: Triplet }) {
     </mesh>
   );
 }
-
-          // return (
-          //   <directionalLight
-          //     castShadow
-          //     intensity={16}
-          //     position={lightPosition}
-          //     shadow-camera-right={right}
-          //     shadow-camera-left={left}
-          //     shadow-camera-top={top}
-          //     shadow-camera-bottom={bottom}
-          //     shadow-camera-far={far}
-          //     shadow-camera-near={near}
-          //     shadow-camera-target={target}
-          //     key={`dir_light_${i}`}
-          //   />
-
-  // const lightInfos = makeGridData(10, 2).map((d) => ({
-  //   position: d,
-  //   near: 200,
-  //   far: 800,
-  //   top: 4,
-  //   bottom: -4,
-  //   left: -5,
-  //   right: 5,
-  // }));
-
-// function makeGridData(
-//   elementSize: number,
-//   columns = 1,
-//   rows = 1,
-//   sheets = 1
-// ) {
-//   const grid: Triplet[] = new Array(columns * rows * sheets);
-//   let iGrid = 0;
-//   for (let iSheet = 0; iSheet < sheets; ++iSheet) {
-//     for (let iRow = 0; iRow < rows; ++iRow) {
-//       for (let iColumn = 0; iColumn < columns; ++iColumn) {
-//         grid[iGrid] = [iRow * elementSize, 0, iColumn * elementSize];
-//         ++iGrid;
-//       }
-//     }
-//   }
-//   return grid;
-// }

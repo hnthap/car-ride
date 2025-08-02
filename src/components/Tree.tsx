@@ -4,11 +4,9 @@ import Obstacle, { ObstacleProps } from "./Obstacle";
 
 export type TreeProps = ObstacleProps & {
   position: Triplet;
-  name: "1" | "2" | "3";
 };
 
 export default function Tree(props: TreeProps) {
-  // if (props.name === "1")
   return (
     <Obstacle
       {...props}
@@ -19,6 +17,4 @@ export default function Tree(props: TreeProps) {
       Thing={Birch1}
     />
   );
-  //if (props.name === "2")
-  //if (props.name === "3")
 }

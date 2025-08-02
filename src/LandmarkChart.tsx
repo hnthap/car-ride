@@ -3,7 +3,6 @@ import { useState } from "react";
 export type LandmarkName =
   | "Arc de Triomphe"
   | "Eiffel Tower"
-  | "Notre-Dame de Paris"
   | null;
 
 export function LandmarkChart({ name }: { name: LandmarkName }) {
@@ -15,21 +14,28 @@ export function LandmarkChart({ name }: { name: LandmarkName }) {
         className="chart-close-button"
         onClick={() => setOpen((open) => !open)}
       >
-        {open ? "[close]" : "[open]"}
-      </span>
-      <span className="chart-title">
-        <a href={url} target={"_blank"}>
-          {title}
-        </a>
+        {open ? "[ close ]" : "[ open ]"}
       </span>
       {open && (
         <>
           <img src={image} />
-          {["", ...content].map((v, i) => (
+          <div className="chart-title">{title}</div>
+          {content.map((v, i) => (
             <p key={i}>{v}</p>
-          ))}{" "}
+          ))}
+          <SeeMore name={title} url={url} />
         </>
       )}
+    </div>
+  );
+}
+
+function SeeMore({ name, url }: { name: string; url: string }) {
+  return (
+    <div className="see-more">
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        See more about {name}...
+      </a>
     </div>
   );
 }
@@ -60,16 +66,6 @@ function getLandmarkInfo(name: LandmarkName): {
         ],
         image: "/Eiffel_Tower_20051010.jpg",
         url: "https://en.wikipedia.org/wiki/Eiffel_Tower",
-      };
-
-    case "Notre-Dame de Paris":
-      return {
-        title: "Notre-Dame de Paris",
-        content: [
-          'Notre-Dame de Paris (meaning "Our Lady of Paris"), referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité (an island in the Seine River), in the 4th arrondissement of Paris, France. The cathedral, dedicated to the Virgin Mary, is considered one of the finest examples of French Gothic architecture. (Wikipedia) ',
-        ],
-        image: "/Flèche_et_rosace_transept_sud_Notre-Dame_de_Paris.jpg",
-        url: "https://www.notredamedeparis.fr/",
       };
 
     default:

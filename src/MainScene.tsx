@@ -6,6 +6,7 @@ import { LandmarkName } from "./LandmarkChart";
 import { Car, Ground, GroundWalls, PseudoSun } from "./components";
 
 export default function MainScene({
+  getLightIntensity,
   setCarPosition,
   setLandmark,
   debug,
@@ -15,6 +16,7 @@ export default function MainScene({
   setThirdPerson,
   setMessage,
 }: {
+  getLightIntensity: () => number;
   setCarPosition: React.Dispatch<React.SetStateAction<Vector3>>;
   setLandmark: React.Dispatch<React.SetStateAction<LandmarkName>>;
   debug: React.RefObject<boolean>;
@@ -43,7 +45,10 @@ export default function MainScene({
 
   return (
     <Suspense fallback={null}>
-      <PseudoSun position={[0, 120, -240]} />
+      <PseudoSun
+        position={[0, 120, -240]}
+        intensity={getLightIntensity()}
+      />
       <OrbitControls
         autoRotate={true}
         autoRotateSpeed={5}

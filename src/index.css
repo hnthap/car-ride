@@ -12,7 +12,7 @@ body {
 
 .control-keys {
     position: absolute;
-    width: 10rem;
+    height: 6rem;
     left: 5%;
     bottom: 5%;
     user-select: none;
@@ -24,7 +24,7 @@ body {
 
 .logo-1 {
     position: absolute;
-    width: 4%;
+    height: 3rem;
     left: 48%;
     bottom: 5%;
     user-select: none;
@@ -34,11 +34,12 @@ body {
     -ms-user-select: none;
 }
 
-/* .logo-2 {
+.profile {
     position: absolute;
-    height: 5%;
-    left: 50%;
-    bottom: 5%;
+    border: white solid 2px;
+    border-radius: 50%;
+    right: 2%;
+    height: 2rem;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
@@ -46,17 +47,17 @@ body {
     -ms-user-select: none;
 }
 
-.logo-3 {
-    position: absolute;
-    height: 5%;
-    left: 54%;
-    bottom: 5%;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-} */
+.profile-1 {
+    top: 40%;
+}
+
+.profile-2 {
+    top: 47%;
+}
+
+.profile-3 {
+    top: 54%;
+}
 
 .measurement-chart {
     position: absolute;
@@ -78,6 +79,7 @@ body {
 
 .info-chart {
     width: 25%;
+    min-width: 220px;
     position: absolute;
     left: 0%;
     top: 0%;
@@ -85,16 +87,18 @@ body {
     color: lightyellow;
     font-size: 10pt;
     text-indent: 0.5cm;
+    margin: 3pt;
     padding-left: 20pt;
-    padding-right: 15pt;
-    padding-top: 20pt;
-    padding-bottom: 10pt;
+    padding-right: 20pt;
+    padding-top: 15pt;
+    padding-bottom: 5pt;
     font-family: sans-serif;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    border-radius: 16px;
 }
 
 div.message {
@@ -140,7 +144,6 @@ div.loading {
 }
 
 .info-chart p {
-    padding-bottom: 10pt;
     text-align: justify;
     text-justify: auto;
 }
@@ -149,20 +152,27 @@ div.loading {
     margin: auto;
     display: block;
     padding-top: 10px;
-    max-width: 300px;
+    padding-bottom: 10px;
+    width: 100%;
     max-height: 300px;
 }
 
-.chart-title {
-    font-size: 20pt;
-    font-weight: bold;
-    padding-bottom: 10pt;
-    text-indent: 0%;
+.see-more {
+    margin-bottom: 12px;
 }
 
-.chart-title a {
-    color: white;
-    text-decoration: none;
+.see-more a {
+    color: lightskyblue;
+    text-decoration: none !important;
+}
+
+.chart-title {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20pt;
+    font-weight: bold;
+    margin-top: 18px;
+    text-indent: 0%;
 }
 
 .chart-close-button {
@@ -176,6 +186,27 @@ div.loading {
     font-family: monospace;
     user-select: none;
     text-align: center;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.clock {
+    --padding-horizontal: 20px;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    background-color: black;
+    color: white;
+    font-size: 22pt;
+    text-align: center;
+    font-family: monospace;
+    padding-left: var(--padding-horizontal);
+    padding-right: var(--padding-horizontal);
+    border-radius: 10px;
+    opacity: 0.75;
+    user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;

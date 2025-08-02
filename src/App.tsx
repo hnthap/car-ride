@@ -7,9 +7,12 @@ import { OrbitControls as VanillaOrbitControls } from "three-stdlib";
 import { LandmarkChart, LandmarkName } from "./LandmarkChart.tsx";
 import MainScene from "./MainScene.tsx";
 import { useProgress } from "@react-three/drei";
-import { useMessages } from "./hooks/useMessages.ts";
+import { useMessages, useSky } from "./hooks";
+import { Clock } from "./components/Clock.tsx";
 
 export function App() {
+  const [realMilliSecondsPer10Minute, setRealMilliSecondsPer10Minute] =
+    useState(300);
   const [carPosition, setCarPosition] = useState(
     new THREE.Vector3(NaN, NaN, NaN)
   );
@@ -20,6 +23,35 @@ export function App() {
   const [message, setMessage, subMessage] = useMessages();
   const [loading, setLoading] = useState<string | null>(null);
   const { progress, item } = useProgress();
+  const { getSkyColor, getLightIntensity, minutes } = useSky(
+    realMilliSecondsPer10Minute
+  );
+
+  const authors: {
+    className: "profile-1" | "profile-2" | "profile-3";
+    github: string;
+    profileUri: string;
+    alt: string;
+  }[] = [
+    {
+      github: "hnthap",
+      profileUri: "https://avatars.githubusercontent.com/u/94937751?v=4",
+      className: "profile-1",
+      alt: "Huynh Nhan Thap",
+    },
+    {
+      github: "VuNamPhuong",
+      profileUri: "https://avatars.githubusercontent.com/u/96564836?v=4",
+      className: "profile-2",
+      alt: "Vu Nam Phuong",
+    },
+    {
+      github: "daccuong-uit",
+      profileUri: "https://avatars.githubusercontent.com/u/96415329?v=4",
+      className: "profile-3",
+      alt: "Nguyen Dac Cuong",
+    },
+  ];
 
   useEffect(() => {
     const s: string = item.startsWith("/")
@@ -41,6 +73,12 @@ export function App() {
       .add({ v: thirdPerson ? "third" : "first" }, "v", ["first", "third"])
       .name("Person")
       .onChange((v) => setThirdPerson(v === "third"));
+
+    // Time speed (real ms passed per minute)
+    gui
+      .add({ v: realMilliSecondsPer10Minute }, "v", 25, 1000, 25)
+      .name("Time Speed (ms/15 min)")
+      .onChange((v) => setRealMilliSecondsPer10Minute(v));
 
     // Orbit controls's auto rotate
     const orbitAutoRotate = gui
@@ -66,9 +104,10 @@ export function App() {
 
   return (
     <>
-      <Canvas shadows style={{ backgroundColor: "lightblue" }}>
+      <Canvas shadows style={{ backgroundColor: getSkyColor() }}>
         <Physics gravity={[0, -9.81, 0]}>
           <MainScene
+            getLightIntensity={getLightIntensity}
             landmark={landmark}
             debug={debug}
             thirdPerson={thirdPerson}
@@ -80,11 +119,13 @@ export function App() {
           />
         </Physics>
       </Canvas>
+      <Clock minutes={minutes} />
       <div className="measurement-chart">
         {[
           `📍 ${carPosition.x.toFixed(2)} -- ${carPosition.y.toFixed(
             2
           )} -- ${carPosition.z.toFixed(2)}`,
+          `☀️ ${getLightIntensity().toFixed(1)}`,
           "press WASD to move",
           "press SPACE to brake",
           "press ENTER to change person",
@@ -108,16 +149,11 @@ export function App() {
       <a target="_blank" href="https://github.com/hnthap/car-ride">
         <img className="logo-1" src="/github.png" alt="GitHub" />
       </a>
-      {/* <a target="_blank" href="https://en.uit.edu.vn/">
-        <img className="logo-2" src="/uit.png" alt="UIT" />
-      </a>
-      <a target="_blank" href="https://cs.uit.edu.vn/thong-tin-chung-en/">
-        <img
-          className="logo-3"
-          src="/uit-cs-logo.png"
-          alt="UIT Computer Science"
-        />
-      </a> */}
+      {authors.map(({ github, className, profileUri, alt }, i) => (
+        <a target="_blank" href={`https://github.com/${github}`} key={i}>
+          <img className={className + " profile"} src={profileUri} alt={alt} />
+        </a>
+      ))}
       <img className="control-keys" src="/controls.png" alt="control keys" />
     </>
   );
